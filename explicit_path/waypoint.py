@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 '''
-@Project ：SRv6CS
+@Project ：AutoSRv6
 @File ：waypoint.py
 @Author ：Lucky
 @Date ：2022/4/27 7:22
@@ -28,9 +28,9 @@ class WayPoint:
 
     def __init__(self, graph, waypoint_list):
         self.graph = graph
-        self.source = waypoint_list[0]
-        self.target = waypoint_list[1]
-        self.nodeslist = waypoint_list[2]
+        self.source = waypoint_list[0][0]
+        self.target = waypoint_list[0][1]
+        self.nodeslist = waypoint_list[0][2]
         # self.ip_pre = waypoint_list[3]
         self.nodes = graph.nodes
         self.edges = graph.edges
@@ -193,9 +193,9 @@ class WayPoint:
 
         return wraps
 
-    @time_limit(600)
+    # @time_limit(600)
     def explicit_path(self):
-        # 找到显示路径的下一跳vlanif ip address
+        # 找到显示路径的下一跳 ip address
         flag = True
         for i in self.nodeslist:
             if len(self.node_in_edges[i]) == 0 or len(self.node_out_edges[i]) == 0:
@@ -211,20 +211,12 @@ class WayPoint:
                 print(path)
 
 
-topo_dir = "topo/simple.topo"
-#topo = Load_topofile(topo_dir)
-G = nx.DiGraph()
-# edge_dict = {(0, 1): 5, (0, 4): 6, (0, 5): 8, (0, 6): 3, (1, 0): 5, (1, 2): 8, (1, 4): 7, (1, 5): 7, (4, 0): 6, (4, 1): 7, (4, 6): 8, (5, 0): 8, (5, 1): 7, (5, 2): 9, (5, 3): 9, (5, 6): 4, (6, 0): 3, (6, 2): 9, (6, 4): 8, (6, 5): 4, (2, 1): 8, (2, 3): 10, (2, 5): 9, (2, 6): 9, (3, 2): 10, (3, 5): 9}
-
-def generate_random_graph():
-    for u, v in nx.erdos_renyi_graph(10, 0.6, seed=1).edges():
-       random_int = random.randint(1, 10)
-       G.add_edge(str(u), str(v), weight=random_int)
-       G.add_edge(str(v), str(u), weight=random_int)
-generate_random_graph()
 
 
-print(G.edges)
-wayPoint = WayPoint(G,[['1'],['5'],['3']])
-print(wayPoint.node_out_edges['1'])
-wayPoint.explicit_path()
+# import read_topo
+#
+# topo = read_topo.Topo('../topo/topology.json').getFromJson()
+# print(topo)
+#
+# waypoint = WayPoint(topo,['A','H',['C','D']])
+# waypoint.explicit_path()
