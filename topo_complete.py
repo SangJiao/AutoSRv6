@@ -11,25 +11,28 @@
 '''
 from IPy import IP
 import networkx as nx
-import utils
+from utils import keyword
 
+i = IP('2001:DB8:1::1/128')
 def set_interface_ipv6(topo):
     assert (isinstance(topo, nx.DiGraph))
     loop_sid_ipv6_change_state = 1
     for node in topo.nodes:
-        node[utils.keyword.IP] = IP('2001:DD8:'+str(hex(loop_sid_ipv6_change_state)[2:]).upper()+'::1/128')
-        node[utils.keyword.PREFIX_SID] = IP('2001:DA8:'+str(hex(loop_sid_ipv6_change_state)[2:]).upper()+'::1/128')
+        topo.nodes[node][keyword.IP] = IP("2001:DD8:"+hex(loop_sid_ipv6_change_state).upper()+"::1/128")
+        topo.nodes[node][keyword.PREFIX_SID] = IP('2001:DA8:'+hex(loop_sid_ipv6_change_state)[2:].upper()+'::1/128')
         loop_sid_ipv6_change_state += 1
     dir = {}
     inter_ipv6_change_state = 1
     xsid_ipv6_change_state = 1
     for edge in topo.edges:
         if edge not in dir.keys():
-            edge[utils.keyword.INTERFACE] = IP('2001:DB8:'+str(hex(inter_ipv6_change_state)[2:]).upper()+'::1/64')
+            topo.edges[edge][keyword.INTERFACE] = IP('2001:DB8:'+hex(inter_ipv6_change_state)[2:].upper()+'::1')
+            topo.edges[edge]['mask'] = 64
             tem1 = (edge[1], edge[0])
-            dir[tem1] = IP('2001:DB8:'+str(hex(inter_ipv6_change_state)[2:]).upper()+'::2/64')
+            dir[tem1] = IP('2001:DB8:'+hex(inter_ipv6_change_state)[2:].upper()+'::2')
             inter_ipv6_change_state += 1
         else:
-            edge[utils.keyword.INTERFACE] = dir[edge]
-        edge[utils.keyword.ADJ_SID] = IP('2001:D08:'+str(hex(xsid_ipv6_change_state)[2:]).upper()+'::1/128')
+            topo.edges[edge][keyword.INTERFACE] = dir[edge]
+            topo.edges[edge]['mask'] = 64
+        topo.edges[edge][keyword.ADJ_SID] = IP('2001:D08:'+str(hex(xsid_ipv6_change_state)[2:]).upper()+'::1/128')
         xsid_ipv6_change_state += 1
