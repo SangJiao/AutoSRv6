@@ -319,37 +319,4 @@ class SRv6_Synthesizer(object):
         #         for sid in data[PREFIX_SID]:
         #             self.output(sid)
 
-        self.output('*' * 3 + 'Out SRv6 Policy' + '*' * 3)
-        for po in self.SRv6_Policy:
-            self.output(po)
 
-        out_dir = os.path.join(self.mid_out_dir, "mid")
-        shutil.rmtree(out_dir, True)
-        if not os.path.exists(out_dir):
-            os.mkdir(out_dir)
-
-        with open(os.path.join(out_dir, "sr_policy.json"), 'w', encoding='utf-8') as f:
-            f.write(json.dumps(self.SRv6_Policy, indent=4, default=lambda obj: obj.__dict__))
-
-        self.output('*' * 3 + 'Out ISIS Policy' + '*' * 3)
-
-        with open(os.path.join(out_dir, "ospf_policy.json"), 'w', encoding='utf-8') as f:
-            f.write(json.dumps(self.ISIS_Policy, indent=4, default=lambda obj: obj.__dict__))
-
-        for mode, path_list, exc, name in self.ISIS_Policy:
-            self.output('*' * 20)
-            self.output('mode: ' + mode)
-            self.output('path_list: ')
-            for path in path_list:
-                self.output(path)
-            self.output('exc_edges_or_nodes: ' + str(exc))
-            self.output('*' * 20)
-
-        # solve isis policy
-        t1 = time.time()
-        self.output('*' * 3 + 'Begin synthesize ISIS Policy' + '*' * 3)
-        if self.ISIS_Policy:
-            isis = ISIS_Synthesizer(self.Topology, self.ISIS_Policy, log_signal=self.log_signal, out_dir=out_dir)
-            self.isis_costs = isis.synthesize()
-        t2 = time.time()
-        self.output("ISIS synthesize time is " + str(t2 - t1) + "s")
