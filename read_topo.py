@@ -17,6 +17,8 @@
 import networkx as nx
 import json
 
+from utils.keyword import *
+
 
 class Topo:
     """
@@ -54,9 +56,10 @@ class Topo:
             if 'edges' in element:
                 for edge in element['edges']:
                     self.topo.add_edge(edge['node_1'],edge['node_2'],src_int=edge['int_1'],dst_int=edge['int_2'],
-                                           bandwidth=1000, wide = 1)#ISIS的权重值用wide属性标识。边的权重为接口的wide值，都设为1
+                                           bandwidth=1000, wide = 1 ,**{TYPE: LINK_EDGE})#ISIS的权重值用wide属性标识。边的权重为接口的wide值，都设为1
                     self.topo.add_edge(edge['node_2'], edge['node_1'], src_int=edge['int_2'], dst_int=edge['int_1'],
-                                           weight=1000, wide = 1)
+                                           weight=1000, wide = 1, **{TYPE: LINK_EDGE})
+
                 # print('--------------------')
                 # print(self.topo.nodes['A']['type'])
             if 'BGP_Domain' in element:

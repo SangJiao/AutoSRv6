@@ -11,7 +11,7 @@ Output：
 '''
 
 from pyparsing import *
-
+from SRv6_Policy import *
 # 通用匹配模式
 integer = Word(nums)
 id = Word(srange("[a-zA-Z_]"), srange("[a-zA-Z0-9_-]"))
@@ -27,20 +27,22 @@ def_ipprefix = Word("prefix") + id("name") + Suppress("{") + ip_subnet("ip") + S
 bandwidth = integer("bandwidth")
 p_bandwidth = Word("bandwidth") + bandwidth + Suppress(";")
 
-# 陆航点
-# waypoint ()
+# waypoint (C,D)
 p_waypoint = Word("waypoint") + Suppress("(") + \
              id("waypoint*") + (Suppress(",") + id("waypoint*"))[0, ...] + Suppress(")")
 
-#等价路径
-p_balance = Word("balance")+ Suppress("(") + \
-            id("node*") + (Suppress("-") + id("node*") )[0, ...] + \
-            (Suppress("=") + id("node*") + (Suppress("-") + id("node*") )[0, ...])[0, ...] + Suppress(")")
+p_path = id("node*") + (Suppress("-") + id("node*"))[0, ...]
+#等价路径balance(A-B-D-H = A-C-E-D-H)
+p_balance = Word("balance")+ Suppress("(") +  id("waypoint*") + (Suppress(",") + id("waypoint*"))[0, ...] + Suppress(")")
+            #p_path + Suppress("=") + p_path + Suppress(")")
+
+# + \
+#            (Suppress("=") + id("node*") + (Suppress("-") + id("node*") )[0, ...])[0, ...]
 
 
 #weight_balance()
 
-#sequence()
+#sequence() >
 
 #avoid_node()
 
@@ -78,8 +80,8 @@ def get_policy(data):
     policy_dict = {}
     for po in def_policy.searchString(data):
         policy_dict[po["policy_name"]] = po
-    print(policy_dict.keys())
-    print(policy_dict.values())
+    #print(policy_dict.keys())
+    #print(policy_dict.values())
     return policy_dict
 with open(r'./policy/test_policy', 'r') as file:
     user_policy = file.read()
@@ -98,9 +100,15 @@ def main_policy_called(data):
             group_plist.append(i)
     return global_plist, group_plist, direction_plist
 
+
 # 返回一个二维list记录带宽约束信息
 # [['CE6', 'CE5', 2000], ['CE8', 'CE9', 2000]]
 def bandwidth_info(data):
+    '''
+    bandwidth 555
+    :param data: 在main中 A ——> G apply bandwidth 555
+    :return: 创建一个Policy对象返回Policy('p1','bandwidth',[['A', 'H', 500]],proc{type:explicit})
+    '''
     bd_list = []
     policy = get_policy(data)
     for i in main_policy_called(data)[1]:
@@ -114,30 +122,66 @@ def bandwidth_info(data):
 
 def waypoint_info(data):
     '''
-    :param data: policy traffic{waypoint (LSW11; prefix pre1,pre2;)}
-    :return: # 返回一个一维list记录陆航信息 # ['A', 'H', ['C']]
+    :param data: policy traffic{waypoint (C,D)}
+    :return: # 创建一个Policy对象返回Policy('traffic','waypoint',[['A', 'H', ['C','D']]],proc{type:explicit})
     '''
     wp_list = []
     policy = get_policy(data)
     for i in main_policy_called(data)[1]:
+        pro_dict = {'type':'SRv6'}
         length = int(len(i))
-        list1 = list(policy[i[length - 1]])
+        list1 = list(policy[i[length - 1]])  #['policy', 'traffic', 'waypoint', 'C', 'D']
+        name = list1[1]  #extra:得到策略的name
         if 'waypoint' in list1:
             wp = policy[i[length - 1]]["waypoint"]
-                # print(ipprefix_dict[j].ip_address)
-                # print(ipprefix_dict[j].prefix_len)
-            wp_list.append([i["name1"], i["name2"], list(wp)])
+#           #policy = SRv6_Policy(list1[1],)
+            wp_list.append([name,pro_dict,i["name1"], i["name2"], list(wp)])
+    print('-----------------')
+    print(wp_list)
 
+    #
     return wp_list
+
 
 def balance_info(data):
     '''
-
-    :param data: (A-B-D-H = A-C-E-D-H)
-    dict_keys(['p1', 'traffic'])
-    dict_values([ParseResults(['policy', 'p1', 'balance', 'A-B-D-H', 'A-C-E-D-H'], {'policy_name': 'p1', 'node': ['A-B-D-H', 'A-C-E-D-H']})
-    :return: [[A,B,D,H],[A,C,E,D,H]]
+    :param : balance(A,B,D,H = A,C,E,D,H = A,G,H)
+    :return: #创建一个Policy对象返回Policy('policy_name','balance',[[A,B,D,H],[A,C,E,D,H],[A,G,H]],proc{type:ISIS})
     '''
     bal_list = []
     policy = get_policy(data)
-    print(policy)
+    for i in main_policy_called(data)[1]:  # i:  ['A', 'H', 'policy1']  ['B', 'H', 'policy2']
+        length = int(len(i))
+        list1 = list(policy[i[length - 1]])  # list1 ['policy', 'p1', 'balance', 'A-B-D-H', 'A-C-E-D-H']
+        if 'balance' in list1:
+
+
+
+
+def weight_balance_info(data):
+    '''
+    :param data:weight_balance(A,D,H : A,E,D,H : A,G,H = 1 : 2 : 3)
+    :return:返回Policy对象('policy_name','weight_balance',[[1,2,3],[A,D,H],[A,E,D,H],[A,G,H]],proc{type:explicit})
+    '''
+
+def sequence_info(data):
+    '''
+
+    :param data:sequence(A,B,D,H > A,C,E,D,H > A,G,H)
+    :return:返回Policy对象('policy_name','sequence',[[A,B,D,H],[A,C,D,H],[A,G,H]],proc{type:ISIS})
+    '''
+
+def avoid_node_info(data):
+    '''
+
+    :param data:avoid_node(A)      其中main中定义是这样的 （C,'*','D','H'） apply p3
+    :return:返回Policy对象('policy_name','avoid_node',[[C,'*','D','H'],[A]],proc{type:Dynamic or Flex_Algo})  #列表第一个元素是路径，后面的是避免的节点
+    '''
+
+def avoid_link_info(data):
+    '''
+
+    :param data:avoid((A,C))
+    :return:返回Policy对象('policy_name','avoid_link',[[A,*,D,'*',H],[(A,C)]],proc{type:Dynamic or Flex_Algo})  policy对象
+    '''
+

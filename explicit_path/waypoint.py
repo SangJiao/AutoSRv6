@@ -28,9 +28,9 @@ class WayPoint:
 
     def __init__(self, graph, waypoint_list):
         self.graph = graph
-        self.source = waypoint_list[0][0]
-        self.target = waypoint_list[0][1]
-        self.nodeslist = waypoint_list[0][2]
+        self.source = waypoint_list[0][2]
+        self.target = waypoint_list[0][3]
+        self.nodeslist = waypoint_list[0][4]
         # self.ip_pre = waypoint_list[3]
         self.nodes = graph.nodes
         self.edges = graph.edges

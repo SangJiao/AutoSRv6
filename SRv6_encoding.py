@@ -6,10 +6,10 @@
 @Date ：2022/4/7 15:08
 输入计算的路径和topo，输出Segment List
 '''
-import operator
 import random
 
 import networkx as nx
+from networkx.drawing.tests.test_pylab import plt
 
 
 class PathEncoding:
@@ -168,27 +168,27 @@ class PathEncoding:
                 yield p
 
 
-    # def generate_topo(self,G):
-    #     nx.draw_networkx(G, with_labels=True)
-    #     pos = nx.spring_layout(G)
-    #     weights = nx.get_edge_attributes(G, "weight")
-    #     print(weights)
-    #     # nx.draw_networkx_edge_labels(G,pos,edge_labels= weights)
-    #     plt.show()
-    #     g = nx.gnm_random_graph(8,12,directed=True)
-    #
-    #
-    #     for u,v in g.edges:
-    #
-    #         random_weight = random.randint(1, 10)
-    #         g.add_edge(u, v, weight=random_weight)
-    #         g.add_edge(v, u, weight=random_weight)
-    #         print(u,v,random_weight)
-    #
-    #     weights = nx.get_edge_attributes(g, "weight")
-    #     print(len(weights))
-    #     print(weights)
-    #     nx.draw_networkx(g, with_labels=True)
-    #     pos = nx.spring_layout(g)
-    #     nx.draw_networkx_edge_labels(g,pos,edge_labels= weights)
-    #     plt.show()
+    def generate_topo(self,G):
+        nx.draw_networkx(G, with_labels=True)
+        pos = nx.spring_layout(G)
+        weights = nx.get_edge_attributes(G, "weight")
+        print(weights)
+        # nx.draw_networkx_edge_labels(G,pos,edge_labels= weights)
+        plt.show()
+        g = nx.gnm_random_graph(8,12,directed=True)
+
+
+        for u,v in g.edges:
+
+            random_weight = random.randint(1, 10)
+            g.add_edge(u, v, weight=random_weight)
+            g.add_edge(v, u, weight=random_weight)
+            print(u,v,random_weight)
+
+        weights = nx.get_edge_attributes(g, "weight")
+        print(len(weights))
+        print(weights)
+        nx.draw_networkx(g, with_labels=True)
+        pos = nx.spring_layout(g)
+        nx.draw_networkx_edge_labels(g,pos,edge_labels= weights)
+        plt.show()

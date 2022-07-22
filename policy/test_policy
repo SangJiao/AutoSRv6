@@ -1,0 +1,39 @@
+policy p1{
+balance(A,B,D,H )
+}
+
+policy p2{
+weight_balance()
+}
+
+policy p3{
+sequence()
+}
+
+policy p4{
+avoid_node()
+}
+
+policy p5{
+avoid_link()
+}
+
+policy p6{
+low_latency()
+}
+
+policy p7{
+disjoint()
+}
+
+
+
+policy traffic{
+waypoint (C,D)
+}
+
+main{
+A -> H apply traffic;
+A -> D apply traffic;
+A -> D apply p1;
+}
