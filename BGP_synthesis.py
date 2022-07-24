@@ -13,3 +13,18 @@ Output:各个BGP domain之间互通需要的peer参数 分配的as-number
 @File ：BGP_synthesis.py
 @Date ：2022/7/19 15:04 ISIS_synthesis.py
 '''
+
+def BGP_conf(topo, policy_list):
+    opcode_change_state = 1
+    for node in topo.nodes:
+        if node['type'] == 'PE':
+            for nbr in topo.neighbors(node):
+                node['opcode'] = str(opcode_change_state)
+                opcode_change_state += 1
+    for policy in policy_list:
+        topo.nodes[policy.Head]['color'] = policy.Color
+
+
+
+
+
