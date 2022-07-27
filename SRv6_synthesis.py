@@ -12,11 +12,12 @@ import json
 import os
 import shutil
 import time
-
+import explicit_path.bandwidth_path
 import SRv6_encoding
 from ISIS_synthesis import ISIS_Synthesizer
 from Policy import Policy
 from SRv6_Policy import SRv6_Policy
+from explicit_path.bandwidth import BandWidth
 from explicit_path.waypoint import WayPoint
 from read_topo import Topo
 from utils.keyword import *
@@ -36,6 +37,7 @@ class SRv6_Synthesizer(object):
         # self.mid_out_dir = out_dir
         self.out_dir = out_dir
         self.mid_out_dir = out_dir
+        self.bandwidth = []
         self.Middle_Policy = []
         self.ISISDomain = []
         self.BGPDomain = []
@@ -44,7 +46,7 @@ class SRv6_Synthesizer(object):
         self.BGP_Policy = []  # (node, color, ip_list)
         self.SRv6_Policy = []  # (mode, paths_list, exc_edges_or_nodes)
         self.isis_costs = {}
-        self.bandwidth_cons_list = []
+        self.bandwidth_cons_list = read_policy.bandwidth_info()[1]#需要传递data！！！！！！！！！！！！！！解析文件还需要改
 
         # self.policy_Synthesis()
         # self.init_Segment_object()
@@ -292,7 +294,8 @@ class SRv6_Synthesizer(object):
             cons[Exclude_Any] = (color_name, link_color)
             self.distribute_color_to_link(color_name, link_color, exc_edges)
         info[CONS] = cons
-        pol = SRv6_Policy(name, head, color, end, bsid, info)
+        #name, head, bsid, color, end_p`oint, info
+        pol = SRv6_Policy(name, head, bsid, color, end, info)
         self.SRv6_Policy.append(pol)
 
         return True
@@ -302,6 +305,17 @@ class SRv6_Synthesizer(object):
 
         :return:
         '''
+
+    def get_peer_path(self, srcNode, dstNode):
+        '''
+        根据两个节点获取对应的path路径
+        :return:
+        '''
+        for path in self.bandwidth_cons_list:
+            src = path[0]
+            dst = path[-1]
+            if src == srcNode and dst == dstNode:
+                return path
 
     def solve_With_Explicit_SRv6_Policy(self, policy):
         '''
@@ -335,23 +349,42 @@ class SRv6_Synthesizer(object):
             info[ANN] = policy.pro_dict[ANN]
             self.BGP_Policy.append(SRv6_Policy(name, head, bsid, color, end, info))
 
-        # 得到满足策略的路径，构建显示路径：
+        # 构建显示路径：
         priority = 128
         info[Can_Paths] = []
         flex_algo = 0
         if Flex_Algo in info.keys():
             flex_algo = info[Flex_Algo]
         weight = 1
+
         if policy.classify == 'waypoint':
             policy_path = policy.paths  # 传递给waypoint的列表是[S,T,[A,B]]
             waypoint_path = WayPoint(self.Topology, policy_path).explicit_path()
             segment_list = SRv6_encoding.PathEncoding(self.Topology, waypoint_path)
             info[Can_Paths].append(Can_Paths(priority, segment_list, weight))
             self.SRv6_Policy.append(SRv6_Policy(name, head, color, end, bsid, **info))
-        elif policy.classify == 'bandwidth':
+        elif policy.classify == 'bandwidth':#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  根据read_policy返回的结果
+           # 解析之后的结果policy(name,classify,[A,B,100],proc_dict)
+           # Can_Path = namedtuple("Can_Path", [Priority, Seg_List, Weight])
             srcNode = policy.paths[0]
             dstNode = policy.paths[1]
-
+            if len(self.bandwidth_path) == 0:
+                bandWidth = BandWidth(self.Topology,self.bandwidth_cons_list)
+                bandWidth.creat_z3_var()
+                bandWidth.path_link_con()
+                bandWidth.edge_bandwidth_con()
+                bandWidth.solver.check()
+                ppp = bandWidth.solver.model()
+                for i in bandWidth.edge_key_var.values():
+                    print(ppp.get_interp(i))
+                    print(bool(ppp.get_interp(i)))
+               # print(ppp)
+               # print(ppp.get_interp(bandWidth.edge_key_var[('c', 'd', 'a', 'd')]))
+                self.bandwidth_cons_list.extend(bandWidth.set_paths())
+            bandwidth_path = self.get_peer_path(srcNode,dstNode)
+            segment_list = SRv6_encoding.PathEncoding(self.Topology, bandwidth_path)
+            info[Can_Paths].append(Can_Paths(priority, segment_list, weight))
+            self.SRv6_Policy.append(SRv6_Policy(name, head, color, end, bsid, **info))
         elif policy.classify == 'weight_balance':
             policy_fraction = policy.paths[0]
             policy_path = policy.paths[1:]

@@ -24,11 +24,12 @@ def set_interface_ipv6(topo):
     dir = {}
     inter_ipv6_change_state = 1
     xsid_ipv6_change_state = 1
-    for edge in topo.edges:
+    for edge in topo.edges:#(A,B)
         if edge not in dir.keys():
-            topo.edges[edge][keyword.INTERFACE] = IP('2001:DB8:'+hex(inter_ipv6_change_state)[2:].upper()+'::1')
+            topo.edges[edge][keyword.INTERFACE] = IP('2001:DB8:'+hex(inter_ipv6_change_state)[2:].upper()+'::1')  #(A,B)    A_INTERFACE[]
             topo.edges[edge]['mask'] = 64
-            tem1 = (edge[1], edge[0])
+            tem1 = (edge[1], edge[0]) #(B,A)
+            # topo.edges[edge][keyword.INTERFACE] = IP('2001:DB8:' + hex(inter_ipv6_change_state)[2:].upper() + '::2')
             dir[tem1] = IP('2001:DB8:'+hex(inter_ipv6_change_state)[2:].upper()+'::2')
             inter_ipv6_change_state += 1
         else:

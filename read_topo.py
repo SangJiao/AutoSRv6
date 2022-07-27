@@ -51,15 +51,22 @@ class Topo:
             #print(element)
             if 'nodes' in element:
                 for node in element['nodes']:
-                    #print(node)
-                    self.topo.add_node(node["name"],type = node['type'])
+                # print(node)
+                    self.topo.add_node(node["name"], type=node['type'], ints={})
+
+
 
             if 'edges' in element:
                 for edge in element['edges']:
                     self.topo.add_edge(edge['node_1'],edge['node_2'],src_int=edge['int_1'],dst_int=edge['int_2'],
-                                           bandwidth=1000, wide = 1 ,**{TYPE: LINK_EDGE})#ISIS的权重值用wide属性标识。边的权重为接口的wide值，都设为1
+                                           bandwidth=1000 ,**{TYPE: LINK_EDGE})#ISIS的权重值用wide属性标识。边的权重为接口的wide值，都设为1
                     self.topo.add_edge(edge['node_2'], edge['node_1'], src_int=edge['int_2'], dst_int=edge['int_1'],
-                                           weight=1000, wide = 1, **{TYPE: LINK_EDGE})
+                                           weight=1000, **{TYPE: LINK_EDGE})
+                    #给节点添加接口信息，是一个字典Graph.nodes['A']    'ints': {'GE1/0/0': {'cost': 1}, 'GE0/0/4': {'cost': 1}}
+                    self.topo.nodes[edge['node_1']]['ints'][edge['int_1']] = {}
+                    self.topo.nodes[edge['node_1']]['ints'][edge['int_1']]['cost'] = 1
+                    self.topo.nodes[edge['node_2']]['ints'][edge['int_2']] = {}
+                    self.topo.nodes[edge['node_2']]['ints'][edge['int_2']]['cost'] = 1
 
                 # print('--------------------')
                 # print(self.topo.nodes['A']['type'])
@@ -147,3 +154,6 @@ def interfaceByEdge(graph,edge):
 list = [edge for edge in Graph.edges]
 print(list)
 print(Graph.edges[list[0][0],list[0][1]])
+edge = Graph.edges[('B','A')]
+print(edge['src_int'])
+print(Graph.nodes['A'])

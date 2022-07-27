@@ -11,6 +11,47 @@ from topo_complete import set_interface_ipv6
 from utils import keyword
 from IPy import IP
 
+def ISIS_conf(topo):
+    configs = {}
+    for node_name in topo.nodes:
+        node = topo.nodes[node_name]
+        config = ''
+        #使能各个接口的IPv6能力 config += '\n'
+        config += 'system-view\n'
+        config += 'sysname {} \n'.format(node['name'])
+        config += 'commit\n'
+        for edge_name in topo.edges:
+            edge = topo.edges[edge_name]
+            if edge_name[0] == node_name:
+                config += 'interface {} \n'.format(edge['src_int'])
+                config += ' ipv6 enable\n'
+                config += ' ipv6 address {} 64\n'.format(edge[keyword.INTERFACE])  #64位掩码
+                config += ' isis cost {} \n'.format(node['ints'][edge['src_int']]['cost'])#isis cost存储在节点['ints'][name]['cost']中
+                config += ' quit \n'
+        config += 'interface loopback1\n'   #需要配置！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        config += ' ipv6 enable\n'
+        config += ' ipv6 address {}\n'.format(node[keyword.LOOPBACK1])
+        config += ' commit\n'
+        config += ' quit\n'
+
+        #配置ISIS打通域内路由  用display isis peer进行验证
+        config += 'isis 1\n'
+        config += ' is-level level-1\n'
+        config += ' cost-style wide\n'
+        config += ' network-entity {}\n'.format(node[keyword.NETWORK_ENTITY]) #需要配置！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+        config += ' ipv6 enable topology ipv6'
+        config += ' quit \n'
+        for edge_name in topo.edges:
+            edge = topo.edges[edge_name]
+            if edge_name[0] == node_name:
+                config += 'interface {} \n'.format(edge['src_int'])
+                config += ' isis ipv6 enable 1\n'
+                config += ' quit \n'
+
+    configs[node_name] = config
+
+
+
 def BGP_conf(topo):
     bgp_contain_nodes_dir = {}
     for node_name in topo.nodes:
@@ -34,11 +75,12 @@ def BGP_conf(topo):
                 if peer != node:
                     config += ' peer {0} as-number {1}\n'.format(peer[keyword.PREFIX_SID].strCompressed(), peer['bgp_domain'])
                     if peer['type'] == 'PE':
-                        config += ' peer {0} as-number connect-interface Loopback1]\n'  # TODO 现在先默认是loopback1，看后续是否需要修改
+                        config += ' peer {0} as-number connect-interface loopback1]\n'  # TODO 现在先默认是loopback1，看后续是否需要修改
             config += ' #\n'
 
             config += ' address-family ipv6 unicast\n'
             config += '  segment-routing ipv6 locator {0}\n'.format(node_name)
+
             for peer in bgp_contain_nodes_dir[node['bgp_domain']]:
                 if peer != node:
                     config += '  peer {0} enable\n'.format(peer[keyword.PREFIX_SID])
@@ -89,9 +131,36 @@ def BGP_conf(topo):
         configs[node_name] = config
 
 
+def SRv6_conf(topo,srv6_policy_list):#  config += '\n'    #
 
-
-
+    for node_name in topo.nodes:
+        node = topo.nodes[node_name]
+        config = ''
+        config += 'segment-routing ipv6\n'
+        config += ' encapsulation source-address {}\n'.format(node[keyword.LOOPBACK1])#  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        config += ' locator {0} ipv6-prefix {1} 64 static 32\n'.format(node_name,node[keyword.PREFIX_SID].make_net(64)[0].strCompressed())
+        config += '  opcode ::100  end psp\n'#   opcode的值.format()#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        config += ' quit\n'
+    # 根据传过来的policy_list配置SRv6 TE Policy
+    # name, head, bsid, color, end_point, info{Policy_Type,Priority,Mertric_Type,CONS,Flex_Algo,Can_Paths}
+    # Can_Path = namedtuple("Can_Path", [Priority, Seg_List, Weight])
+    for pol in srv6_policy_list:
+        pol_name = pol.name
+        pol_head = pol.head
+        pol_bsid = pol.bsid
+        pol_color = pol.color
+        pol_info = pol.info
+        if pol_info[keyword.Can_Paths]:
+            can_path = pol.info[keyword.Can_Paths]
+            if len(can_path) == 1:
+                seg_list = can_path[0].segment_list
+        can_path_length = len(can_path)
+        #对于显示路径的配置，需要配置
+        config = ''
+        config += 'segment-routing ipv6\n'
+        for i in range(1,len(can_path.Seg_List)+1):
+           config += ' segment-list {}\n'.format('list'+str(i))
+           config += ' segment-list {}\n'.format('list' + str(i))
 
 t = Topo('./topo/topology.json')
 # Graph = t.getFromJson(json_topo) #网络拓扑
