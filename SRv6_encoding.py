@@ -6,10 +6,12 @@
 @Date ：2022/4/7 15:08
 输入计算的路径和topo，输出Segment List
 '''
+import operator
 import random
 
 import networkx as nx
-from networkx.drawing.tests.test_pylab import plt
+import matplotlib as mpl
+import matplotlib.pyplot as plt
 
 
 class PathEncoding:
@@ -74,6 +76,7 @@ class PathEncoding:
                 self.left -= 1
                 self.right -= 1
                 continue
+        print(self.segment_list)
         return self.segment_list
 
 
@@ -84,11 +87,12 @@ class PathEncoding:
         """
         for i in range(len(self.path_list)):
             self.segment_list = []
-            print('path')
-            print(self.path_list[i])
+            #print('path')
+            #print(self.path_list[i])
             self.res_path[i] = self.srv6_mapping(self.path_list[i])
-            print('item')
+            #print('item')
             print(self.res_path[i])
+        print(self.res_path)
         return self.res_path
 
 
@@ -175,20 +179,23 @@ class PathEncoding:
         print(weights)
         # nx.draw_networkx_edge_labels(G,pos,edge_labels= weights)
         plt.show()
-        g = nx.gnm_random_graph(8,12,directed=True)
 
-
-        for u,v in g.edges:
-
-            random_weight = random.randint(1, 10)
-            g.add_edge(u, v, weight=random_weight)
-            g.add_edge(v, u, weight=random_weight)
-            print(u,v,random_weight)
-
-        weights = nx.get_edge_attributes(g, "weight")
-        print(len(weights))
-        print(weights)
-        nx.draw_networkx(g, with_labels=True)
-        pos = nx.spring_layout(g)
-        nx.draw_networkx_edge_labels(g,pos,edge_labels= weights)
-        plt.show()
+# g = nx.gnm_random_graph(8,12,directed=True)
+#
+#
+# for u,v in g.edges:
+#
+#     random_weight = random.randint(1, 10)
+#     g.add_edge(u, v, weight=random_weight)
+#     g.add_edge(v, u, weight=random_weight)
+#     #print(u,v,random_weight)
+#
+#     weights = nx.get_edge_attributes(g, "weight")
+#     #print(len(weights))
+#     #print(weights)
+#
+# result = PathEncoding(g,[1,2,3,4]).srv6_mapping([1,4,3,6])
+# nx.draw_networkx(g, with_labels=True)
+# pos = nx.spring_layout(g)
+# nx.draw_networkx_edge_labels(g,pos,edge_labels= weights)
+# plt.show()

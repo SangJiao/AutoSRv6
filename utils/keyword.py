@@ -12,10 +12,12 @@ POS = '+'
 NEG = '!'
 
 # policy protocol
+PROTOCOL = 'protocol'
 ISIS = 'ISIS'
 SRv6 = 'SRv6'
 BGP = 'BGP'
 AS = 'SRv6.as'
+
 
 ANN = 'ann'
 EXC = 'exc'
@@ -25,7 +27,7 @@ EXC = 'exc'
 PREFIX_SID = 'Prefix_SID'
 ADJ_SID = 'Adj_SID'
 
-# ospf policy type
+# IGP policy type
 
 ECMP = 'ecmp'
 ORDER = 'order'
@@ -39,6 +41,7 @@ End_Ip = 'End_Ip'
 Policy_Type = 'Policy_Type'
 Dynamic = 'dynamic'
 SRv6_explicit = 'SRv6_explicit'
+SRv6_Dynamic = 'SRv6_Dynamic'
 Priority = 'Priority'
 Mertric_Type = 'Mertric_Type'
 Flex_Algo = 'Flex_Algo'
@@ -46,6 +49,7 @@ Can_Paths = "Can_Paths"
 CONS = 'constraints'
 SRv6_ODN = 'SRv6_odn'
 SRv6_LAT = 'SRv6_latency'
+
 # constraints
 Exclude_Any = 'Exclude_Any'
 Include_Any = 'Include_Any'

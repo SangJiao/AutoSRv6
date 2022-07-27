@@ -30,6 +30,7 @@ class Topo:
         self.json_data = self.get_json_data()
 
 
+
     def get_json_data(self):
         '''
         :return: 读取json_topo文件返回json数据
@@ -120,3 +121,29 @@ class Topo:
                     bgp_link = (link['srcAS'],link['dstAS'])
                     domain_rel.append(bgp_link)
         return domain_rel
+
+
+
+
+t = Topo('./topo/topology.json')
+# Graph = t.getFromJson(json_topo) #网络拓扑
+Graph = t.getFromJson()
+
+
+def interfaceByEdge(graph,edge):
+    '''
+    根据链路得到srcInterface + dstInterface
+    :param edge: (srcNode,dstNode)
+    :return:
+    '''
+    Graph = graph
+    src_node = edge[0]
+    dst_node = edge[1]
+    return Graph.edges[src_node,dst_node]['src_int'] ,Graph.edges[src_node,dst_node]['dst_int']
+
+#print(interfaceByEdge(Graph,('A','B')))
+
+#print(Graph.edges['A','B'])
+list = [edge for edge in Graph.edges]
+print(list)
+print(Graph.edges[list[0][0],list[0][1]])

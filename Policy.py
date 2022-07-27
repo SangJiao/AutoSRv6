@@ -12,7 +12,7 @@ from utils.keyword import *
 class Policy(object):
     def __init__(self, name, classify, paths, pro_dict):
         assert isinstance(pro_dict, dict)
-        self.classify = classify
         self.name = name
+        self.classify = classify
         self.paths = paths
         self.pro_dict = pro_dict

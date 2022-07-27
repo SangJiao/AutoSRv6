@@ -15,7 +15,7 @@ Can_Path = namedtuple("Can_Path", [Priority, Seg_List, Weight])
 
 class SRv6_Policy(object):
 
-    def __init__(self, name, head, bsid, color, end_point, **info):
+    def __init__(self, name, head, bsid, color, end_point, info):
         self.Name = name
         self.Head = head
         self.Color = color
@@ -29,7 +29,7 @@ class SRv6_Policy(object):
             Flex_Algo: 0,  # 128-255 default:0
             Can_Paths: None,  # list of Can_Paths
         }
-        for key,value in info.items():
+        for key, value in info.items():
             if key == "Can_Paths" and value is not None:
                 if self.Info["Can_Paths"] is None:
                     self.Info["Can_Paths"] = []
@@ -38,3 +38,17 @@ class SRv6_Policy(object):
 
             elif key in self.Info.keys():
                 self.Info[key] = value
+
+    def __str__(self):
+        s = '*' * 20 + "\n" + \
+            'name: ' + self.Name + "\n" + \
+            'head: ' + self.Head + "\n" + \
+            'color: ' + str(self.Color) + "\n" + \
+            'End: ' + self.End + "\n" + \
+            'BSID: ' + str(self.BSID) + "\n" + \
+            str(self.Info) + "\n" + \
+            '*' * 20 + "\n"
+        return s
+
+s = SRv6_Policy('p', 'a', 'x' , '100', 's',{'Mertric_Type':'1'})
+print(s)

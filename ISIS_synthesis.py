@@ -68,7 +68,7 @@ class ISIS_Synthesizer(object):
 
         self.get_values_constraints()
 
-        self.get_reqs_constraints()
+        self.get_reqs_constraints2()
 
     def output(self, text):
         if self.log_signal is None:
@@ -77,31 +77,42 @@ class ISIS_Synthesizer(object):
             t = str(text)
             self.log_signal.emit(t)
 
-    """
-    """
+
+    def interfaceByEdge(self,edge):
+        '''
+        根据链路得到srcInterface + dstInterface
+        :param edge: (srcNode,dstNode)
+        :return:
+        '''
+        for e in self.topology.edges:
+            src_node = e[0]
+            dst_node = e[1]
+            if (src_node == edge[0]) and( dst_node == edge[1]):
+                return self.topology.edges[src_node, dst_node]['src_int'], self.topology.edges[src_node, dst_node]['dst_int']
+            elif (edge[0]== dst_node) and(edge[1] == src_node):
+                return self.topology.edges[dst_node, src_node]['dst_int'], self.topology.edges[src_node, dst_node]['src_int']
+
+
     def get_necessary_info(self):
-        self.node_names = [node[0] for node in self.topology.nodes(data=True) if node[1][TYPE] == NODE]
-        # nodes:['A', 'A_int_1', 'A_int_2', 'B', 'B_int_1', 'B_int_2'......]
-        # nodes_names:['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
-        # (data=True表示返回NodeDataView，顶点后面是字典，表示节点的属性)
-        self.interface_names = [node[0] for node in self.topology.nodes(data=True) if node[1][TYPE] == INTERFACE]
-        for edge in self.topology.edges(data=True):
-            data = edge[2]
-            if data[TYPE] == LINK_EDGE:
-                src_inter = edge[0]
-                dst_inter = edge[1]
-                src_node = [node for node in self.topology.neighbors(src_inter) if node != dst_inter][0]
-                dst_node = [node for node in self.topology.neighbors(dst_inter) if node != src_inter][0]
-                self.edge_node_to_inter[(src_node, dst_node)] = (src_inter, dst_inter)
+        '''
+
+        :return:
+        '''
+        self.node_names = [node for node in self.topology.nodes()]
+        topo_edge = [edge for edge in self.topology.edges()]
+        for e in topo_edge:
+            self.interface_names.append(self.topology.edges[e[0],e[1]]['src_int'])
+            self.interface_names.append(self.topology.edges[e[0], e[1]]['dst_int'])
+        for e in self.topology.edges:
+            self.edge_node_to_inter[e] = (self.interfaceByEdge(e))
         edges = []
         for mode, path_list, exc, name in self.isis_policy:
             for path in path_list:
-                assert (path.op == POS)
-                for index, node in enumerate(path.nodes_list[:-1]):
-                    edges.append((path.nodes_list[index], path.nodes_list[index + 1]))
-
+                for index, node in enumerate(path[:-1]):
+                    edges.append((path[index],path[index + 1]))
         self.req_edges = list(set(edges))
         self.req_graph.add_edges_from(self.req_edges)
+
 
     def create_z3_value(self):
         """
@@ -157,6 +168,7 @@ class ISIS_Synthesizer(object):
                 cons.append(self.sum(last_path) < self.sum(other_path))
         return cons
 
+
     def get_reqs_constraints(self):
         """
         获得路径的不等式约束
@@ -196,6 +208,20 @@ class ISIS_Synthesizer(object):
 
         self.constraints.append(z3.And(cons))
 
+    def get_reqs_constraints2(self):
+        cons = []
+        for mode, path_list, exc, name in self.isis_policy:
+            src = path_list[0][0]
+            dst = path_list[0][-1]
+            other_paths = list(nx.shortest_simple_paths(self.req_graph, source=src, target=dst))
+            for path in path_list:
+                other_paths.remove(path)
+            req_cons = self.get_single_req_constraints(mode, path_list, other_paths)
+
+            cons += req_cons
+
+        self.constraints.append(z3.And(cons))
+
     def synthesize(self):
         """
         z3求解器求解，判断约束合理性，获得可行解
@@ -225,8 +251,9 @@ class ISIS_Synthesizer(object):
             with open(os.path.join(self.out_dir, "isis_costs.json"), 'w', encoding='utf-8') as f:
                 f.write(json.dumps(cost_list, indent=4, default=lambda obj: obj.__dict__))
         else:
-            self.output("Sythesize ISIS failed !!!")
-            exit(-1)
+
+            self.output("conflict policies !!!")
+            return self.isis_policy
         return self.isis_costs
 
     def is_path_req_sat(self, reqs, checked_mode, checked_path_list):

@@ -28,9 +28,9 @@ class WayPoint:
 
     def __init__(self, graph, waypoint_list):
         self.graph = graph
-        self.source = waypoint_list[0][2]
-        self.target = waypoint_list[0][3]
-        self.nodeslist = waypoint_list[0][4]
+        self.source = waypoint_list[0]
+        self.target = waypoint_list[1]
+        self.nodeslist = waypoint_list[-1]
         # self.ip_pre = waypoint_list[3]
         self.nodes = graph.nodes
         self.edges = graph.edges
@@ -209,10 +209,10 @@ class WayPoint:
             path = self.path
             if len(path) > 0:
                 print(path)
+        return path
 
 
-
-
+#
 # import read_topo
 #
 # topo = read_topo.Topo('../topo/topology.json').getFromJson()
