@@ -27,7 +27,13 @@ EXC = 'exc'
 # segment
 
 PREFIX_SID = 'Prefix_SID'
+
 ADJ_SID = 'Adj_SID'
+ENDX_PREFIX = 'EndX_prifix'
+ENDX_SID = 'EndX_sid'
+ENDXOPCODE = 'Endx_opcode'
+
+
 
 # IGP policy type
 
@@ -42,6 +48,7 @@ Head_Ip = 'Head_Ip'
 End_Ip = 'End_Ip'
 Policy_Type = 'Policy_Type'
 Dynamic = 'dynamic'
+SRv6_LAT ='SRv6_low_latency'
 SRv6_explicit = 'SRv6_explicit'
 SRv6_Dynamic = 'SRv6_Dynamic'
 Priority = 'Priority'

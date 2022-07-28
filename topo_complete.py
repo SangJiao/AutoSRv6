@@ -12,6 +12,7 @@
 from IPy import IP
 import networkx as nx
 from utils import keyword
+from utils.keyword import ENDX_SID, ENDXOPCODE
 
 i = IP('2001:DB8:1::1/128')
 def set_interface_ipv6(topo):
@@ -19,13 +20,23 @@ def set_interface_ipv6(topo):
     loop_sid_ipv6_change_state = 1
     for node in topo.nodes:
         topo.nodes[node][keyword.LOOPBACK1] = IP("2001:DD8:"+hex(loop_sid_ipv6_change_state).upper()+"::1/128")
+        topo.nodes[node][keyword.ENDX_PREFIX] = IP("2001:D08:"+hex(loop_sid_ipv6_change_state).upper()+"::1/128")
         topo.nodes[node][keyword.PREFIX_SID] = IP('2001:DA8:'+hex(loop_sid_ipv6_change_state)[2:].upper()+'::1/128')
         topo.edges[node]['network-entity'] = "10.0000.0000."+int2str(loop_sid_ipv6_change_state)+".00"
         loop_sid_ipv6_change_state += 1
+        #给节点添加End.x SID的前缀,边加上opcode，# to字符串需要改为IP地址！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+        i = 0
+        for edge_name in topo.edges:
+            edge = topo.edges[edge_name]
+            if edge_name[0] == node['name']:
+                i += 1
+                edge[ENDXOPCODE] = i
+                edge[ENDX_SID] = node[keyword.ENDX_PREFIX].make_net(64)[0].strCompressed() + '::' + str(i) # to字符串需要改为IP地址！！！！！！！！！！！！！！！！！！！！！！！！！！！！
     dir = {}
     xsid_dir = {}
     inter_xsid_ipv6_change_state = 1
     for edge in topo.edges:#(A,B)
+
         if edge not in dir.keys():
             topo.edges[edge][keyword.INTERFACE] = IP('2001:DB8:'+hex(inter_xsid_ipv6_change_state)[2:].upper()+'::1')  #(A,B)    A_INTERFACE[]
             topo.edges[edge]['mask'] = 64

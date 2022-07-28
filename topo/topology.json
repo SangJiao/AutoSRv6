@@ -37,23 +37,30 @@
         "node_1": "A","node_2" : "C","int_1" : "GE0/0/4","int_2" : "GE0/0/1","bandwidth" : "1000"
       },
       {
-        "node_1": "C","node_2" : "E","int_1" : "GE0/0/2","int_2" : "GE0/0/1","bandwidth" : "1000"
+        "node_1": "B","node_2" : "D","int_1" : "GE0/0/2","int_2" : "GE0/0/1","bandwidth" : "1000"
       },
       {
-        "node_1": "B","node_2" : "D","int_1" : "GE0/0/3","int_2" : "GE0/0/1","bandwidth" : "1000"
+        "node_1": "C","node_2" : "E","int_1" : "GE0/0/3","int_2" : "GE0/0/1","bandwidth" : "1000"
       },
       {
-        "node_1": "E","node_2" : "D","int_1" : "GE0/0/2","int_2" : "GE0/0/1","bandwidth" : "1000"
+        "node_1": "D","node_2" : "E","int_1" : "GE0/0/2","int_2" : "GE0/0/1","bandwidth" : "1000"
       },
       {
-        "node_1": "E","node_2" : "F","int_1" : "GE0/0/12","int_2" : "Ethernet0/0/0","bandwidth" : "1000"
+        "node_1": "D","node_2" : "H","int_1" : "GE0/0/12","int_2" : "Ethernet0/0/0","bandwidth" : "1000"
       },
       {
-        "node_1": "F","node_2" : "G" , "int_1" :"GE0/0/11","int_2" : "GE0/0/3","bandwidth" : "1000"
+        "node_1": "E","node_2" : "G" , "int_1" :"GE0/0/11","int_2" : "GE0/0/3","bandwidth" : "1000"
       },
       {
-        "node_1": "D","node_2" : "H","int_1" : "GE0/0/10","int_2" : "GE0/0/2","bandwidth" : "1000"
+        "node_1": "E","node_2" : "F","int_1" : "GE0/0/10","int_2" : "GE0/0/2","bandwidth" : "1000"
+      },
+      {
+        "node_1": "F","node_2" : "G","int_1" : "GE0/0/2","int_2" : "GE0/0/1","bandwidth" : "1000"
+      },
+      {
+        "node_1": "G","node_2" : "H","int_1" : "GE0/0/12","int_2" : "Ethernet0/0/0","bandwidth" : "1000"
       }
+
     ]
   },
 
