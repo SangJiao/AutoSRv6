@@ -8,8 +8,11 @@ Output: 求解src到dst满足带宽约束的显示路径
 @File ：bandwidth.py
 @Date ：2022/7/19 15:02 
 '''
+import random
+
 import networkx as nx
 import z3
+import time
 
 # pol = [['a', 'd', 200], ['b', 'd', 1000]]
 #
@@ -29,8 +32,8 @@ class BandWidth:
         self.topo = topo
         self.init_policy = policy
         self.policy = {}
-        # for list in policy:
-        for list in policy.paths:
+        for list in policy:
+        # for list in policy.paths:
             key = (list[0], list[1])
             self.policy[key] = list[2]
         self.edge_key_var = {}  #key： 四元组(topo.edge,policy.key) value: z3 var
@@ -41,7 +44,7 @@ class BandWidth:
         for edge in self.topo.edges:
             for key in self.policy.keys():
                 temTuple = (edge[0], edge[1], key[0], key[1])
-                temStr = edge[0]+'_'+edge[1]+'_'+key[0]+'_'+key[1]
+                temStr = str(edge[0])+'_'+str(edge[1])+'_'+str(key[0])+'_'+str(key[1])
                 temVar = z3.Bool(temStr)
                 self.edge_key_var[temTuple] = temVar
 
@@ -86,8 +89,8 @@ class BandWidth:
         assert self.solver.check()
         model = self.solver.model()
         new_paths = []
-        # for list in self.init_policy:
-        for list in self.init_policy.paths:
+        for list in self.init_policy:
+        # for list in self.init_policy.paths:
             start_node = list[0]
             end_node = list[1]
             tem_list = []
@@ -121,3 +124,58 @@ class BandWidth:
 # print(ppp.get_interp(k.edge_key_var[('c','d','a','d')]))
 #
 # k.set_paths()
+
+
+def set_policy(graph, num):
+    assert isinstance(graph, nx.DiGraph)
+    policy = []
+    while len(policy) < num:
+        node1 = random.choice(list(graph.nodes))
+        node2 = random.choice(list(graph.nodes))
+        while node1 == node2:
+            node2 = random.choice(list(graph.nodes))
+        tem_pol = [node1, node2, 20]
+        if tem_pol in policy:
+            continue
+        else:
+            policy.append(tem_pol)
+    return policy
+
+test_num = 1
+result_dir = {}   # key:(int graph, int req) value；time (秒)  int graph [0: small, 1: medium, 2: lager]
+is_first = True
+while test_num <= 5:
+    small = random.randint(9, 25)
+    medium = random.randint(36, 64)
+    lager = random.randint(65, 81)
+    req_num = 4
+    while req_num < 100:
+        small_graph = nx.gnm_random_graph(small, int(small*1.5), directed=True)
+        medium_graph = nx.gnm_random_graph(medium, int(medium * 1.5), directed=True)
+        lager_graph = nx.gnm_random_graph(lager, int(lager * 1.5), directed=True)
+        graph_list = [small_graph, medium_graph, lager_graph]
+        for index in [0, 1, 2]:
+            policy = set_policy(graph_list[index], req_num)
+            start_time = time.time()
+            tem_bandwidth = BandWidth(graph_list[index], policy)
+            tem_bandwidth.creat_z3_var()
+            tem_bandwidth.path_link_con()
+            tem_bandwidth.edge_bandwidth_con()
+            tem_bandwidth.solver.check()
+            end_time = time.time()
+            time_cost = end_time - start_time
+            if is_first:
+                result_dir[(index, req_num)] = time_cost
+            else:
+                result_dir[(index, req_num)] += time_cost
+        req_num *= 2
+    is_first = False
+    test_num += 1
+
+for key in result_dir.keys():
+    if key[0] == 0:
+        print("small and " + str(key[1]) + "requirements 时间开销："+ str(result_dir[key]/(test_num-1)))
+    if key[0] == 1:
+        print("medium and " + str(key[1]) + "requirements 时间开销：" + str(result_dir[key] / (test_num - 1)))
+    if key[0] == 2:
+        print("lager and " + str(key[1]) + "requirements 时间开销：" + str(result_dir[key] / (test_num - 1)))
