@@ -46,7 +46,7 @@ class SRv6_Synthesizer(object):
         self.BGP_Policy = []  # (node, color, ip_list)
         self.SRv6_Policy = []  # (mode, paths_list, exc_edges_or_nodes)
         self.isis_costs = {}
-        self.bandwidth_cons_list = read_policy.bandwidth_info()[1]#需要传递data！！！！！！！！！！！！！！解析文件还需要改
+#        self.bandwidth_cons_list = read_policy.bandwidth_info()[1]#需要传递data！！！！！！！！！！！！！！解析文件还需要改
 
         # self.policy_Synthesis()
         # self.init_Segment_object()
@@ -62,7 +62,7 @@ class SRv6_Synthesizer(object):
 
     def init_Segment_object(self):
         # 32位颜色意图范围 0-4294967296
-        self.Policy_Color = iter([i for i in range(0, 10000)])
+        self.Policy_Color = iter([i for i in range(10, 10000)])
         self.Link_Color = iter([i for i in range(0, 32)])
         self.BSID = iter([i for i in range(50000, 60000)])  # 需要进一步改为ipv6地址
         self.Felx_Algo_SID = iter([i for i in range(128, 255)])

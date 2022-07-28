@@ -44,11 +44,9 @@ class SRv6_Policy(object):
             'name: ' + self.Name + "\n" + \
             'head: ' + self.Head + "\n" + \
             'color: ' + str(self.Color) + "\n" + \
-            'End: ' + self.End + "\n" + \
+            'End: ' + str(self.End) + "\n" + \
             'BSID: ' + str(self.BSID) + "\n" + \
             str(self.Info) + "\n" + \
             '*' * 20 + "\n"
         return s
 
-s = SRv6_Policy('p', 'a', 'x' , '100', 's',{'Mertric_Type':'1'})
-print(s)

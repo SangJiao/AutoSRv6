@@ -11,8 +11,11 @@ from topo_complete import set_interface_ipv6
 from utils import keyword
 from IPy import IP
 
+from utils.keyword import *
+
+
 def ISIS_conf(topo):
-    configs = {}
+    isis_configs = {}
     for node_name in topo.nodes:
         node = topo.nodes[node_name]
         config = ''
@@ -28,9 +31,9 @@ def ISIS_conf(topo):
                 config += ' ipv6 address {} 64\n'.format(edge[keyword.INTERFACE])  #64位掩码
                 config += ' isis cost {} \n'.format(node['ints'][edge['src_int']]['cost'])#isis cost存储在节点['ints'][name]['cost']中
                 config += ' quit \n'
-        config += 'interface loopback1\n'   #需要配置！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        config += 'interface loopback1\n'
         config += ' ipv6 enable\n'
-        config += ' ipv6 address {}\n'.format(node[keyword.LOOPBACK1])
+        config += ' ipv6 address {}\n'.format(node[keyword.LOOPBACK1])#需要配置！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         config += ' commit\n'
         config += ' quit\n'
 
@@ -48,7 +51,7 @@ def ISIS_conf(topo):
                 config += ' isis ipv6 enable 1\n'
                 config += ' quit \n'
 
-    configs[node_name] = config
+    isis_configs[node_name] = config
 
 
 
@@ -131,36 +134,68 @@ def BGP_conf(topo):
         configs[node_name] = config
 
 
-def SRv6_conf(topo,srv6_policy_list):#  config += '\n'    #
+def SRv6_conf(topo,srv6_policy_list):
+    #SRv6基础配置
 
+    #  config += '\n'    #
+    index = 5
     for node_name in topo.nodes:
         node = topo.nodes[node_name]
         config = ''
+        config += "#\n"
+        config += "segment-routing ipv6 locator {} auto-sid-disable\n".format(node['name'])
+        config += "#\n"
         config += 'segment-routing ipv6\n'
-        config += ' encapsulation source-address {}\n'.format(node[keyword.LOOPBACK1])#  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        config += ' locator {0} ipv6-prefix {1} 64 static 32\n'.format(node_name,node[keyword.PREFIX_SID].make_net(64)[0].strCompressed())
-        config += '  opcode ::100  end psp\n'#   opcode的值.format()#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        config += ' quit\n'
-    # 根据传过来的policy_list配置SRv6 TE Policy
-    # name, head, bsid, color, end_point, info{Policy_Type,Priority,Mertric_Type,CONS,Flex_Algo,Can_Paths}
-    # Can_Path = namedtuple("Can_Path", [Priority, Seg_List, Weight])
-    for pol in srv6_policy_list:
-        pol_name = pol.name
-        pol_head = pol.head
-        pol_bsid = pol.bsid
-        pol_color = pol.color
-        pol_info = pol.info
-        if pol_info[keyword.Can_Paths]:
-            can_path = pol.info[keyword.Can_Paths]
-            if len(can_path) == 1:
-                seg_list = can_path[0].segment_list
-        can_path_length = len(can_path)
-        #对于显示路径的配置，需要配置
-        config = ''
-        config += 'segment-routing ipv6\n'
-        for i in range(1,len(can_path.Seg_List)+1):
-           config += ' segment-list {}\n'.format('list'+str(i))
-           config += ' segment-list {}\n'.format('list' + str(i))
+        config += ' encapsulation source-address {}\n'.format(node[keyword.LOOPBACK1])
+        config += ' locator {0} ipv6-prefix {1} 64 static 32\n'.format(node_name, node[keyword.ENDX_PREFIX].make_net(64)[0].strCompressed())
+        for edge_name in topo.edges:
+            edge = topo.edges[edge_name]
+            if edge_name[0] == node_name:
+                src_node = edge_name(0)
+                dst_node = edge_name(1)
+                config += '  opcode ::{0} end-x interface {1} nexthop {2} psp\n'.format(edge[ENDXOPCODE], edge['src_int'], topo.edges[(dst_node,src_node)][keyword.INTERFACE])
+        # SRv6 TE Policy的配置
+        config += "#\n"
+        for pol in srv6_policy_list:
+            pol_name = pol.Name
+            pol_end = pol.End
+            pol_color = pol.Color
+            if pol.Head == node_name:
+                info = pol.Info
+
+                if info[Policy_Type] == SRv6_explicit:
+                    config += 'segment-routing ipv6\n'
+                    for i in range(1,len(info[Can_Paths]) + 1):
+                        config += "  segment-list name SIDLIST {}\n".format(str(i))
+                        for element in info[Can_Paths][i-1].Seg_List:
+                            if isinstance(element,tuple):
+                                element = topo.edges[(element[0],element[1])][ENDX_SID]    #如果传过来的是链路
+                            else:
+                                element = topo.nodes[id][PREFIX_SID]  #如果传过来的是节点
+                            config += '   index {0} sid ipv6 {1} \n'.format(index, element)
+                            index += 5
+                        config += 'srv6-te policy {0} endpoint {1} color {2}\n'.format(pol_name, pol_end, pol_color)
+                    for i in range(1, len(info[Can_Paths]) + 1):
+                        config += " candidate-paths preference {}\n".format(info[Can_Paths][i - 1].Priority)
+                        config += "   segment-list SIDLIST{}\n".format(str(i))
+
+                elif info[Flex_Algo] == 0:
+                    config += 'segment-routing ipv6\n'
+                    config += 'srv6-te policy {0} endpoint {1} color {2}\n'.format(pol_name, pol_end, pol_color)
+                    config += " candidate-paths preference {}\n".format(info[Priority])
+                    config += "   dynamic\n"
+                    config += "    metric\n"
+                    if info[Mertric_Type] == 0:
+                        config += "     type igp\n"
+                    else:
+                        config += "     type delay\n"
+                    if Exclude_Any in info[CONS]:
+                        config += "   constraints\n"
+                        config += "    affinity\n"
+                        config += "     exclude-any\n"
+                        config += "      name {}\n".format(info[CONS][Exclude_Any][0])
+                config += "#\n"
+
 
 t = Topo('./topo/topology.json')
 # Graph = t.getFromJson(json_topo) #网络拓扑
