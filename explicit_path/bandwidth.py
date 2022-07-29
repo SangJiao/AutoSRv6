@@ -9,10 +9,10 @@ Output: 求解src到dst满足带宽约束的显示路径
 @Date ：2022/7/19 15:02 
 '''
 import random
+import time
 
 import networkx as nx
 import z3
-import time
 
 # pol = [['a', 'd', 200], ['b', 'd', 1000]]
 #
@@ -32,8 +32,8 @@ class BandWidth:
         self.topo = topo
         self.init_policy = policy
         self.policy = {}
+        # for list in policy:
         for list in policy:
-        # for list in policy.paths:
             key = (list[0], list[1])
             self.policy[key] = list[2]
         self.edge_key_var = {}  #key： 四元组(topo.edge,policy.key) value: z3 var
@@ -89,8 +89,8 @@ class BandWidth:
         assert self.solver.check()
         model = self.solver.model()
         new_paths = []
-        for list in self.init_policy:
-        # for list in self.init_policy.paths:
+        # for list in self.init_policy:
+        for list in self.init_policy.paths:
             start_node = list[0]
             end_node = list[1]
             tem_list = []
@@ -160,7 +160,7 @@ test_num = 1
 result_dir = {}   # key:(int graph, int req) value；time (秒)  int graph [0: small, 1: medium, 2: lager]
 is_first = True
 while test_num <= 1:
-    small = random.randint(9, 25)
+    small = random.randint(10, 25)
     medium = random.randint(36, 64)
     lager = random.randint(65, 81)
     req_num = 4
@@ -190,6 +190,7 @@ while test_num <= 1:
 
 for key in result_dir.keys():
     if key[0] == 0:
+        t1 = result_dir[key]
         print("small and " + str(key[1]) + "requirements 时间开销："+ str(result_dir[key]/(test_num-1)))
     if key[0] == 1:
         print("medium and " + str(key[1]) + "requirements 时间开销：" + str(result_dir[key] / (test_num - 1)))

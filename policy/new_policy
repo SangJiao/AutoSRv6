@@ -1,0 +1,10 @@
+main{
+p1:constraint(A,B,D,H > A,C,E,D,H = A,B,E,H);
+p2:weight_balance(A,D,H : A,E,D,H : A,G,H = 1 : 2 : 3);
+p3:avoid_node([A,G]![A,D]& low_latency = True);
+p4:avoid_link([C,H]![(A,B),(C,D)]& low_latency = True);
+
+p6:waypoint([A,H]@[B,C]);
+p7:bandwidth(A,H,100);
+p5:simple([A,B,D,E] & low_latency = True);
+}

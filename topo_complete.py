@@ -24,14 +24,13 @@ def set_interface_ipv6(topo):
         topo.nodes[node][keyword.PREFIX_SID] = IP('2001:DA8:'+hex(loop_sid_ipv6_change_state)[2:].upper()+'::1/128')
         topo.edges[node]['network-entity'] = "10.0000.0000."+int2str(loop_sid_ipv6_change_state)+".00"
         loop_sid_ipv6_change_state += 1
-        #给节点添加End.x SID的前缀,边加上opcode，# to字符串需要改为IP地址！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+        #给节点添加End.x SID的前缀,边加上opcode，# to字符串需要改为IP地址
         i = 0
-        for edge_name in topo.edges:
-            edge = topo.edges[edge_name]
-            if edge_name[0] == node['name']:
+        for n in topo.neighbors(node):
                 i += 1
-                edge[ENDXOPCODE] = i
-                edge[ENDX_SID] = node[keyword.ENDX_PREFIX].make_net(64)[0].strCompressed() + '::' + str(i) # to字符串需要改为IP地址！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+                edge = (node,n)
+                topo.edges[edge][ENDXOPCODE] = i
+                topo.edges[edge][ENDX_SID] = IP(topo.nodes[node][keyword.ENDX_PREFIX].make_net(64)[0].strCompressed() + str(i) + "/128") # to字符串需要改为IP地址！！！！！！！！！！！！！！！！！！！！！！！！！！！！
     dir = {}
     xsid_dir = {}
     inter_xsid_ipv6_change_state = 1

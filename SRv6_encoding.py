@@ -43,11 +43,12 @@ class PathEncoding:
             return False
 
 
-    def srv6_mapping(self, path):
+    def srv6_mapping(self):
         """
         function：将单条严格显示路径映射成SRv6 Segment List
         return：SRv6 segment_list
         """
+        path = self.path_list
         if len(path) < 2:
             print('输入路径不正确')
             return []
@@ -180,22 +181,35 @@ class PathEncoding:
         # nx.draw_networkx_edge_labels(G,pos,edge_labels= weights)
         plt.show()
 
-# g = nx.gnm_random_graph(8,12,directed=True)
-#
-#
-# for u,v in g.edges:
-#
-#     random_weight = random.randint(1, 10)
-#     g.add_edge(u, v, weight=random_weight)
-#     g.add_edge(v, u, weight=random_weight)
-#     #print(u,v,random_weight)
-#
-#     weights = nx.get_edge_attributes(g, "weight")
-#     #print(len(weights))
-#     #print(weights)
-#
-# result = PathEncoding(g,[1,2,3,4]).srv6_mapping([1,4,3,6])
-# nx.draw_networkx(g, with_labels=True)
-# pos = nx.spring_layout(g)
-# nx.draw_networkx_edge_labels(g,pos,edge_labels= weights)
-# plt.show()
+def creat_random_graph(scale):
+    graph = nx.gnm_random_graph(scale, int(scale*1.5), directed=True)
+    while len(list(nx.weakly_connected_components(graph))) != 1:
+        graph = nx.gnm_random_graph(scale, int(scale*1.5), directed=True)
+    return graph
+g = creat_random_graph(25)
+
+for u,v in g.edges:
+
+    random_weight = random.randint(2, 10)
+    g.add_edge(u, v, weight=random_weight)
+    g.add_edge(v, u, weight=random_weight)
+    #print(u,v,random_weight)
+
+    weights = nx.get_edge_attributes(g, "weight")
+    #print(len(weights))
+    #print(weights)
+p = nx.all_simple_paths(g,1,8)
+max_length = 0
+longestpath =None
+for i in p:
+    if len(i) > max_length:
+        longestpath = i
+        max_length = len(i)
+print(longestpath)
+for i in range(max_length-1):
+    g.edges[longestpath[i],longestpath[i+1]]['weight'] = random.randint(2, 15)
+result = PathEncoding(g,longestpath).srv6_mapping()
+nx.draw_networkx(g, with_labels=True)
+pos = nx.spring_layout(g)
+nx.draw_networkx_edge_labels(g,pos,edge_labels= weights)
+plt.show()

@@ -232,7 +232,7 @@ class SRv6_Synthesizer(object):
         exc_nodes = []
         exc_edges = []
         print(policy.classify)
-        if (policy.classify != 'avoid_node' and policy.classify != 'avoid_link'):
+        if policy.classify != 'avoid_node' and policy.classify != 'avoid_link':
             return False
         path = policy.paths
         # print(path)
@@ -271,10 +271,11 @@ class SRv6_Synthesizer(object):
         info = {}
         cons = {}
 
-        if 'protocol' in policy.pro_dict.keys() and SRv6_ODN == policy.pro_dict['protocol']:
+        if 'type' in policy.pro_dict.keys() and SRv6_ODN == policy.pro_dict['type']:
             info[SRv6_ODN] = True
-        if 'protocol' in policy.pro_dict.keys() and SRv6_LAT == policy.pro_dict['protocol']:
+        if 'type' in policy.pro_dict.keys() and SRv6_LAT == policy.pro_dict['type']:
             info[Mertric_Type] = 1
+
         if EXC in policy.pro_dict.keys():
             cons[EXC] = policy.pro_dict[EXC]
         if ANN in policy.pro_dict.keys():
@@ -282,7 +283,7 @@ class SRv6_Synthesizer(object):
             self.BGP_Policy.append(SRv6_Policy(policy.name, head, bsid, color, end, info))
 
         # get constraints
-        exc_nodes, exc_edges = self.solve_negtive_paths(policy)
+        exc_nodes, exc_edges = self.solve_negtive_paths(policy)  #exc_node = 'B'
 
         if len(exc_nodes) != 0:  # 避免节点的采用灵活算法,给节点分配灵活算法的值
             info[Flex_Algo] = next(self.Felx_Algo_SID)
@@ -299,12 +300,6 @@ class SRv6_Synthesizer(object):
         self.SRv6_Policy.append(pol)
 
         return True
-
-    def get_Segment_List(self):
-        '''
-
-        :return:
-        '''
 
     def get_peer_path(self, srcNode, dstNode):
         '''

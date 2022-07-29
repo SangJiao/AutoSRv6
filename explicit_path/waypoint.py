@@ -220,3 +220,75 @@ class WayPoint:
 #
 # waypoint = WayPoint(topo,['A','H',['C','D']])
 # waypoint.explicit_path()
+
+def set_policy(graph, num):
+    assert isinstance(graph, nx.DiGraph)
+    policy = []
+    err_pols = []
+    while len(policy) < num:
+        node1 = random.choice(list(graph.nodes))
+        node2 = random.choice(list(graph.nodes))
+        while node1 == node2:
+            node2 = random.choice(list(graph.nodes))
+        tem_pol = [node1, node2, 20]
+        if (node1, node2) in err_pols:
+            continue
+        if not nx.has_path(graph, node1, node2):
+            err_pol = (node1, node2)
+            err_pols.append(err_pol)
+            continue
+        if tem_pol in policy:
+            continue
+        else:
+            policy.append(tem_pol)
+    return policy
+
+
+def creat_random_graph(scale):
+    graph = nx.gnm_random_graph(scale, int(scale*1.5), directed=True)
+    while len(list(nx.weakly_connected_components(graph))) != 1:
+        graph = nx.gnm_random_graph(scale, int(scale*1.5), directed=True)
+    return graph
+
+
+
+
+test_num = 1
+result_dir = {}   # key:(int graph, int req) value；time (秒)  int graph [0: small, 1: medium, 2: lager]
+is_first = True
+while test_num <= 1:
+    small = random.randint(10, 25)
+    medium = random.randint(36, 64)
+    lager = random.randint(65, 81)
+    req_num = 4
+    while req_num < 100:
+        small_graph = creat_random_graph(small)
+        medium_graph = creat_random_graph(medium)
+        lager_graph = creat_random_graph(lager)
+        graph_list = [small_graph, medium_graph, lager_graph]
+        for index in [0, 1, 2]:
+            policy = set_policy(graph_list[index], req_num)
+            start_time = time.time()
+            tem_bandwidth = BandWidth(graph_list[index], policy)
+            tem_bandwidth.creat_z3_var()
+            tem_bandwidth.path_link_con()
+            tem_bandwidth.edge_bandwidth_con()
+            tem_bandwidth.solver.check()
+            end_time = time.time()
+            # print(tem_bandwidth.solver.check())
+            time_cost = end_time - start_time
+            if is_first:
+                result_dir[(index, req_num)] = time_cost
+            else:
+                result_dir[(index, req_num)] += time_cost
+        req_num *= 2
+    is_first = False
+    test_num += 1
+
+for key in result_dir.keys():
+    if key[0] == 0:
+        print("small and " + str(key[1]) + "requirements 时间开销："+ str(result_dir[key]/(test_num-1)))
+    if key[0] == 1:
+        print("medium and " + str(key[1]) + "requirements 时间开销：" + str(result_dir[key] / (test_num - 1)))
+    if key[0] == 2:
+        print("lager and " + str(key[1]) + "requirements 时间开销：" + str(result_dir[key] / (test_num - 1)))

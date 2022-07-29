@@ -16,3 +16,12 @@ class Policy(object):
         self.classify = classify
         self.paths = paths
         self.pro_dict = pro_dict
+
+    def __str__(self):
+        s = '*' * 20 + "\n" + \
+            'name: ' + self.name + "\n" + \
+            'classify: ' + self.classify + "\n" + \
+            'paths:' + str(self.paths) + "\n" + \
+            'pro_dict' + str(self.pro_dict)+ "\n" + \
+            '*' * 20 + "\n"
+        return s

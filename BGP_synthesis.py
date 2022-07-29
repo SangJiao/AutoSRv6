@@ -6,7 +6,7 @@ BGP域之间(指定设备)EBGP关系—peer参数[接口IP]+as-number
 BGP引入SRv6-TE Policy，SRv6 Policy发布给EBGP对等体
 固定配置
 
-Input:topo
+Input: 生成的policy
 Output:各个BGP domain之间互通需要的peer参数 分配的as-number
 
 @Project ：SRv6CS 
