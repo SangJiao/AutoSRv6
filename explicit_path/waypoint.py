@@ -13,12 +13,13 @@ import random
 import time
 from threading import Timer
 import networkx as nx
-#from read_files import *
+
+# from read_files import *
 
 """
 航路点路径，输入waypoint列表,输出对应的路径
 """
-
+from read_topo import *
 from z3 import *
 
 
@@ -124,9 +125,9 @@ class WayPoint:
             #     continue
             for edge in self.node_out_edges[node]:
                 # print(edge)
-                x[edge] = Int(edge[0] + ' ' + edge[1])
+                x[edge] = Int(str(edge[0]) + ' ' + str(edge[1]))
         for node in self.nodes:
-            o[node] = Int('o_' + node)
+            o[node] = Int('o_' + str(node))
         for i in o:
             self.solver.add(o[i] > 0, o[i] <= len(self.nodes))
         for i in x:
@@ -163,7 +164,7 @@ class WayPoint:
             for edge in self.node_out_edges[node]:
                 self.solver.add(o[edge[0]] - o[edge[1]] + x[edge] * len(self.nodes) <= len(self.nodes) - 1)
 
-        # add constraint 4
+        #add constraint 4
         for i in range(len(self.nodeslist) - 1):
             self.solver.add(o[self.nodeslist[i]] < o[self.nodeslist[i + 1]])
 
@@ -174,7 +175,7 @@ class WayPoint:
                 self.x_edge[k[0]][k[1]]['value'] = model[x[k]]
             self.find_path()
         else:
-            print('from ' + self.source + ' to ' + self.target + ' pass ' + 'nodeslist' + ' no_path---un-solved')
+            print('from ' + str(self.source) + ' to ' + str(self.target) + ' pass ' + 'nodeslist' + ' no_path---un-solved')
 
     def time_limit(interval):
         def wraps(func):
@@ -200,7 +201,7 @@ class WayPoint:
         for i in self.nodeslist:
             if len(self.node_in_edges[i]) == 0 or len(self.node_out_edges[i]) == 0:
                 flag = False
-                print('there is no in_edge or out_edge to connect node ' + i)
+                print('there is no in_edge or out_edge to connect node ' + str(i))
         if flag:
             start_time = time.process_time()
             self.shorstest_path_solver()
@@ -209,52 +210,46 @@ class WayPoint:
             path = self.path
             if len(path) > 0:
                 print(path)
-        return path
 
 
-#
-# import read_topo
-#
-# topo = read_topo.Topo('../topo/topology.json').getFromJson()
+
+# topo = Topo('../topo/topology.json').getFromJson()
 # print(topo)
 #
-# waypoint = WayPoint(topo,['A','H',['C','D']])
+# waypoint = WayPoint(topo, ['A', 'H', ['C', 'D']])
 # waypoint.explicit_path()
 
-def set_policy(graph, num):
+
+def set_policy(graph,num):
+
     assert isinstance(graph, nx.DiGraph)
-    policy = []
-    err_pols = []
-    while len(policy) < num:
-        node1 = random.choice(list(graph.nodes))
+    waypoint_nodes =[]
+    node1 = random.choice(list(graph.nodes))
+    node2 = random.choice(list(graph.nodes))
+    while node1 == node2:
         node2 = random.choice(list(graph.nodes))
-        while node1 == node2:
-            node2 = random.choice(list(graph.nodes))
-        tem_pol = [node1, node2, 20]
-        if (node1, node2) in err_pols:
-            continue
-        if not nx.has_path(graph, node1, node2):
-            err_pol = (node1, node2)
-            err_pols.append(err_pol)
-            continue
-        if tem_pol in policy:
-            continue
-        else:
-            policy.append(tem_pol)
-    return policy
+    for i in range(num):
+        node = random.choice(list(graph.nodes))
+        while node in waypoint_nodes or node == node1 or node == node2:
+            node = random.choice(list(graph.nodes))
+        waypoint_nodes.append(node)
+    wap_pol = [node1, node2, waypoint_nodes]
+    return wap_pol
 
 
 def creat_random_graph(scale):
-    graph = nx.gnm_random_graph(scale, int(scale*1.5), directed=True)
+    graph = nx.gnm_random_graph(scale, int(scale*2), directed=True)
     while len(list(nx.weakly_connected_components(graph))) != 1:
-        graph = nx.gnm_random_graph(scale, int(scale*1.5), directed=True)
+        graph = nx.gnm_random_graph(scale, int(scale*2), directed=True)
     return graph
 
 
 
 
+print('----------------')
+
 test_num = 1
-result_dir = {}   # key:(int graph, int req) value；time (秒)  int graph [0: small, 1: medium, 2: lager]
+result_dir = {}  # key:(int graph, int req) value；time (秒)  int graph [0: small, 1: medium, 2: lager]
 is_first = True
 while test_num <= 1:
     small = random.randint(10, 25)
@@ -266,29 +261,31 @@ while test_num <= 1:
         medium_graph = creat_random_graph(medium)
         lager_graph = creat_random_graph(lager)
         graph_list = [small_graph, medium_graph, lager_graph]
-        for index in [0, 1, 2]:
-            policy = set_policy(graph_list[index], req_num)
+        use_time = 0
+        for i in range(req_num):
+            policy = set_policy(graph_list[0], 1)
             start_time = time.time()
-            tem_bandwidth = BandWidth(graph_list[index], policy)
-            tem_bandwidth.creat_z3_var()
-            tem_bandwidth.path_link_con()
-            tem_bandwidth.edge_bandwidth_con()
-            tem_bandwidth.solver.check()
+            print(policy)
+            waypoint_test = WayPoint(graph_list[0], policy)
+            # print(waypoint_test)
+            waypoint_test.explicit_path()
             end_time = time.time()
             # print(tem_bandwidth.solver.check())
             time_cost = end_time - start_time
-            if is_first:
-                result_dir[(index, req_num)] = time_cost
-            else:
-                result_dir[(index, req_num)] += time_cost
+            use_time +=time_cost
+        print("small and " + str(req_num) + "requirements 时间开销：" + str(use_time) +'!!!!!!!!!!!!!!!!')
+        if is_first:
+            result_dir[(0, req_num)] = use_time
+        else:
+            result_dir[(0, req_num)] += use_time
         req_num *= 2
     is_first = False
     test_num += 1
 
 for key in result_dir.keys():
     if key[0] == 0:
-        print("small and " + str(key[1]) + "requirements 时间开销："+ str(result_dir[key]/(test_num-1)))
+        print("small and " + str(key[1]) + "requirements 时间开销：" + str(result_dir[key]))
     if key[0] == 1:
-        print("medium and " + str(key[1]) + "requirements 时间开销：" + str(result_dir[key] / (test_num - 1)))
+        print("medium and " + str(key[1]) + "requirements 时间开销：" + str(result_dir[key] ))
     if key[0] == 2:
-        print("lager and " + str(key[1]) + "requirements 时间开销：" + str(result_dir[key] / (test_num - 1)))
+        print("lager and " + str(key[1]) + "requirements 时间开销：" + str(result_dir[key]))

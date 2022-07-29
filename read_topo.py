@@ -132,7 +132,7 @@ class Topo:
 
 
 
-t = Topo('./topo/topology.json')
+t = Topo('../topo/topology.json')
 # Graph = t.getFromJson(json_topo) #网络拓扑
 Graph = t.getFromJson()
 
@@ -151,9 +151,9 @@ def interfaceByEdge(graph,edge):
 #print(interfaceByEdge(Graph,('A','B')))
 
 #print(Graph.edges['A','B'])
-list = [edge for edge in Graph.edges]
-print(list)
-print(Graph.edges[list[0][0],list[0][1]])
-edge = Graph.edges[('B','A')]
-print(edge['src_int'])
-print(Graph.nodes['A'])
+# list = [edge for edge in Graph.edges]
+# print(list)
+# print(Graph.edges[list[0][0],list[0][1]])
+# edge = Graph.edges[('B','A')]
+# print(edge['src_int'])
+# print(Graph.nodes['A'])
