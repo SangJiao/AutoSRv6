@@ -4,7 +4,7 @@
 求解带宽预留显示路径
 Input:  topo,link默认bandwidth为1000,  policy:[[src,dst,100],[src1,dst1,500],.....]
 Output: 求解src到dst满足带宽约束的显示路径
-@Project ：SRv6CS 
+@Project ：AutoSRv6
 @File ：bandwidth.py
 @Date ：2022/7/19 15:02 
 '''
@@ -88,6 +88,7 @@ class BandWidth:
     def set_paths(self):
         assert self.solver.check()
         model = self.solver.model()
+
         new_paths = []
         # for list in self.init_policy:
         for list in self.init_policy.paths:
@@ -104,7 +105,7 @@ class BandWidth:
                         tem_list.append(cur_node)
                         break
             new_paths.append(tem_list)
-        # print(new_paths)
+        print(new_paths)
         self.init_policy.paths = new_paths
 
 

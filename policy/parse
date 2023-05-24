@@ -1,0 +1,56 @@
+********************
+policy_name: p1
+classify: constraint
+policy_constraint:{'relation-0': 'ABDH > ACEDH', 'relation-1': 'ACEDH = ABEH'}
+pro_dict{'protocol': 'ISIS'}
+********************
+
+********************
+policy_name: p2
+classify: waypoint
+policy_constraint:{'src': 'A', 'dst': 'H', 'waypoint': ['B', 'C']}
+pro_dict{'protocol': 'SRv6_explicit'}
+********************
+
+********************
+policy_name: p3
+classify: bandwidth
+policy_constraint:{'src': 'A', 'dst': 'H', 'bandwidth_value': '100', 'time': (0, 12)}
+pro_dict{'protocol': 'SRv6_explicit'}
+********************
+
+********************
+policy_name: p4
+classify: bandwidth
+policy_constraint:{'src': 'A', 'dst': 'B', 'bandwidth_value': '300', 'time': (0, 12)}
+pro_dict{'protocol': 'SRv6_explicit'}
+********************
+
+********************
+policy_name: p5
+classify: avoid_node
+policy_constraint:{'src': 'A', 'dst': 'G', 'avoid_nodes': ['B']}
+pro_dict{'protocol': 'Flex_Algo', 'type': 'SRv6_LAT'}
+********************
+
+********************
+policy_name: p6
+classify: avoid_link
+policy_constraint:{'src': 'C', 'dst': 'H', 'avoid_links': [['A', 'B'], ['C', 'D']]}
+pro_dict{'protocol': 'SRv6_Dynamic', 'type': 'SRv6_LAT'}
+********************
+
+********************
+policy_name: p7
+classify: weight_balance
+policy_constraint:[['1', '2', '3'], ['A', 'D', 'H'], ['A', 'E', 'D', 'H'], ['A', 'G', 'H']]
+pro_dict{'protocol': 'SRv6_explicit'}
+********************
+
+********************
+policy_name: p8
+classify: constraint
+policy_constraint:['A', 'B', 'D', 'E']
+pro_dict{'type': 'SRv6_Dynamic', 'Cons': 'SRv6_LAT'}
+********************
+

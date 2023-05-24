@@ -12,7 +12,8 @@ import json
 import os
 import shutil
 import time
-import explicit_path.bandwidth_path
+import explicit_path.bandwidth
+import explicit_path.waypoint
 import SRv6_encoding
 from ISIS_synthesis import ISIS_Synthesizer
 from Policy import Policy

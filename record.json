@@ -1,0 +1,43 @@
+
+[
+    {
+        "input_path": "D:/Users/Lucky/PycharmProjects/AutoSRv6/examples/simple",
+        "start_time": "2023-05-06 22:17:29",
+        "type": "SRv6-synthesis",
+        "time": "2.4792S",
+        "result": "true",
+        "out_path": "D:/Users/Lucky/PycharmProjects/AutoSRv6/examples/simple"
+    },
+    {
+        "input_path": "D:/Users/Lucky/PycharmProjects/AutoSRv6/examples/simple",
+        "start_time": "2023-05-06 22:18:02",
+        "type": "isis-synthesis",
+        "time": "1.3769S",
+        "result": "true",
+        "out_path": "D:/Users/Lucky/PycharmProjects/AutoSRv6/examples/simple"
+    },
+    {
+        "input_path": "D:/Users/Lucky/PycharmProjects/AutoSRv6/examples/simple",
+        "start_time": "2023-05-06 08:18:40",
+        "type": "analyze",
+        "time": "0.1803S",
+        "result": "true",
+        "out_path": "D:/Users/Lucky/PycharmProjects/AutoSRv6/examples/simple"
+    },
+    {
+        "input_path": "D:/Users/Lucky/PycharmProjects/AutoSRv6/examples/simple",
+        "start_time": "2023-04-29 08:24:47",
+        "type": "isis-synthesis",
+        "time": "1.0859S",
+        "result": "true",
+        "out_path": "D:/Users/Lucky/PycharmProjects/AutoSRv6/examples/simple"
+    },
+    {
+        "input_path": "D:/Users/Lucky/PycharmProjects/AutoSRv6/examples/simple",
+        "start_time": "2023-04-27 20:06:47",
+        "type": "analyze",
+        "time": "0.2196S",
+        "result": "true",
+        "out_path": "D:/Users/Lucky/PycharmProjects/AutoSRv6/examples/simple"
+    }
+]

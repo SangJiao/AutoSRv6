@@ -1,0 +1,17 @@
+[
+    {
+        "Name": "p1",
+        "Head": "A",
+        "Color": 10,
+        "End": "H",
+        "BSID": 50000,
+        "Info": {
+            "Policy_Type": "dynamic",
+            "Priority": 128,
+            "Mertric_Type": 0,
+            "constraints": {},
+            "Flex_Algo": 128,
+            "Can_Paths": null
+        }
+    }
+]

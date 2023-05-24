@@ -7,7 +7,7 @@
 @Date ：2022/7/22 14:06 
 '''
 import re
-from utils.keyword import *
+#from utils.keyword import *
 
 class Policy(object):
     def __init__(self, name, classify, paths, pro_dict):
@@ -19,9 +19,9 @@ class Policy(object):
 
     def __str__(self):
         s = '*' * 20 + "\n" + \
-            'name: ' + self.name + "\n" + \
+            'policy_name: ' + self.name + "\n" + \
             'classify: ' + self.classify + "\n" + \
-            'paths:' + str(self.paths) + "\n" + \
-            'pro_dict' + str(self.pro_dict)+ "\n" + \
+            'policy_constraint:' + str(self.paths) + "\n" + \
+            'pro_dict' + str(self.pro_dict) + "\n" + \
             '*' * 20 + "\n"
         return s

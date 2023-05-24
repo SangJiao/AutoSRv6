@@ -1,0 +1,52 @@
+***explicit path***
+src = A ,dst = H waypoint = ['C', 'E']
+solving the path......
+from A to H though ['C', 'E'] waypoint path is
+['A', 'B', 'C', 'E', 'F', 'G', 'H']
+solving explicit subpath....
+[['C', 'E'], 'F', 'H']
+***Out distributed Segment SIDs***
+A
+(2001:DB8:1::1, 0, False)
+B
+(2001:DB8:2::2, 0, False)
+C
+(2001:DB8:3::3, 0, False)
+D
+(2001:DB8:4::4, 0, False)
+E
+(2001:DB8:5::5, 0, False)
+F
+(2001:DB8:6::6, 0, False)
+G
+(2001:DB8:7::7, 0, False)
+H
+(2001:DB8:8::8, 0, False)
+('A', 'B')
+(2001:DB8:10::1, 0, False)
+('A', 'E')
+(2001:DB8:10::2, 0, False)
+('B', 'E')
+(2001:DB8:20::1, 0, False)
+('B', 'C')
+(2001:DB8:20::2, 0, False)
+('B', 'F')
+(2001:DB8:200::3, 0, False)
+('C', 'E')
+(2001:DB8:30::1, 0, False)
+('C', 'F')
+(2001:DB8:30::2, 0, False)
+('C', 'D')
+(2001:DB8:40::1, 0, False)
+('D', 'H')
+(2001:DB8:40::2, 0, False)
+('D', 'G')
+(2001:DB8:40::3, 0, False)
+('E', 'F')
+(2001:DB8:50::1, 0, False)
+('F', 'G')
+(2001:DB8:60::1, 0, False)
+('G', 'H')
+(2001:DB8:60::2, 0, False)
+***Out SRV6 Encoding path***
+[2001:DB8:30::1, 2001:DB8:6::6,2001:DB8:8::8)

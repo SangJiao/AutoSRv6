@@ -1,0 +1,12 @@
+********************
+policy_name: p1
+classify: waypoint
+policy_constraint:{'src': 'A', 'dst': 'H', 'waypoint': ['B', 'C']}
+pro_dict{'protocol': 'SRv6_explicit'}
+********************
+src = A ,dst = H waypoint = ['C', 'E']
+solving the path......
+from A to H though ['C', 'E'] waypoint path is
+********************
+['A', 'B', 'C', 'E', 'F', 'G', 'H']
+********************

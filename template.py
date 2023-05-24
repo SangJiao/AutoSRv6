@@ -166,7 +166,7 @@ def SRv6_conf(topo,srv6_policy_list):
                 if info[Policy_Type] == SRv6_explicit:
                     config += 'segment-routing ipv6\n'
                     for i in range(1,len(info[Can_Paths]) + 1):
-                        config += "  segment-list name SIDLIST {}\n".format(str(i))
+                        config += "  segment-list SIDLIST {}\n".format(str(i))
                         for element in info[Can_Paths][i-1].Seg_List:
                             if isinstance(element,tuple):
                                 element = topo.edges[(element[0],element[1])][ENDX_SID]    #如果传过来的是链路

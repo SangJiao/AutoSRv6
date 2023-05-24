@@ -1,0 +1,3 @@
+main{
+p1:waypoint([A,H]@[C,E]);
+}

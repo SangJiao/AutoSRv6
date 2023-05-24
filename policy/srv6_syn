@@ -1,0 +1,84 @@
+***Output SRv6 Synthesis Result***
+********************
+
+***Headpoint SRv6 Configuration***
+segment-routing ipv6 locator A auto-sid disable
+	segment-routing ipv6
+	  encapsulation source-address 2001:DB8:1::1
+	  locator A ipv6-prefix 2001:DB8:100::64 static 32
+	    opcode ::1 end-x interface GE1/0/1 nexthop 2001:DB8:10::2 psp
+	    opcode ::2 end-x interface GE1/0/1 nexthop 2001:DB8:10::3 psp
+********************
+
+***Headpoint SRv6 Policy***
+segment-routing ipv6
+	segment-list sl1
+	    index 5 sid ipv6 2001:DB8:30::1
+	    index 10 sid ipv6 2001:DB8:6::6
+srv6-te policy policy1 endpoint 2001:DB8:8::8 color 101
+	candidate-path preference 200
+		segment-list sl1
+********************
+
+***B SRv6 Configuration***
+segment-routing ipv6 locator A auto-sid disable
+	segment-routing ipv6
+	  encapsulation source-address 2001:DB8:1::1
+	  locator A ipv6-prefix 2001:DB8:100::64 static 32
+	    opcode ::1 end-x interface GE1/0/1 nexthop 2001:DB8:10::2 psp
+	    opcode ::2 end-x interface GE1/0/1 nexthop 2001:DB8:10::3 psp
+********************
+
+***C SRv6 Configuration***
+segment-routing ipv6 locator A auto-sid disable
+	segment-routing ipv6
+	  encapsulation source-address 2001:DB8:1::1
+	  locator A ipv6-prefix 2001:DB8:100::64 static 32
+	    opcode ::1 end-x interface GE1/0/1 nexthop 2001:DB8:10::2 psp
+	    opcode ::2 end-x interface GE1/0/1 nexthop 2001:DB8:10::3 psp
+********************
+
+***D SRv6 Configuration***
+segment-routing ipv6 locator A auto-sid disable
+	segment-routing ipv6
+	  encapsulation source-address 2001:DB8:1::1
+	  locator A ipv6-prefix 2001:DB8:100::64 static 32
+	    opcode ::1 end-x interface GE1/0/1 nexthop 2001:DB8:10::2 psp
+	    opcode ::2 end-x interface GE1/0/1 nexthop 2001:DB8:10::3 psp
+********************
+
+***E SRv6 Configuration***
+segment-routing ipv6 locator A auto-sid disable
+	segment-routing ipv6
+	  encapsulation source-address 2001:DB8:1::1
+	  locator A ipv6-prefix 2001:DB8:100::64 static 32
+	    opcode ::1 end-x interface GE1/0/1 nexthop 2001:DB8:10::2 psp
+	    opcode ::2 end-x interface GE1/0/1 nexthop 2001:DB8:10::3 psp
+********************
+
+***F SRv6 Configuration***
+segment-routing ipv6 locator A auto-sid disable
+	segment-routing ipv6
+	  encapsulation source-address 2001:DB8:1::1
+	  locator A ipv6-prefix 2001:DB8:100::64 static 32
+	    opcode ::1 end-x interface GE1/0/1 nexthop 2001:DB8:10::2 psp
+	    opcode ::2 end-x interface GE1/0/1 nexthop 2001:DB8:10::3 psp
+********************
+
+***Endpoint SRv6 Configuration***
+segment-routing ipv6 locator A auto-sid disable
+	segment-routing ipv6
+	  encapsulation source-address 2001:DB8:1::1
+	  locator A ipv6-prefix 2001:DB8:100::64 static 32
+	    opcode ::1 end-x interface GE1/0/1 nexthop 2001:DB8:10::2 psp
+	    opcode ::2 end-x interface GE1/0/1 nexthop 2001:DB8:10::3 psp
+********************
+
+***Endpoint SRv6 Policy***
+segment-routing ipv6
+	segment-list sl2
+	    index 5 sid ipv6 2001:DB8:80::1
+	    index 10 sid ipv6 2001:DB8:6::6
+srv6-te policy policy1 endpoint 2001:DB8:3::3 color 101
+	candidate-path preference 200
+		segment-list sl2

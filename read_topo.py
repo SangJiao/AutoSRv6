@@ -17,28 +17,27 @@
 import networkx as nx
 import json
 
-from utils.keyword import *
-
 
 class Topo:
     """
     参数拓扑数据结构
     """
-    def __init__(self, json_topo):
+
+    def __init__(self):
         self.topo = nx.DiGraph()
-        self.json_topo = json_topo
+        # self.json_topo = json_topo
         self.json_data = self.get_json_data()
-
-
+        #print(self.json_data)
 
     def get_json_data(self):
         '''
         :return: 读取json_topo文件返回json数据
         '''
-        with open(self.json_topo, 'r', encoding='utf-8') as file:
+        # with open(self.json_topo, 'r', encoding='utf-8') as file:
+        #     data = json.load(file)
+        with open('./topo/topology.json', 'r', encoding='utf-8') as file:
             data = json.load(file)
         return data
-
 
     def getFromJson(self):
         """
@@ -48,21 +47,19 @@ class Topo:
         """
 
         for element in self.json_data:
-            #print(element)
+            # print(element)
             if 'nodes' in element:
                 for node in element['nodes']:
-                # print(node)
+                    # print(node)
                     self.topo.add_node(node["name"], type=node['type'], ints={})
-
-
 
             if 'edges' in element:
                 for edge in element['edges']:
-                    self.topo.add_edge(edge['node_1'],edge['node_2'],src_int=edge['int_1'],dst_int=edge['int_2'],
-                                           bandwidth=1000 ,**{TYPE: LINK_EDGE})#ISIS的权重值用wide属性标识。边的权重为接口的wide值，都设为1
+                    self.topo.add_edge(edge['node_1'], edge['node_2'], src_int=edge['int_1'], dst_int=edge['int_2'],
+                                       bandwidth=1000, **{TYPE: LINK_EDGE})  # ISIS的权重值用wide属性标识。边的权重为接口的wide值，都设为1
                     self.topo.add_edge(edge['node_2'], edge['node_1'], src_int=edge['int_2'], dst_int=edge['int_1'],
-                                           weight=1000, **{TYPE: LINK_EDGE})
-                    #给节点添加接口信息，是一个字典Graph.nodes['A']    'ints': {'GE1/0/0': {'cost': 1}, 'GE0/0/4': {'cost': 1}}
+                                       weight=1000, **{TYPE: LINK_EDGE})
+                    # 给节点添加接口信息，是一个字典Graph.nodes['A']    'ints': {'GE1/0/0': {'cost': 1}, 'GE0/0/4': {'cost': 1}}
                     self.topo.nodes[edge['node_1']]['ints'][edge['int_1']] = {}
                     self.topo.nodes[edge['node_1']]['ints'][edge['int_1']]['cost'] = 1
                     self.topo.nodes[edge['node_2']]['ints'][edge['int_2']] = {}
@@ -71,13 +68,12 @@ class Topo:
                 # print('--------------------')
                 # print(self.topo.nodes['A']['type'])
             if 'BGP_Domain' in element:
-                    for domain in element['BGP_Domain']:
-                        if 'nodes' in domain:
-                            for node in domain['nodes']:
-                                self.topo.nodes[node]['bgp_domain'] = domain['as_number']
+                for domain in element['BGP_Domain']:
+                    if 'nodes' in domain:
+                        for node in domain['nodes']:
+                            self.topo.nodes[node]['bgp_domain'] = domain['as_number']
 
         return self.topo
-
 
     def if_bgp_domian_relation(self, srcAS, dstAS):
         '''
@@ -93,7 +89,6 @@ class Topo:
                     if link['srcAS'] == srcAS and link['dstAS'] == dstAS:
                         flag = True
         return flag
-
 
     def get_domain_peers(self, srcAS, dstAS):
         '''
@@ -114,7 +109,6 @@ class Topo:
 
         return src_Node, dst_Node
 
-
     def get_domain_relation(self):
         '''
 
@@ -125,19 +119,18 @@ class Topo:
         for element in self.json_data:
             if 'bgp_domain_links' in element:
                 for link in element['bgp_domain_links']:
-                    bgp_link = (link['srcAS'],link['dstAS'])
+                    bgp_link = (link['srcAS'], link['dstAS'])
                     domain_rel.append(bgp_link)
         return domain_rel
 
 
-
-
-t = Topo('../topo/topology.json')
+# t1 = Topo('./topo/topology.json')
+# t = Topo('../topo/topology.json')
 # Graph = t.getFromJson(json_topo) #网络拓扑
-Graph = t.getFromJson()
+# Graph = t.getFromJson()
 
 
-def interfaceByEdge(graph,edge):
+def interfaceByEdge(graph, edge):
     '''
     根据链路得到srcInterface + dstInterface
     :param edge: (srcNode,dstNode)
@@ -146,14 +139,17 @@ def interfaceByEdge(graph,edge):
     Graph = graph
     src_node = edge[0]
     dst_node = edge[1]
-    return Graph.edges[src_node,dst_node]['src_int'] ,Graph.edges[src_node,dst_node]['dst_int']
+    return Graph.edges[src_node, dst_node]['src_int'], Graph.edges[src_node, dst_node]['dst_int']
 
-#print(interfaceByEdge(Graph,('A','B')))
 
-#print(Graph.edges['A','B'])
+# print(interfaceByEdge(Graph,('A','B')))
+
+# print(Graph.edges['A','B'])
 # list = [edge for edge in Graph.edges]
 # print(list)
 # print(Graph.edges[list[0][0],list[0][1]])
 # edge = Graph.edges[('B','A')]
 # print(edge['src_int'])
 # print(Graph.nodes['A'])
+# t = Topo()
+# print(t.json_data)
