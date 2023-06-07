@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 '''
-@Project ：SRv6CS 
+@Project ：AutoSRv6
 @File ：ISIS_synthesis.py
 @Date ：2022/7/19 14:57 
 '''
@@ -13,7 +13,7 @@ import z3
 import networkx as nx
 import os
 
-from utils.keyword import *
+from utils_key.keyword import *
 
 
 def get_simple_paths(parts):
