@@ -1,0 +1,2 @@
+smt-path-preference srcIps=["10.0.0.65"], dstIps=["10.0.0.66"], ingressNodeRegex=Liepupe, finalNodeRegex=Limbazi, prefs=[['Liepupe','Limbazi'],['Liepupe','Sigulda','Riga','Limbazi']]
+smt-path-preference srcIps=["10.0.0.90"], dstIps=["10.0.0.122"], ingressNodeRegex=Adazi, finalNodeRegex=Riga, prefs=[['Adazi','Riga'],['Adazi','Carnikava','Riga']]

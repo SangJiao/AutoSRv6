@@ -1,0 +1,2 @@
+smt-path-preference srcIps=["10.0.0.62"], dstIps=["10.0.0.38"], ingressNodeRegex=Ajdovscina, finalNodeRegex=Divaca, prefs=[['Ajdovscina','Divaca'],['Ajdovscina','NovaTTGorica','Ljubljana','Koper','Divaca']]
+smt-path-preference srcIps=["10.0.0.38"], dstIps=["10.0.0.62"], ingressNodeRegex=Divaca, finalNodeRegex=Ajdovscina, prefs=[['Divaca','Ajdovscina'],['Divaca','Senozece','Postojna','Ljubljana','NovaTTGorica','Ajdovscina']]

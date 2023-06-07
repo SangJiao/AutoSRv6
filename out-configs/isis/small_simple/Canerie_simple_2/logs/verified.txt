@@ -1,0 +1,2 @@
+smt-reachability srcIps=["10.0.0.51"], dstIps=["10.0.0.58"], ingressNodeRegex=Europe, finalNodeRegex=Fredericton
+smt-reachability srcIps=["10.0.0.51"], dstIps=["10.0.0.76"], ingressNodeRegex=Europe, finalNodeRegex=Halifax

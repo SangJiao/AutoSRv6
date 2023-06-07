@@ -1,0 +1,16 @@
+smt-reachability srcIps=["10.0.0.18"], dstIps=["10.0.0.10"], ingressNodeRegex=DOE, finalNodeRegex=SInet
+smt-reachability srcIps=["10.0.0.18"], dstIps=["10.0.0.106"], ingressNodeRegex=DOE, finalNodeRegex=SNV1
+smt-reachability srcIps=["10.0.0.18"], dstIps=["10.0.0.154"], ingressNodeRegex=DOE, finalNodeRegex=GA
+smt-reachability srcIps=["10.0.0.18"], dstIps=["10.0.0.27"], ingressNodeRegex=DOE, finalNodeRegex=MAXGPOP
+smt-reachability srcIps=["10.0.0.18"], dstIps=["10.0.0.76"], ingressNodeRegex=DOE, finalNodeRegex=CHI-SL
+smt-reachability srcIps=["10.0.0.18"], dstIps=["10.0.0.137"], ingressNodeRegex=DOE, finalNodeRegex=SNLA
+smt-reachability srcIps=["10.0.0.18"], dstIps=["10.0.0.109"], ingressNodeRegex=DOE, finalNodeRegex=NodeID25
+smt-reachability srcIps=["10.0.0.18"], dstIps=["10.0.0.156"], ingressNodeRegex=DOE, finalNodeRegex=NodeID41
+smt-reachability srcIps=["10.0.0.18"], dstIps=["10.0.0.131"], ingressNodeRegex=DOE, finalNodeRegex=ANL
+smt-reachability srcIps=["10.0.0.18"], dstIps=["10.0.0.147"], ingressNodeRegex=DOE, finalNodeRegex=NodeID43
+smt-reachability srcIps=["10.0.0.18"], dstIps=["10.0.0.103"], ingressNodeRegex=DOE, finalNodeRegex=NASA
+smt-reachability srcIps=["10.0.0.18"], dstIps=["10.0.0.110"], ingressNodeRegex=DOE, finalNodeRegex=NodeID16
+smt-reachability srcIps=["10.0.0.18"], dstIps=["10.0.0.4"], ingressNodeRegex=DOE, finalNodeRegex=AMPATH
+smt-reachability srcIps=["10.0.0.18"], dstIps=["10.0.0.122"], ingressNodeRegex=DOE, finalNodeRegex=ATLA
+smt-reachability srcIps=["10.0.0.18"], dstIps=["10.0.0.71"], ingressNodeRegex=DOE, finalNodeRegex=AMES
+smt-reachability srcIps=["10.0.0.18"], dstIps=["10.0.0.40"], ingressNodeRegex=DOE, finalNodeRegex=WASH

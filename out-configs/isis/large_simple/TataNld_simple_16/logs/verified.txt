@@ -1,0 +1,16 @@
+smt-reachability srcIps=["10.0.0.21"], dstIps=["10.0.0.81"], ingressNodeRegex=Dhulia, finalNodeRegex=Agra
+smt-reachability srcIps=["10.0.0.21"], dstIps=["10.0.1.108"], ingressNodeRegex=Dhulia, finalNodeRegex=Chandigarh
+smt-reachability srcIps=["10.0.0.21"], dstIps=["10.0.0.223"], ingressNodeRegex=Dhulia, finalNodeRegex=Sagar
+smt-reachability srcIps=["10.0.0.21"], dstIps=["10.0.0.111"], ingressNodeRegex=Dhulia, finalNodeRegex=Ratlam
+smt-reachability srcIps=["10.0.0.21"], dstIps=["10.0.1.78"], ingressNodeRegex=Dhulia, finalNodeRegex=Bhandara
+smt-reachability srcIps=["10.0.0.21"], dstIps=["10.0.0.154"], ingressNodeRegex=Dhulia, finalNodeRegex=Pathankot
+smt-reachability srcIps=["10.0.0.21"], dstIps=["10.0.0.134"], ingressNodeRegex=Dhulia, finalNodeRegex=Gwalior
+smt-reachability srcIps=["10.0.0.21"], dstIps=["10.0.1.86"], ingressNodeRegex=Dhulia, finalNodeRegex=Hubli
+smt-reachability srcIps=["10.0.0.21"], dstIps=["10.0.1.104"], ingressNodeRegex=Dhulia, finalNodeRegex=Raipur
+smt-reachability srcIps=["10.0.0.21"], dstIps=["10.0.0.43"], ingressNodeRegex=Dhulia, finalNodeRegex=Hoshiarpur
+smt-reachability srcIps=["10.0.0.21"], dstIps=["10.0.0.62"], ingressNodeRegex=Dhulia, finalNodeRegex=Chennai
+smt-reachability srcIps=["10.0.0.21"], dstIps=["10.0.1.114"], ingressNodeRegex=Dhulia, finalNodeRegex=Jalgaon
+smt-reachability srcIps=["10.0.0.21"], dstIps=["10.0.0.249"], ingressNodeRegex=Dhulia, finalNodeRegex=Tonk
+smt-reachability srcIps=["10.0.0.21"], dstIps=["10.0.0.181"], ingressNodeRegex=Dhulia, finalNodeRegex=Coimbatore
+smt-reachability srcIps=["10.0.0.21"], dstIps=["10.0.0.48"], ingressNodeRegex=Dhulia, finalNodeRegex=Bhopal
+smt-reachability srcIps=["10.0.0.21"], dstIps=["10.0.0.113"], ingressNodeRegex=Dhulia, finalNodeRegex=Anand

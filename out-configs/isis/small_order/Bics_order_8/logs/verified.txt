@@ -1,0 +1,8 @@
+smt-path-preference srcIps=["10.0.0.94"], dstIps=["10.0.0.20"], ingressNodeRegex=London, finalNodeRegex=Paris, prefs=[['London','Paris'],['London','Brussels','Paris']]
+smt-path-preference srcIps=["10.0.0.20"], dstIps=["10.0.0.69"], ingressNodeRegex=Paris, finalNodeRegex=Madrid, prefs=[['Paris','Madrid'],['Paris','Lyon','Marseille','Barcelona','Madrid']]
+smt-path-preference srcIps=["10.0.0.39"], dstIps=["10.0.0.93"], ingressNodeRegex=Frankfurt, finalNodeRegex=Amsterdam, prefs=[['Frankfurt','Amsterdam'],['Frankfurt','Brussels','Amsterdam']]
+smt-path-preference srcIps=["10.0.0.12"], dstIps=["10.0.0.11"], ingressNodeRegex=Istanbul, finalNodeRegex=Bucharest, prefs=[['Istanbul','Bucharest'],['Istanbul','Athens','Sofia','Budapest','Bucharest']]
+smt-path-preference srcIps=["10.0.0.24"], dstIps=["10.0.0.31"], ingressNodeRegex=Basel, finalNodeRegex=Strasbourg, prefs=[['Basel','Strasbourg'],['Basel','Geneva','Paris','Brussels','Frankfurt','Strasbourg']]
+smt-path-preference srcIps=["10.0.0.41"], dstIps=["10.0.0.49"], ingressNodeRegex=Bratislava, finalNodeRegex=Budapest, prefs=[['Bratislava','Budapest'],['Bratislava','Praha','Frankfurt','Warsaw','Kiev','Bucharest','Budapest']]
+smt-path-preference srcIps=["10.0.0.69"], dstIps=["10.0.0.70"], ingressNodeRegex=Madrid, finalNodeRegex=Barcelona, prefs=[['Madrid','Barcelona'],['Madrid','Paris','Lyon','Marseille','Barcelona']]
+smt-path-preference srcIps=["10.0.0.71"], dstIps=["10.0.0.37"], ingressNodeRegex=Marseille, finalNodeRegex=Milan, prefs=[['Marseille','Milan'],['Marseille','Lyon','Geneva','Zurich','Milan']]

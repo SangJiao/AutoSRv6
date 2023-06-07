@@ -1,0 +1,2 @@
+smt-path-preference srcIps=["10.0.0.29"], dstIps=["10.0.0.40"], ingressNodeRegex=NETL, finalNodeRegex=WASH, prefs=[['NETL','WASH'],['NETL','NEWY','WASH']]
+smt-path-preference srcIps=["10.0.0.91"], dstIps=["10.0.0.110"], ingressNodeRegex=NodeID17, finalNodeRegex=NodeID16, prefs=[['NodeID17','NodeID16'],['NodeID17','NodeID39','NodeID38','NodeID41','NodeID40','SUNN','SNV1','NodeID25','NodeID16']]

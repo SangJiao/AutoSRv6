@@ -1,0 +1,2 @@
+smt-path-preference srcIps=["10.0.0.136"], dstIps=["10.0.0.117"], ingressNodeRegex=IstanbulID145, finalNodeRegex=Burgas, prefs=[['IstanbulID145','Burgas'],['IstanbulID145','Tekirdag','Edirne','Burgas']]
+smt-path-preference srcIps=["10.0.1.38"], dstIps=["10.0.1.39"], ingressNodeRegex=KarlovyTTVary, finalNodeRegex=Cheb, prefs=[['KarlovyTTVary','Cheb'],['KarlovyTTVary','Most','UstiTTnadTTLabem','Liberec','HradecTTKralove','Praha','Plzen','Rozvadov','Cheb']]

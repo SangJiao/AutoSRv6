@@ -1,0 +1,16 @@
+smt-reachability srcIps=["10.0.0.27"], dstIps=["10.0.0.56"], ingressNodeRegex=Besancon, finalNodeRegex=Limoges
+smt-reachability srcIps=["10.0.0.27"], dstIps=["10.0.0.54"], ingressNodeRegex=Besancon, finalNodeRegex=Poiters
+smt-reachability srcIps=["10.0.0.27"], dstIps=["10.0.0.57"], ingressNodeRegex=Besancon, finalNodeRegex=Clermont-Ferrand
+smt-reachability srcIps=["10.0.0.27"], dstIps=["10.0.0.61"], ingressNodeRegex=Besancon, finalNodeRegex=LaTTReunion,TTNouvelleTTCaledonie,TTMayotte,TTTahiti
+smt-reachability srcIps=["10.0.0.27"], dstIps=["10.0.0.33"], ingressNodeRegex=Besancon, finalNodeRegex=Compiegne
+smt-reachability srcIps=["10.0.0.27"], dstIps=["10.0.0.20"], ingressNodeRegex=Besancon, finalNodeRegex=Lyon
+smt-reachability srcIps=["10.0.0.27"], dstIps=["10.0.0.66"], ingressNodeRegex=Besancon, finalNodeRegex=Cadarache
+smt-reachability srcIps=["10.0.0.27"], dstIps=["10.0.0.48"], ingressNodeRegex=Besancon, finalNodeRegex=Paris
+smt-reachability srcIps=["10.0.0.27"], dstIps=["10.0.0.19"], ingressNodeRegex=Besancon, finalNodeRegex=InternetTTmondial
+smt-reachability srcIps=["10.0.0.27"], dstIps=["10.0.0.65"], ingressNodeRegex=Besancon, finalNodeRegex=Nice
+smt-reachability srcIps=["10.0.0.27"], dstIps=["10.0.0.24"], ingressNodeRegex=Besancon, finalNodeRegex=Pau
+smt-reachability srcIps=["10.0.0.27"], dstIps=["10.0.0.58"], ingressNodeRegex=Besancon, finalNodeRegex=Reims
+smt-reachability srcIps=["10.0.0.27"], dstIps=["10.0.0.28"], ingressNodeRegex=Besancon, finalNodeRegex=Strasbourg
+smt-reachability srcIps=["10.0.0.27"], dstIps=["10.0.0.23"], ingressNodeRegex=Besancon, finalNodeRegex=Bordeaux
+smt-reachability srcIps=["10.0.0.27"], dstIps=["10.0.0.63"], ingressNodeRegex=Besancon, finalNodeRegex=Martinique,TTGuadeloupe,TTCayenne
+smt-reachability srcIps=["10.0.0.27"], dstIps=["10.0.0.53"], ingressNodeRegex=Besancon, finalNodeRegex=Nantes

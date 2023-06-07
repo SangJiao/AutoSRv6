@@ -1,0 +1,8 @@
+smt-reachability srcIps=["10.0.0.118"], dstIps=["10.0.0.92"], ingressNodeRegex=ORNL, finalNodeRegex=BECHTEL-NV
+smt-reachability srcIps=["10.0.0.118"], dstIps=["10.0.0.6"], ingressNodeRegex=ORNL, finalNodeRegex=Abilene
+smt-reachability srcIps=["10.0.0.118"], dstIps=["10.0.0.157"], ingressNodeRegex=ORNL, finalNodeRegex=NodeID40
+smt-reachability srcIps=["10.0.0.118"], dstIps=["10.0.0.117"], ingressNodeRegex=ORNL, finalNodeRegex=ARM
+smt-reachability srcIps=["10.0.0.118"], dstIps=["10.0.0.155"], ingressNodeRegex=ORNL, finalNodeRegex=SDSC
+smt-reachability srcIps=["10.0.0.118"], dstIps=["10.0.0.76"], ingressNodeRegex=ORNL, finalNodeRegex=CHI-SL
+smt-reachability srcIps=["10.0.0.118"], dstIps=["10.0.0.77"], ingressNodeRegex=ORNL, finalNodeRegex=FNAL
+smt-reachability srcIps=["10.0.0.118"], dstIps=["10.0.0.27"], ingressNodeRegex=ORNL, finalNodeRegex=MAXGPOP

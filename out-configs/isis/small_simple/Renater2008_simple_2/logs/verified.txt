@@ -1,0 +1,2 @@
+smt-reachability srcIps=["10.0.0.23"], dstIps=["10.0.0.70"], ingressNodeRegex=Bordeaux, finalNodeRegex=Dijon
+smt-reachability srcIps=["10.0.0.23"], dstIps=["10.0.0.33"], ingressNodeRegex=Bordeaux, finalNodeRegex=Compiegne

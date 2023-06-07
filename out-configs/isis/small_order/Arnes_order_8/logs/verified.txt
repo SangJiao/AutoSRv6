@@ -1,0 +1,8 @@
+smt-path-preference srcIps=["10.0.0.28"], dstIps=["10.0.0.54"], ingressNodeRegex=Ljubljana, finalNodeRegex=Lasko, prefs=[['Ljubljana','Lasko'],['Ljubljana','Maribor','Lasko']]
+smt-path-preference srcIps=["10.0.0.28"], dstIps=["10.0.0.2"], ingressNodeRegex=Ljubljana, finalNodeRegex=Trbovlje, prefs=[['Ljubljana','Trbovlje'],['Ljubljana','Lasko','Trbovlje']]
+smt-path-preference srcIps=["10.0.0.78"], dstIps=["10.0.0.89"], ingressNodeRegex=SlovenskaTTBistrica, finalNodeRegex=Maribor, prefs=[['SlovenskaTTBistrica','Maribor'],['SlovenskaTTBistrica','Celje','Lasko','Maribor']]
+smt-path-preference srcIps=["10.0.0.11"], dstIps=["10.0.0.10"], ingressNodeRegex=SlovenjTTGradec, finalNodeRegex=Dravograd, prefs=[['SlovenjTTGradec','Dravograd'],['SlovenjTTGradec','Velenje','Dravograd']]
+smt-path-preference srcIps=["10.0.0.55"], dstIps=["10.0.0.30"], ingressNodeRegex=Celje, finalNodeRegex=Kamnik, prefs=[['Celje','Kamnik'],['Celje','SlovenskaTTBistrica','Maribor','Ljubljana','Kamnik']]
+smt-path-preference srcIps=["10.0.0.54"], dstIps=["10.0.0.89"], ingressNodeRegex=Lasko, finalNodeRegex=Maribor, prefs=[['Lasko','Maribor'],['Lasko','Celje','SlovenskaTTBistrica','Maribor']]
+smt-path-preference srcIps=["10.0.0.46"], dstIps=["10.0.0.47"], ingressNodeRegex=Krsko, finalNodeRegex=NovoTTMesto, prefs=[['Krsko','NovoTTMesto'],['Krsko','RogasjaTTSlatina','Ptuj','Maribor','Ljubljana','Kovevje','NovoTTMesto']]
+smt-path-preference srcIps=["10.0.0.10"], dstIps=["10.0.0.81"], ingressNodeRegex=Dravograd, finalNodeRegex=Velenje, prefs=[['Dravograd','Velenje'],['Dravograd','SlovenjTTGradec','Velenje']]

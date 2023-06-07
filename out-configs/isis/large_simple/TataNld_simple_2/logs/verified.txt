@@ -1,0 +1,2 @@
+smt-reachability srcIps=["10.0.0.198"], dstIps=["10.0.0.40"], ingressNodeRegex=Ramanathapuram, finalNodeRegex=Jhansi
+smt-reachability srcIps=["10.0.0.198"], dstIps=["10.0.1.51"], ingressNodeRegex=Ramanathapuram, finalNodeRegex=Tirupur

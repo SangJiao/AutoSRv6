@@ -1,0 +1,16 @@
+smt-reachability srcIps=["10.0.0.90"], dstIps=["10.0.0.20"], ingressNodeRegex=Praha, finalNodeRegex=Paris
+smt-reachability srcIps=["10.0.0.90"], dstIps=["10.0.0.40"], ingressNodeRegex=Praha, finalNodeRegex=Vienna
+smt-reachability srcIps=["10.0.0.90"], dstIps=["10.0.0.69"], ingressNodeRegex=Praha, finalNodeRegex=Madrid
+smt-reachability srcIps=["10.0.0.90"], dstIps=["10.0.0.12"], ingressNodeRegex=Praha, finalNodeRegex=Istanbul
+smt-reachability srcIps=["10.0.0.90"], dstIps=["10.0.0.31"], ingressNodeRegex=Praha, finalNodeRegex=Strasbourg
+smt-reachability srcIps=["10.0.0.90"], dstIps=["10.0.0.41"], ingressNodeRegex=Praha, finalNodeRegex=Bratislava
+smt-reachability srcIps=["10.0.0.90"], dstIps=["10.0.0.77"], ingressNodeRegex=Praha, finalNodeRegex=Zurich
+smt-reachability srcIps=["10.0.0.90"], dstIps=["10.0.0.71"], ingressNodeRegex=Praha, finalNodeRegex=Marseille
+smt-reachability srcIps=["10.0.0.90"], dstIps=["10.0.0.70"], ingressNodeRegex=Praha, finalNodeRegex=Barcelona
+smt-reachability srcIps=["10.0.0.90"], dstIps=["10.0.0.34"], ingressNodeRegex=Praha, finalNodeRegex=Rotterdam
+smt-reachability srcIps=["10.0.0.90"], dstIps=["10.0.0.42"], ingressNodeRegex=Praha, finalNodeRegex=Ljubjana
+smt-reachability srcIps=["10.0.0.90"], dstIps=["10.0.0.93"], ingressNodeRegex=Praha, finalNodeRegex=Amsterdam
+smt-reachability srcIps=["10.0.0.90"], dstIps=["10.0.0.66"], ingressNodeRegex=Praha, finalNodeRegex=Dublin
+smt-reachability srcIps=["10.0.0.90"], dstIps=["10.0.0.43"], ingressNodeRegex=Praha, finalNodeRegex=Zagreb
+smt-reachability srcIps=["10.0.0.90"], dstIps=["10.0.0.9"], ingressNodeRegex=Praha, finalNodeRegex=Warsaw
+smt-reachability srcIps=["10.0.0.90"], dstIps=["10.0.0.72"], ingressNodeRegex=Praha, finalNodeRegex=Stockholm

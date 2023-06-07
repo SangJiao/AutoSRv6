@@ -1,0 +1,16 @@
+smt-reachability srcIps=["10.0.0.98"], dstIps=["10.0.0.226"], ingressNodeRegex=Winterthur, finalNodeRegex=Reading
+smt-reachability srcIps=["10.0.0.98"], dstIps=["10.0.0.24"], ingressNodeRegex=Winterthur, finalNodeRegex=Bologna
+smt-reachability srcIps=["10.0.0.98"], dstIps=["10.0.1.53"], ingressNodeRegex=Winterthur, finalNodeRegex=Stockholm
+smt-reachability srcIps=["10.0.0.98"], dstIps=["10.0.1.9"], ingressNodeRegex=Winterthur, finalNodeRegex=Esslingen
+smt-reachability srcIps=["10.0.0.98"], dstIps=["10.0.0.134"], ingressNodeRegex=Winterthur, finalNodeRegex=Almere
+smt-reachability srcIps=["10.0.0.98"], dstIps=["10.0.0.199"], ingressNodeRegex=Winterthur, finalNodeRegex=Trento
+smt-reachability srcIps=["10.0.0.98"], dstIps=["10.0.0.127"], ingressNodeRegex=Winterthur, finalNodeRegex=Bari
+smt-reachability srcIps=["10.0.0.98"], dstIps=["10.0.1.27"], ingressNodeRegex=Winterthur, finalNodeRegex=Chicago
+smt-reachability srcIps=["10.0.0.98"], dstIps=["10.0.0.216"], ingressNodeRegex=Winterthur, finalNodeRegex=Dortmund
+smt-reachability srcIps=["10.0.0.98"], dstIps=["10.0.1.90"], ingressNodeRegex=Winterthur, finalNodeRegex=Ostend
+smt-reachability srcIps=["10.0.0.98"], dstIps=["10.0.1.6"], ingressNodeRegex=Winterthur, finalNodeRegex=Pfaffikon
+smt-reachability srcIps=["10.0.0.98"], dstIps=["10.0.1.21"], ingressNodeRegex=Winterthur, finalNodeRegex=Warsaw
+smt-reachability srcIps=["10.0.0.98"], dstIps=["10.0.0.140"], ingressNodeRegex=Winterthur, finalNodeRegex=Toulouse
+smt-reachability srcIps=["10.0.0.98"], dstIps=["10.0.1.68"], ingressNodeRegex=Winterthur, finalNodeRegex=Madrid
+smt-reachability srcIps=["10.0.0.98"], dstIps=["10.0.0.85"], ingressNodeRegex=Winterthur, finalNodeRegex=Anderlecht
+smt-reachability srcIps=["10.0.0.98"], dstIps=["10.0.0.229"], ingressNodeRegex=Winterthur, finalNodeRegex=Graz

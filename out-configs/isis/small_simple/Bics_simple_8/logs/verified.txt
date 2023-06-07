@@ -1,0 +1,8 @@
+smt-reachability srcIps=["10.0.0.56"], dstIps=["10.0.0.94"], ingressNodeRegex=Brussels, finalNodeRegex=London
+smt-reachability srcIps=["10.0.0.56"], dstIps=["10.0.0.30"], ingressNodeRegex=Brussels, finalNodeRegex=Luxembourg
+smt-reachability srcIps=["10.0.0.56"], dstIps=["10.0.0.72"], ingressNodeRegex=Brussels, finalNodeRegex=Stockholm
+smt-reachability srcIps=["10.0.0.56"], dstIps=["10.0.0.42"], ingressNodeRegex=Brussels, finalNodeRegex=Ljubjana
+smt-reachability srcIps=["10.0.0.56"], dstIps=["10.0.0.27"], ingressNodeRegex=Brussels, finalNodeRegex=Sofia
+smt-reachability srcIps=["10.0.0.56"], dstIps=["10.0.0.8"], ingressNodeRegex=Brussels, finalNodeRegex=Kiev
+smt-reachability srcIps=["10.0.0.56"], dstIps=["10.0.0.20"], ingressNodeRegex=Brussels, finalNodeRegex=Paris
+smt-reachability srcIps=["10.0.0.56"], dstIps=["10.0.0.39"], ingressNodeRegex=Brussels, finalNodeRegex=Frankfurt

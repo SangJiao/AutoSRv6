@@ -1,0 +1,16 @@
+smt-reachability srcIps=["10.0.0.136"], dstIps=["10.0.0.101"], ingressNodeRegex=Jekabpils, finalNodeRegex=Skriveri
+smt-reachability srcIps=["10.0.0.136"], dstIps=["10.0.0.90"], ingressNodeRegex=Jekabpils, finalNodeRegex=Adazi
+smt-reachability srcIps=["10.0.0.136"], dstIps=["10.0.0.132"], ingressNodeRegex=Jekabpils, finalNodeRegex=Ventspits
+smt-reachability srcIps=["10.0.0.136"], dstIps=["10.0.0.78"], ingressNodeRegex=Jekabpils, finalNodeRegex=Saldus
+smt-reachability srcIps=["10.0.0.136"], dstIps=["10.0.0.83"], ingressNodeRegex=Jekabpils, finalNodeRegex=Strenci
+smt-reachability srcIps=["10.0.0.136"], dstIps=["10.0.0.145"], ingressNodeRegex=Jekabpils, finalNodeRegex=Kegums
+smt-reachability srcIps=["10.0.0.136"], dstIps=["10.0.0.123"], ingressNodeRegex=Jekabpils, finalNodeRegex=Vilani
+smt-reachability srcIps=["10.0.0.136"], dstIps=["10.0.0.35"], ingressNodeRegex=Jekabpils, finalNodeRegex=Rujiena
+smt-reachability srcIps=["10.0.0.136"], dstIps=["10.0.0.130"], ingressNodeRegex=Jekabpils, finalNodeRegex=Platone
+smt-reachability srcIps=["10.0.0.136"], dstIps=["10.0.0.40"], ingressNodeRegex=Jekabpils, finalNodeRegex=Dobele
+smt-reachability srcIps=["10.0.0.136"], dstIps=["10.0.0.41"], ingressNodeRegex=Jekabpils, finalNodeRegex=Auce
+smt-reachability srcIps=["10.0.0.136"], dstIps=["10.0.0.144"], ingressNodeRegex=Jekabpils, finalNodeRegex=Lielvarde
+smt-reachability srcIps=["10.0.0.136"], dstIps=["10.0.0.122"], ingressNodeRegex=Jekabpils, finalNodeRegex=Riga
+smt-reachability srcIps=["10.0.0.136"], dstIps=["10.0.0.146"], ingressNodeRegex=Jekabpils, finalNodeRegex=Salagriva
+smt-reachability srcIps=["10.0.0.136"], dstIps=["10.0.0.42"], ingressNodeRegex=Jekabpils, finalNodeRegex=Kraslava
+smt-reachability srcIps=["10.0.0.136"], dstIps=["10.0.0.32"], ingressNodeRegex=Jekabpils, finalNodeRegex=Rezekne

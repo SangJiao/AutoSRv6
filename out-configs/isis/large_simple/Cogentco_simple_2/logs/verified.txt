@@ -1,0 +1,2 @@
+smt-reachability srcIps=["10.0.1.168"], dstIps=["10.0.1.189"], ingressNodeRegex=OrangeTTCounty, finalNodeRegex=Raleigh
+smt-reachability srcIps=["10.0.1.168"], dstIps=["10.0.1.54"], ingressNodeRegex=OrangeTTCounty, finalNodeRegex=Slough

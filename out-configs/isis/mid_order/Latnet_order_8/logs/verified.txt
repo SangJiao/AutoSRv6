@@ -1,0 +1,8 @@
+smt-path-preference srcIps=["10.0.0.32"], dstIps=["10.0.0.73"], ingressNodeRegex=Rezekne, finalNodeRegex=Daugapils, prefs=[['Rezekne','Daugapils'],['Rezekne','Riga','Preili','Daugapils']]
+smt-path-preference srcIps=["10.0.0.66"], dstIps=["10.0.0.122"], ingressNodeRegex=Limbazi, finalNodeRegex=Riga, prefs=[['Limbazi','Riga'],['Limbazi','Aloja','Mazsalaca','Rujiena','Riga']]
+smt-path-preference srcIps=["10.0.0.66"], dstIps=["10.0.0.65"], ingressNodeRegex=Limbazi, finalNodeRegex=Liepupe, prefs=[['Limbazi','Liepupe'],['Limbazi','Riga','Sigulda','Liepupe']]
+smt-path-preference srcIps=["10.0.0.122"], dstIps=["10.0.0.91"], ingressNodeRegex=Riga, finalNodeRegex=Carnikava, prefs=[['Riga','Carnikava'],['Riga','Adazi','Carnikava']]
+smt-path-preference srcIps=["10.0.0.4"], dstIps=["10.0.0.34"], ingressNodeRegex=Aloja, finalNodeRegex=Mazsalaca, prefs=[['Aloja','Mazsalaca'],['Aloja','Limbazi','Riga','Rujiena','Mazsalaca']]
+smt-path-preference srcIps=["10.0.0.27"], dstIps=["10.0.0.16"], ingressNodeRegex=Ozolnieki, finalNodeRegex=Jelgava, prefs=[['Ozolnieki','Jelgava'],['Ozolnieki','Olaine','Riga','Jelgava']]
+smt-path-preference srcIps=["10.0.0.122"], dstIps=["10.0.0.72"], ingressNodeRegex=Riga, finalNodeRegex=Preili, prefs=[['Riga','Preili'],['Riga','Rezekne','Daugapils','Preili']]
+smt-path-preference srcIps=["10.0.0.26"], dstIps=["10.0.0.122"], ingressNodeRegex=Olaine, finalNodeRegex=Riga, prefs=[['Olaine','Riga'],['Olaine','Ozolnieki','Jelgava','Riga']]

@@ -1,0 +1,16 @@
+smt-reachability srcIps=["10.0.0.27"], dstIps=["10.0.0.47"], ingressNodeRegex=EuropeTTandTTotherTTcountriesID19, finalNodeRegex=Edmonton
+smt-reachability srcIps=["10.0.0.27"], dstIps=["10.0.0.32"], ingressNodeRegex=EuropeTTandTTotherTTcountriesID19, finalNodeRegex=Whitehorse
+smt-reachability srcIps=["10.0.0.27"], dstIps=["10.0.0.21"], ingressNodeRegex=EuropeTTandTTotherTTcountriesID19, finalNodeRegex=NorthTTandTTSouthTTAmerica
+smt-reachability srcIps=["10.0.0.27"], dstIps=["10.0.0.39"], ingressNodeRegex=EuropeTTandTTotherTTcountriesID19, finalNodeRegex=ThunderTTBay
+smt-reachability srcIps=["10.0.0.27"], dstIps=["10.0.0.16"], ingressNodeRegex=EuropeTTandTTotherTTcountriesID19, finalNodeRegex=Kelowna
+smt-reachability srcIps=["10.0.0.27"], dstIps=["10.0.0.17"], ingressNodeRegex=EuropeTTandTTotherTTcountriesID19, finalNodeRegex=Kamloops
+smt-reachability srcIps=["10.0.0.27"], dstIps=["10.0.0.8"], ingressNodeRegex=EuropeTTandTTotherTTcountriesID19, finalNodeRegex=Toronto
+smt-reachability srcIps=["10.0.0.27"], dstIps=["10.0.0.30"], ingressNodeRegex=EuropeTTandTTotherTTcountriesID19, finalNodeRegex=Chicago
+smt-reachability srcIps=["10.0.0.27"], dstIps=["10.0.0.51"], ingressNodeRegex=EuropeTTandTTotherTTcountriesID19, finalNodeRegex=Europe
+smt-reachability srcIps=["10.0.0.27"], dstIps=["10.0.0.29"], ingressNodeRegex=EuropeTTandTTotherTTcountriesID19, finalNodeRegex=Seattle
+smt-reachability srcIps=["10.0.0.27"], dstIps=["10.0.0.35"], ingressNodeRegex=EuropeTTandTTotherTTcountriesID19, finalNodeRegex=Saskatoon
+smt-reachability srcIps=["10.0.0.27"], dstIps=["10.0.0.44"], ingressNodeRegex=EuropeTTandTTotherTTcountriesID19, finalNodeRegex=Vancouver
+smt-reachability srcIps=["10.0.0.27"], dstIps=["10.0.0.45"], ingressNodeRegex=EuropeTTandTTotherTTcountriesID19, finalNodeRegex=Victoria
+smt-reachability srcIps=["10.0.0.27"], dstIps=["10.0.0.12"], ingressNodeRegex=EuropeTTandTTotherTTcountriesID19, finalNodeRegex=Regina
+smt-reachability srcIps=["10.0.0.27"], dstIps=["10.0.0.68"], ingressNodeRegex=EuropeTTandTTotherTTcountriesID19, finalNodeRegex=Asia-Pacific
+smt-reachability srcIps=["10.0.0.27"], dstIps=["10.0.0.79"], ingressNodeRegex=EuropeTTandTTotherTTcountriesID19, finalNodeRegex=Boston

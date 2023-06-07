@@ -1,0 +1,16 @@
+smt-reachability srcIps=["10.0.0.14"], dstIps=["10.0.0.43"], ingressNodeRegex=NTNUTTHovedbygget, finalNodeRegex=SA_SHTTKautokeino
+smt-reachability srcIps=["10.0.0.14"], dstIps=["10.0.0.135"], ingressNodeRegex=NTNUTTHovedbygget, finalNodeRegex=HiFTTHammerfest
+smt-reachability srcIps=["10.0.0.14"], dstIps=["10.0.0.108"], ingressNodeRegex=NTNUTTHovedbygget, finalNodeRegex=HVETTLarvik
+smt-reachability srcIps=["10.0.0.14"], dstIps=["10.0.0.160"], ingressNodeRegex=NTNUTTHovedbygget, finalNodeRegex=HHTTElverum
+smt-reachability srcIps=["10.0.0.14"], dstIps=["10.0.0.33"], ingressNodeRegex=NTNUTTHovedbygget, finalNodeRegex=HiGTTGjovik
+smt-reachability srcIps=["10.0.0.14"], dstIps=["10.0.0.113"], ingressNodeRegex=NTNUTTHovedbygget, finalNodeRegex=NyAlesund
+smt-reachability srcIps=["10.0.0.14"], dstIps=["10.0.0.102"], ingressNodeRegex=NTNUTTHovedbygget, finalNodeRegex=UNINETTTTTeknobyen
+smt-reachability srcIps=["10.0.0.14"], dstIps=["10.0.0.170"], ingressNodeRegex=NTNUTTHovedbygget, finalNodeRegex=HSFTTSongdal
+smt-reachability srcIps=["10.0.0.14"], dstIps=["10.0.0.134"], ingressNodeRegex=NTNUTTHovedbygget, finalNodeRegex=HiFTTVadso
+smt-reachability srcIps=["10.0.0.14"], dstIps=["10.0.0.83"], ingressNodeRegex=NTNUTTHovedbygget, finalNodeRegex=HiNTTTLevanger
+smt-reachability srcIps=["10.0.0.14"], dstIps=["10.0.0.157"], ingressNodeRegex=NTNUTTHovedbygget, finalNodeRegex=Stockholm
+smt-reachability srcIps=["10.0.0.14"], dstIps=["10.0.0.82"], ingressNodeRegex=NTNUTTHovedbygget, finalNodeRegex=HiNTTTSteinkjer
+smt-reachability srcIps=["10.0.0.14"], dstIps=["10.0.0.96"], ingressNodeRegex=NTNUTTHovedbygget, finalNodeRegex=HHTTTynset
+smt-reachability srcIps=["10.0.0.14"], dstIps=["10.0.0.177"], ingressNodeRegex=NTNUTTHovedbygget, finalNodeRegex=NBTTMoTTiTTRana
+smt-reachability srcIps=["10.0.0.14"], dstIps=["10.0.0.130"], ingressNodeRegex=NTNUTTHovedbygget, finalNodeRegex=HiBUTTDrammen
+smt-reachability srcIps=["10.0.0.14"], dstIps=["10.0.0.90"], ingressNodeRegex=NTNUTTHovedbygget, finalNodeRegex=HHTTKongsvinger

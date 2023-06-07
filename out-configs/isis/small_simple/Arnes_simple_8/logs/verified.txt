@@ -1,0 +1,8 @@
+smt-reachability srcIps=["10.0.0.62"], dstIps=["10.0.0.68"], ingressNodeRegex=Ajdovscina, finalNodeRegex=Tolmin
+smt-reachability srcIps=["10.0.0.62"], dstIps=["10.0.0.54"], ingressNodeRegex=Ajdovscina, finalNodeRegex=Lasko
+smt-reachability srcIps=["10.0.0.62"], dstIps=["10.0.0.49"], ingressNodeRegex=Ajdovscina, finalNodeRegex=Izola
+smt-reachability srcIps=["10.0.0.62"], dstIps=["10.0.0.40"], ingressNodeRegex=Ajdovscina, finalNodeRegex=Jesenice
+smt-reachability srcIps=["10.0.0.62"], dstIps=["10.0.0.45"], ingressNodeRegex=Ajdovscina, finalNodeRegex=RogasjaTTSlatina
+smt-reachability srcIps=["10.0.0.62"], dstIps=["10.0.0.42"], ingressNodeRegex=Ajdovscina, finalNodeRegex=Sezana
+smt-reachability srcIps=["10.0.0.62"], dstIps=["10.0.0.38"], ingressNodeRegex=Ajdovscina, finalNodeRegex=Divaca
+smt-reachability srcIps=["10.0.0.62"], dstIps=["10.0.0.89"], ingressNodeRegex=Ajdovscina, finalNodeRegex=Maribor

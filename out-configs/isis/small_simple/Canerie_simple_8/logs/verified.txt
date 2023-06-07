@@ -1,0 +1,8 @@
+smt-reachability srcIps=["10.0.0.31"], dstIps=["10.0.0.17"], ingressNodeRegex=AmeriqueTTduTTNordTTetTTAmeriqueTTduTTSud, finalNodeRegex=Kamloops
+smt-reachability srcIps=["10.0.0.31"], dstIps=["10.0.0.58"], ingressNodeRegex=AmeriqueTTduTTNordTTetTTAmeriqueTTduTTSud, finalNodeRegex=Fredericton
+smt-reachability srcIps=["10.0.0.31"], dstIps=["10.0.0.30"], ingressNodeRegex=AmeriqueTTduTTNordTTetTTAmeriqueTTduTTSud, finalNodeRegex=Chicago
+smt-reachability srcIps=["10.0.0.31"], dstIps=["10.0.0.39"], ingressNodeRegex=AmeriqueTTduTTNordTTetTTAmeriqueTTduTTSud, finalNodeRegex=ThunderTTBay
+smt-reachability srcIps=["10.0.0.31"], dstIps=["10.0.0.74"], ingressNodeRegex=AmeriqueTTduTTNordTTetTTAmeriqueTTduTTSud, finalNodeRegex=Ottawa
+smt-reachability srcIps=["10.0.0.31"], dstIps=["10.0.0.19"], ingressNodeRegex=AmeriqueTTduTTNordTTetTTAmeriqueTTduTTSud, finalNodeRegex=Windsor_Detroit
+smt-reachability srcIps=["10.0.0.31"], dstIps=["10.0.0.45"], ingressNodeRegex=AmeriqueTTduTTNordTTetTTAmeriqueTTduTTSud, finalNodeRegex=Victoria
+smt-reachability srcIps=["10.0.0.31"], dstIps=["10.0.0.80"], ingressNodeRegex=AmeriqueTTduTTNordTTetTTAmeriqueTTduTTSud, finalNodeRegex=Asie-Pacifique

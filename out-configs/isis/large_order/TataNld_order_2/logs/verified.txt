@@ -1,0 +1,2 @@
+smt-path-preference srcIps=["10.0.0.182"], dstIps=["10.0.0.179"], ingressNodeRegex=Allepey, finalNodeRegex=Thirussur, prefs=[['Allepey','Thirussur'],['Allepey','Coimbatore','Tirupur','Erode','Bangalore','NodeID70','NodeID118','Mangalore','Cannonore','Kozhikode','Palghat','Thirussur']]
+smt-path-preference srcIps=["10.0.0.224"], dstIps=["10.0.0.223"], ingressNodeRegex=Vidisha, finalNodeRegex=Sagar, prefs=[['Vidisha','Sagar'],['Vidisha','Indore','Rajgarh','Sagar']]

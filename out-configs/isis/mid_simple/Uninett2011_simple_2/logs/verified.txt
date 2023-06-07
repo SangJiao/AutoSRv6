@@ -1,0 +1,2 @@
+smt-reachability srcIps=["10.0.0.113"], dstIps=["10.0.0.134"], ingressNodeRegex=NyAlesund, finalNodeRegex=HiFTTVadso
+smt-reachability srcIps=["10.0.0.113"], dstIps=["10.0.0.77"], ingressNodeRegex=NyAlesund, finalNodeRegex=HiTTTPorsgrunn

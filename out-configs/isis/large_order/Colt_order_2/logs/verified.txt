@@ -1,0 +1,2 @@
+smt-path-preference srcIps=["10.0.0.34"], dstIps=["10.0.1.47"], ingressNodeRegex=Lugano, finalNodeRegex=Chiasso, prefs=[['Lugano','Chiasso'],['Lugano','Lucerne','Zug','Zurich','Basel','NodeID73','Lausanne','Nyon','Geneve','Lyon','Marseille','Turin','Milan','Como','Chiasso']]
+smt-path-preference srcIps=["10.0.0.57"], dstIps=["10.0.0.224"], ingressNodeRegex=Rotterdam, finalNodeRegex=DenTTBosch, prefs=[['Rotterdam','DenTTBosch'],['Rotterdam','TheTTHague','Hoofddorp','Amsterdam','Hilversum','Utrecht','DenTTBosch']]

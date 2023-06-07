@@ -1,0 +1,8 @@
+smt-reachability srcIps=["10.0.0.22"], dstIps=["10.0.0.41"], ingressNodeRegex=SanTTJose, finalNodeRegex=Seattle
+smt-reachability srcIps=["10.0.0.22"], dstIps=["10.0.0.5"], ingressNodeRegex=SanTTJose, finalNodeRegex=Houston
+smt-reachability srcIps=["10.0.0.22"], dstIps=["10.0.0.64"], ingressNodeRegex=SanTTJose, finalNodeRegex=Raleigh
+smt-reachability srcIps=["10.0.0.22"], dstIps=["10.0.0.18"], ingressNodeRegex=SanTTJose, finalNodeRegex=Denver
+smt-reachability srcIps=["10.0.0.22"], dstIps=["10.0.0.67"], ingressNodeRegex=SanTTJose, finalNodeRegex=Washington,TTDC
+smt-reachability srcIps=["10.0.0.22"], dstIps=["10.0.0.9"], ingressNodeRegex=SanTTJose, finalNodeRegex=Austin
+smt-reachability srcIps=["10.0.0.22"], dstIps=["10.0.0.68"], ingressNodeRegex=SanTTJose, finalNodeRegex=Stockton
+smt-reachability srcIps=["10.0.0.22"], dstIps=["10.0.0.12"], ingressNodeRegex=SanTTJose, finalNodeRegex=Dallas

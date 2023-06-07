@@ -1,0 +1,8 @@
+smt-path-preference srcIps=["10.0.0.198"], dstIps=["10.0.1.125"], ingressNodeRegex=Bydgoszcz, finalNodeRegex=Inowroclaw, prefs=[['Bydgoszcz','Inowroclaw'],['Bydgoszcz','Tczew','NodeID11','Torun','Inowroclaw']]
+smt-path-preference srcIps=["10.0.1.48"], dstIps=["10.0.1.4"], ingressNodeRegex=Bacau, finalNodeRegex=Brasov, prefs=[['Bacau','Brasov'],['Bacau','Iasi','Galati','Constanta','Bucuresti','Ploiesti','Brasov']]
+smt-path-preference srcIps=["10.0.0.22"], dstIps=["10.0.1.94"], ingressNodeRegex=Szeged, finalNodeRegex=Kiskunhalas, prefs=[['Szeged','Kiskunhalas'],['Szeged','Beograd','Tompa','Kiskunhalas']]
+smt-path-preference srcIps=["10.0.0.136"], dstIps=["10.0.0.149"], ingressNodeRegex=IstanbulID145, finalNodeRegex=Edirne, prefs=[['IstanbulID145','Edirne'],['IstanbulID145','Tekirdag','Edirne']]
+smt-path-preference srcIps=["10.0.0.225"], dstIps=["10.0.0.142"], ingressNodeRegex=Zilina, finalNodeRegex=Kosice, prefs=[['Zilina','Kosice'],['Zilina','Bratislava','Kosice']]
+smt-path-preference srcIps=["10.0.1.113"], dstIps=["10.0.0.193"], ingressNodeRegex=Budapest, finalNodeRegex=Szolnok, prefs=[['Budapest','Szolnok'],['Budapest','Paks','Kiskunhalas','Szeged','Arad','Oradea','Bors','Debrecen','Szolnok']]
+smt-path-preference srcIps=["10.0.1.93"], dstIps=["10.0.0.86"], ingressNodeRegex=Plovdiv, finalNodeRegex=Haskovo, prefs=[['Plovdiv','Haskovo'],['Plovdiv','Sliven','Burgas','Edirne','Svilengrad','Haskovo']]
+smt-path-preference srcIps=["10.0.0.184"], dstIps=["10.0.0.149"], ingressNodeRegex=Balikesir, finalNodeRegex=Edirne, prefs=[['Balikesir','Edirne'],['Balikesir','Istanbul','IstanbulID145','Edirne']]

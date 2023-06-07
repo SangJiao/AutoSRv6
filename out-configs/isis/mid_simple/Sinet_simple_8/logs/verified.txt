@@ -1,0 +1,8 @@
+smt-reachability srcIps=["10.0.0.84"], dstIps=["10.0.0.122"], ingressNodeRegex=UTTElectro-Communications, finalNodeRegex=ISSP,TTUTTTokyo
+smt-reachability srcIps=["10.0.0.84"], dstIps=["10.0.0.121"], ingressNodeRegex=UTTElectro-Communications, finalNodeRegex=SaitamaTTU
+smt-reachability srcIps=["10.0.0.84"], dstIps=["10.0.0.19"], ingressNodeRegex=UTTElectro-Communications, finalNodeRegex=HirosakiTTU
+smt-reachability srcIps=["10.0.0.84"], dstIps=["10.0.0.131"], ingressNodeRegex=UTTElectro-Communications, finalNodeRegex=NAOJ
+smt-reachability srcIps=["10.0.0.84"], dstIps=["10.0.0.69"], ingressNodeRegex=UTTElectro-Communications, finalNodeRegex=KEK
+smt-reachability srcIps=["10.0.0.84"], dstIps=["10.0.0.139"], ingressNodeRegex=UTTElectro-Communications, finalNodeRegex=RIKEN
+smt-reachability srcIps=["10.0.0.84"], dstIps=["10.0.0.12"], ingressNodeRegex=UTTElectro-Communications, finalNodeRegex=OsakaTTDC
+smt-reachability srcIps=["10.0.0.84"], dstIps=["10.0.0.108"], ingressNodeRegex=UTTElectro-Communications, finalNodeRegex=NiigataTTU

@@ -1,0 +1,8 @@
+smt-reachability srcIps=["10.0.0.22"], dstIps=["10.0.1.82"], ingressNodeRegex=Szeged, finalNodeRegex=Koszalin
+smt-reachability srcIps=["10.0.0.22"], dstIps=["10.0.0.154"], ingressNodeRegex=Szeged, finalNodeRegex=Vilnius
+smt-reachability srcIps=["10.0.0.22"], dstIps=["10.0.1.94"], ingressNodeRegex=Szeged, finalNodeRegex=Kiskunhalas
+smt-reachability srcIps=["10.0.0.22"], dstIps=["10.0.0.79"], ingressNodeRegex=Szeged, finalNodeRegex=Olomouc
+smt-reachability srcIps=["10.0.0.22"], dstIps=["10.0.0.160"], ingressNodeRegex=Szeged, finalNodeRegex=Rzeszow
+smt-reachability srcIps=["10.0.0.22"], dstIps=["10.0.0.197"], ingressNodeRegex=Szeged, finalNodeRegex=Zalaegerszeg
+smt-reachability srcIps=["10.0.0.22"], dstIps=["10.0.1.124"], ingressNodeRegex=Szeged, finalNodeRegex=Torun
+smt-reachability srcIps=["10.0.0.22"], dstIps=["10.0.1.128"], ingressNodeRegex=Szeged, finalNodeRegex=Giurgiu

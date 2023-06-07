@@ -1,0 +1,2 @@
+smt-reachability srcIps=["10.0.0.99"], dstIps=["10.0.0.69"], ingressNodeRegex=HokkaidoTTU, finalNodeRegex=KEK
+smt-reachability srcIps=["10.0.0.99"], dstIps=["10.0.0.19"], ingressNodeRegex=HokkaidoTTU, finalNodeRegex=HirosakiTTU

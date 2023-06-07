@@ -1,0 +1,8 @@
+smt-path-preference srcIps=["10.0.0.156"], dstIps=["10.0.0.88"], ingressNodeRegex=NodeID41, finalNodeRegex=NodeID38, prefs=[['NodeID41','NodeID38'],['NodeID41','NodeID40','SUNN','SNV1','NodeID25','NodeID16','NodeID17','NodeID39','NodeID38']]
+smt-path-preference srcIps=["10.0.0.70"], dstIps=["10.0.0.71"], ingressNodeRegex=CHIC, finalNodeRegex=AMES, prefs=[['CHIC','AMES'],['CHIC','CHI-SL','FNAL','ANL','AMES']]
+smt-path-preference srcIps=["10.0.0.135"], dstIps=["10.0.0.137"], ingressNodeRegex=ALBU, finalNodeRegex=SNLA, prefs=[['ALBU','SNLA'],['ALBU','DOE-A','SNLA']]
+smt-path-preference srcIps=["10.0.0.2"], dstIps=["10.0.0.50"], ingressNodeRegex=CERN, finalNodeRegex=NEWY, prefs=[['CERN','NEWY'],['CERN','CHI-SL','CHIC','NASH','ATLA','WASH','NEWY']]
+smt-path-preference srcIps=["10.0.0.156"], dstIps=["10.0.0.157"], ingressNodeRegex=NodeID41, finalNodeRegex=NodeID40, prefs=[['NodeID41','NodeID40'],['NodeID41','NodeID38','NodeID39','NodeID17','NodeID16','NodeID25','SNV1','SEA','SUNN','NodeID40']]
+smt-path-preference srcIps=["10.0.0.77"], dstIps=["10.0.0.76"], ingressNodeRegex=FNAL, finalNodeRegex=CHI-SL, prefs=[['FNAL','CHI-SL'],['FNAL','ANL','AMES','CHIC','CHI-SL']]
+smt-path-preference srcIps=["10.0.0.50"], dstIps=["10.0.0.29"], ingressNodeRegex=NEWY, finalNodeRegex=NETL, prefs=[['NEWY','NETL'],['NEWY','WASH','NETL']]
+smt-path-preference srcIps=["10.0.0.50"], dstIps=["10.0.0.40"], ingressNodeRegex=NEWY, finalNodeRegex=WASH, prefs=[['NEWY','WASH'],['NEWY','NETL','WASH']]

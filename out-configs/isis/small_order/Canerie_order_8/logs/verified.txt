@@ -1,0 +1,8 @@
+smt-path-preference srcIps=["10.0.0.79"], dstIps=["10.0.0.64"], ingressNodeRegex=Boston, finalNodeRegex=NewTTYork, prefs=[['Boston','NewTTYork'],['Boston','Montreal','Halifax','NewTTYork']]
+smt-path-preference srcIps=["10.0.0.59"], dstIps=["10.0.0.74"], ingressNodeRegex=Montreal, finalNodeRegex=Ottawa, prefs=[['Montreal','Ottawa'],['Montreal','Boston','NewTTYork','Toronto','Ottawa']]
+smt-path-preference srcIps=["10.0.0.25"], dstIps=["10.0.0.30"], ingressNodeRegex=Calgary, finalNodeRegex=Chicago, prefs=[['Calgary','Chicago'],['Calgary','Winnipeg','Chicago']]
+smt-path-preference srcIps=["10.0.0.35"], dstIps=["10.0.0.38"], ingressNodeRegex=Saskatoon, finalNodeRegex=Winnipeg, prefs=[['Saskatoon','Winnipeg'],['Saskatoon','Edmonton','Calgary','Winnipeg']]
+smt-path-preference srcIps=["10.0.0.8"], dstIps=["10.0.0.39"], ingressNodeRegex=Toronto, finalNodeRegex=ThunderTTBay, prefs=[['Toronto','ThunderTTBay'],['Toronto','Winnipeg','ThunderTTBay']]
+smt-path-preference srcIps=["10.0.0.74"], dstIps=["10.0.0.59"], ingressNodeRegex=Ottawa, finalNodeRegex=Montreal, prefs=[['Ottawa','Montreal'],['Ottawa','Toronto','NewTTYork','Halifax','Montreal']]
+smt-path-preference srcIps=["10.0.0.64"], dstIps=["10.0.0.79"], ingressNodeRegex=NewTTYork, finalNodeRegex=Boston, prefs=[['NewTTYork','Boston'],['NewTTYork','Toronto','Ottawa','Montreal','Boston']]
+smt-path-preference srcIps=["10.0.0.44"], dstIps=["10.0.0.17"], ingressNodeRegex=Vancouver, finalNodeRegex=Kamloops, prefs=[['Vancouver','Kamloops'],['Vancouver','Seattle','Chicago','Windsor_Detroit','Toronto','Winnipeg','Calgary','Kamloops']]

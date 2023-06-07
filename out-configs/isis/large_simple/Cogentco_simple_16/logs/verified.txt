@@ -1,0 +1,16 @@
+smt-reachability srcIps=["10.0.0.19"], dstIps=["10.0.0.55"], ingressNodeRegex=Louisville, finalNodeRegex=Zurich
+smt-reachability srcIps=["10.0.0.19"], dstIps=["10.0.0.65"], ingressNodeRegex=Louisville, finalNodeRegex=Sophia
+smt-reachability srcIps=["10.0.0.19"], dstIps=["10.0.1.81"], ingressNodeRegex=Louisville, finalNodeRegex=Krakow
+smt-reachability srcIps=["10.0.0.19"], dstIps=["10.0.0.183"], ingressNodeRegex=Louisville, finalNodeRegex=Orlando
+smt-reachability srcIps=["10.0.0.19"], dstIps=["10.0.0.72"], ingressNodeRegex=Louisville, finalNodeRegex=NodeID173
+smt-reachability srcIps=["10.0.0.19"], dstIps=["10.0.1.55"], ingressNodeRegex=Louisville, finalNodeRegex=Rotterdam
+smt-reachability srcIps=["10.0.0.19"], dstIps=["10.0.1.139"], ingressNodeRegex=Louisville, finalNodeRegex=Houston
+smt-reachability srcIps=["10.0.0.19"], dstIps=["10.0.0.66"], ingressNodeRegex=Louisville, finalNodeRegex=NodeID172
+smt-reachability srcIps=["10.0.0.19"], dstIps=["10.0.1.130"], ingressNodeRegex=Louisville, finalNodeRegex=Essen
+smt-reachability srcIps=["10.0.0.19"], dstIps=["10.0.0.168"], ingressNodeRegex=Louisville, finalNodeRegex=Atlanta
+smt-reachability srcIps=["10.0.0.19"], dstIps=["10.0.1.69"], ingressNodeRegex=Louisville, finalNodeRegex=Helsinki
+smt-reachability srcIps=["10.0.0.19"], dstIps=["10.0.1.194"], ingressNodeRegex=Louisville, finalNodeRegex=NodeID149
+smt-reachability srcIps=["10.0.0.19"], dstIps=["10.0.0.198"], ingressNodeRegex=Louisville, finalNodeRegex=Mannheim
+smt-reachability srcIps=["10.0.0.19"], dstIps=["10.0.0.67"], ingressNodeRegex=Louisville, finalNodeRegex=Nice
+smt-reachability srcIps=["10.0.0.19"], dstIps=["10.0.0.144"], ingressNodeRegex=Louisville, finalNodeRegex=Montreal
+smt-reachability srcIps=["10.0.0.19"], dstIps=["10.0.0.147"], ingressNodeRegex=Louisville, finalNodeRegex=Porto

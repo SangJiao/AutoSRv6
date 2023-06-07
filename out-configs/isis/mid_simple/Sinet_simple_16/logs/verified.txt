@@ -1,0 +1,16 @@
+smt-reachability srcIps=["10.0.0.58"], dstIps=["10.0.0.33"], ingressNodeRegex=JAMSTEC, finalNodeRegex=KurnamotoTTU
+smt-reachability srcIps=["10.0.0.58"], dstIps=["10.0.0.56"], ingressNodeRegex=JAMSTEC, finalNodeRegex=YokohamaTTNationalTTU
+smt-reachability srcIps=["10.0.0.58"], dstIps=["10.0.0.21"], ingressNodeRegex=JAMSTEC, finalNodeRegex=TohokuTTU
+smt-reachability srcIps=["10.0.0.58"], dstIps=["10.0.0.121"], ingressNodeRegex=JAMSTEC, finalNodeRegex=SaitamaTTU
+smt-reachability srcIps=["10.0.0.58"], dstIps=["10.0.0.76"], ingressNodeRegex=JAMSTEC, finalNodeRegex=KitamiTTIT
+smt-reachability srcIps=["10.0.0.58"], dstIps=["10.0.0.150"], ingressNodeRegex=JAMSTEC, finalNodeRegex=KanazawaTTDC
+smt-reachability srcIps=["10.0.0.58"], dstIps=["10.0.0.104"], ingressNodeRegex=JAMSTEC, finalNodeRegex=YamanashiTTU
+smt-reachability srcIps=["10.0.0.58"], dstIps=["10.0.0.73"], ingressNodeRegex=JAMSTEC, finalNodeRegex=JAEA
+smt-reachability srcIps=["10.0.0.58"], dstIps=["10.0.0.147"], ingressNodeRegex=JAMSTEC, finalNodeRegex=KanazawaTTU
+smt-reachability srcIps=["10.0.0.58"], dstIps=["10.0.0.41"], ingressNodeRegex=JAMSTEC, finalNodeRegex=NagasakiTTU
+smt-reachability srcIps=["10.0.0.58"], dstIps=["10.0.0.124"], ingressNodeRegex=JAMSTEC, finalNodeRegex=TokyoTTIT
+smt-reachability srcIps=["10.0.0.58"], dstIps=["10.0.0.86"], ingressNodeRegex=JAMSTEC, finalNodeRegex=NII-CHiba
+smt-reachability srcIps=["10.0.0.58"], dstIps=["10.0.0.9"], ingressNodeRegex=JAMSTEC, finalNodeRegex=KansaiTTU
+smt-reachability srcIps=["10.0.0.58"], dstIps=["10.0.0.96"], ingressNodeRegex=JAMSTEC, finalNodeRegex=KyotoTTDC
+smt-reachability srcIps=["10.0.0.58"], dstIps=["10.0.0.97"], ingressNodeRegex=JAMSTEC, finalNodeRegex=DoshishaTTU
+smt-reachability srcIps=["10.0.0.58"], dstIps=["10.0.0.138"], ingressNodeRegex=JAMSTEC, finalNodeRegex=TokyoTTDC1

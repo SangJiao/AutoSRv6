@@ -1,0 +1,8 @@
+smt-reachability srcIps=["10.0.0.125"], dstIps=["10.0.0.47"], ingressNodeRegex=NodeID27, finalNodeRegex=NodeID39
+smt-reachability srcIps=["10.0.0.125"], dstIps=["10.0.0.1"], ingressNodeRegex=NodeID27, finalNodeRegex=NodeID29
+smt-reachability srcIps=["10.0.0.125"], dstIps=["10.0.0.160"], ingressNodeRegex=NodeID27, finalNodeRegex=NodeID60
+smt-reachability srcIps=["10.0.0.125"], dstIps=["10.0.0.79"], ingressNodeRegex=NodeID27, finalNodeRegex=Venezuela
+smt-reachability srcIps=["10.0.0.125"], dstIps=["10.0.0.77"], ingressNodeRegex=NodeID27, finalNodeRegex=Bonaire
+smt-reachability srcIps=["10.0.0.125"], dstIps=["10.0.0.112"], ingressNodeRegex=NodeID27, finalNodeRegex=Martinique
+smt-reachability srcIps=["10.0.0.125"], dstIps=["10.0.0.158"], ingressNodeRegex=NodeID27, finalNodeRegex=NodeID33
+smt-reachability srcIps=["10.0.0.125"], dstIps=["10.0.0.81"], ingressNodeRegex=NodeID27, finalNodeRegex=TrinidadTTandTTTobago

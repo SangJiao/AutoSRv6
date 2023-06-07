@@ -1,0 +1,16 @@
+smt-reachability srcIps=["10.0.0.24"], dstIps=["10.0.0.138"], ingressNodeRegex=NodeID58, finalNodeRegex=NodeID45
+smt-reachability srcIps=["10.0.0.24"], dstIps=["10.0.0.66"], ingressNodeRegex=NodeID58, finalNodeRegex=NodeID31
+smt-reachability srcIps=["10.0.0.24"], dstIps=["10.0.0.144"], ingressNodeRegex=NodeID58, finalNodeRegex=NodeID69
+smt-reachability srcIps=["10.0.0.24"], dstIps=["10.0.0.163"], ingressNodeRegex=NodeID58, finalNodeRegex=ElTTSalvador
+smt-reachability srcIps=["10.0.0.24"], dstIps=["10.0.0.161"], ingressNodeRegex=NodeID58, finalNodeRegex=Honduras
+smt-reachability srcIps=["10.0.0.24"], dstIps=["10.0.0.97"], ingressNodeRegex=NodeID58, finalNodeRegex=Mexico
+smt-reachability srcIps=["10.0.0.24"], dstIps=["10.0.0.100"], ingressNodeRegex=NodeID58, finalNodeRegex=NodeID17
+smt-reachability srcIps=["10.0.0.24"], dstIps=["10.0.0.125"], ingressNodeRegex=NodeID58, finalNodeRegex=NodeID27
+smt-reachability srcIps=["10.0.0.24"], dstIps=["10.0.0.126"], ingressNodeRegex=NodeID58, finalNodeRegex=NodeID50
+smt-reachability srcIps=["10.0.0.24"], dstIps=["10.0.0.102"], ingressNodeRegex=NodeID58, finalNodeRegex=NodeID7
+smt-reachability srcIps=["10.0.0.24"], dstIps=["10.0.0.121"], ingressNodeRegex=NodeID58, finalNodeRegex=StTTKittsTT&TTNevis
+smt-reachability srcIps=["10.0.0.24"], dstIps=["10.0.0.113"], ingressNodeRegex=NodeID58, finalNodeRegex=Dominica
+smt-reachability srcIps=["10.0.0.24"], dstIps=["10.0.0.131"], ingressNodeRegex=NodeID58, finalNodeRegex=CaymanTTIslands
+smt-reachability srcIps=["10.0.0.24"], dstIps=["10.0.0.155"], ingressNodeRegex=NodeID58, finalNodeRegex=NodeID28
+smt-reachability srcIps=["10.0.0.24"], dstIps=["10.0.0.52"], ingressNodeRegex=NodeID58, finalNodeRegex=Suriname
+smt-reachability srcIps=["10.0.0.24"], dstIps=["10.0.0.60"], ingressNodeRegex=NodeID58, finalNodeRegex=PuertoTTRico

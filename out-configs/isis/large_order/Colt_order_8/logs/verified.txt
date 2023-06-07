@@ -1,0 +1,8 @@
+smt-path-preference srcIps=["10.0.0.206"], dstIps=["10.0.0.11"], ingressNodeRegex=London, finalNodeRegex=NodeID62, prefs=[['London','NodeID62'],['London','Newark','Paris','Lille','NodeID62']]
+smt-path-preference srcIps=["10.0.0.224"], dstIps=["10.0.0.167"], ingressNodeRegex=DenTTBosch, finalNodeRegex=Utrecht, prefs=[['DenTTBosch','Utrecht'],['DenTTBosch','Rotterdam','TheTTHague','Hoofddorp','Amsterdam','Hilversum','Utrecht']]
+smt-path-preference srcIps=["10.0.0.211"], dstIps=["10.0.0.132"], ingressNodeRegex=Firenze, finalNodeRegex=Rome, prefs=[['Firenze','Rome'],['Firenze','Genova','Milan','Bergamo','Brescia','Verona','Padova','Rome']]
+smt-path-preference srcIps=["10.0.1.25"], dstIps=["10.0.1.24"], ingressNodeRegex=StTTGallen, finalNodeRegex=Zurich, prefs=[['StTTGallen','Zurich'],['StTTGallen','Schaffhausen','Zurich']]
+smt-path-preference srcIps=["10.0.0.57"], dstIps=["10.0.0.58"], ingressNodeRegex=Rotterdam, finalNodeRegex=TheTTHague, prefs=[['Rotterdam','TheTTHague'],['Rotterdam','DenTTBosch','Utrecht','Hilversum','Amsterdam','Hoofddorp','TheTTHague']]
+smt-path-preference srcIps=["10.0.0.144"], dstIps=["10.0.0.254"], ingressNodeRegex=Rostock, finalNodeRegex=Berlin, prefs=[['Rostock','Berlin'],['Rostock','Hamburg','Hannover','NodeID60','Berlin']]
+smt-path-preference srcIps=["10.0.1.76"], dstIps=["10.0.1.77"], ingressNodeRegex=NodeID79, finalNodeRegex=Barcelona, prefs=[['NodeID79','Barcelona'],['NodeID79','Toulouse','Bordeaux','Madrid','Valencia','Barcelona']]
+smt-path-preference srcIps=["10.0.0.165"], dstIps=["10.0.0.59"], ingressNodeRegex=Amsterdam, finalNodeRegex=Hoofddorp, prefs=[['Amsterdam','Hoofddorp'],['Amsterdam','Hilversum','Utrecht','DenTTBosch','Rotterdam','TheTTHague','Hoofddorp']]

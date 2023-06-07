@@ -1,0 +1,2 @@
+smt-path-preference srcIps=["10.0.0.53"], dstIps=["10.0.0.54"], ingressNodeRegex=Nantes, finalNodeRegex=Poiters, prefs=[['Nantes','Poiters'],['Nantes','Rennes','Caen','Rouen','Paris','Poiters']]
+smt-path-preference srcIps=["10.0.0.53"], dstIps=["10.0.0.69"], ingressNodeRegex=Nantes, finalNodeRegex=Rennes, prefs=[['Nantes','Rennes'],['Nantes','Poiters','Paris','Rouen','Caen','Rennes']]

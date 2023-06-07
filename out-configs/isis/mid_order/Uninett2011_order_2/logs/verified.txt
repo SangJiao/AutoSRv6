@@ -1,0 +1,2 @@
+smt-path-preference srcIps=["10.0.0.130"], dstIps=["10.0.0.40"], ingressNodeRegex=HiBUTTDrammen, finalNodeRegex=UiOTTStTTOlavsplassTT5, prefs=[['HiBUTTDrammen','UiOTTStTTOlavsplassTT5'],['HiBUTTDrammen','HiTTTBo','UiOID0','UiOTTStTTOlavsplassTT5']]
+smt-path-preference srcIps=["10.0.0.79"], dstIps=["10.0.0.60"], ingressNodeRegex=UiATTKristiansand, finalNodeRegex=UiSTTStavanger, prefs=[['UiATTKristiansand','UiSTTStavanger'],['UiATTKristiansand','UiOTTStTTOlavsplassTT5','UiBTTHoyteklogibygget','HSHTTStord','HSHTTHaugesund','UiSTTStavanger']]

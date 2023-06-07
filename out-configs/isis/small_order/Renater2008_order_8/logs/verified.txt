@@ -1,0 +1,8 @@
+smt-path-preference srcIps=["10.0.0.20"], dstIps=["10.0.0.19"], ingressNodeRegex=Lyon, finalNodeRegex=InternetTTmondial, prefs=[['Lyon','InternetTTmondial'],['Lyon','Paris','InternetTTmondial']]
+smt-path-preference srcIps=["10.0.0.85"], dstIps=["10.0.0.48"], ingressNodeRegex=Rouen, finalNodeRegex=Paris, prefs=[['Rouen','Paris'],['Rouen','Caen','Rennes','Nantes','Poiters','Paris']]
+smt-path-preference srcIps=["10.0.0.20"], dstIps=["10.0.0.83"], ingressNodeRegex=Lyon, finalNodeRegex=Montpellier, prefs=[['Lyon','Montpellier'],['Lyon','Grenoble','Nice','Marseille','Montpellier']]
+smt-path-preference srcIps=["10.0.0.58"], dstIps=["10.0.0.29"], ingressNodeRegex=Reims, finalNodeRegex=Nancy, prefs=[['Reims','Nancy'],['Reims','Paris','Lyon','Besancon','Strasbourg','Nancy']]
+smt-path-preference srcIps=["10.0.0.56"], dstIps=["10.0.0.54"], ingressNodeRegex=Limoges, finalNodeRegex=Poiters, prefs=[['Limoges','Poiters'],['Limoges','Clermont-Ferrand','Lyon','Paris','Poiters']]
+smt-path-preference srcIps=["10.0.0.23"], dstIps=["10.0.0.54"], ingressNodeRegex=Bordeaux, finalNodeRegex=Poiters, prefs=[['Bordeaux','Poiters'],['Bordeaux','Pau','Toulouse','Montpellier','Lyon','Paris','Poiters']]
+smt-path-preference srcIps=["10.0.0.62"], dstIps=["10.0.0.63"], ingressNodeRegex=NodeID13, finalNodeRegex=Martinique,TTGuadeloupe,TTCayenne, prefs=[['NodeID13','Martinique,TTGuadeloupe,TTCayenne'],['NodeID13','Paris','Lyon','Martinique,TTGuadeloupe,TTCayenne']]
+smt-path-preference srcIps=["10.0.0.48"], dstIps=["10.0.0.58"], ingressNodeRegex=Paris, finalNodeRegex=Reims, prefs=[['Paris','Reims'],['Paris','Lyon','Besancon','Strasbourg','Nancy','Reims']]

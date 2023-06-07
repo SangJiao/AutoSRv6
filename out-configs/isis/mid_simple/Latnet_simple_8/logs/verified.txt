@@ -1,0 +1,8 @@
+smt-reachability srcIps=["10.0.0.92"], dstIps=["10.0.0.32"], ingressNodeRegex=Iecava, finalNodeRegex=Rezekne
+smt-reachability srcIps=["10.0.0.92"], dstIps=["10.0.0.137"], ingressNodeRegex=Iecava, finalNodeRegex=Livani
+smt-reachability srcIps=["10.0.0.92"], dstIps=["10.0.0.15"], ingressNodeRegex=Iecava, finalNodeRegex=Livberze
+smt-reachability srcIps=["10.0.0.92"], dstIps=["10.0.0.142"], ingressNodeRegex=Iecava, finalNodeRegex=Viesite
+smt-reachability srcIps=["10.0.0.92"], dstIps=["10.0.0.53"], ingressNodeRegex=Iecava, finalNodeRegex=Ragona
+smt-reachability srcIps=["10.0.0.92"], dstIps=["10.0.0.91"], ingressNodeRegex=Iecava, finalNodeRegex=Carnikava
+smt-reachability srcIps=["10.0.0.92"], dstIps=["10.0.0.5"], ingressNodeRegex=Iecava, finalNodeRegex=Pociems
+smt-reachability srcIps=["10.0.0.92"], dstIps=["10.0.0.98"], ingressNodeRegex=Iecava, finalNodeRegex=Ikskile

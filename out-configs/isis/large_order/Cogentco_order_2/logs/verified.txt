@@ -1,0 +1,2 @@
+smt-path-preference srcIps=["10.0.0.240"], dstIps=["10.0.0.241"], ingressNodeRegex=ColoradoTTSprings, finalNodeRegex=Denver, prefs=[['ColoradoTTSprings','Denver'],['ColoradoTTSprings','Albuquerque','ElTTPaso','SanTTAntonio','Austin','Houston','NodeID144','NewTTOrleans','Jackson','Memphis','Tulsa','KansasTTCity','Denver']]
+smt-path-preference srcIps=["10.0.0.34"], dstIps=["10.0.0.143"], ingressNodeRegex=Lille, finalNodeRegex=London, prefs=[['Lille','London'],['Lille','Paris','NewTTYork','Albany','Worcester','Boston','London']]

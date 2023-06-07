@@ -1,0 +1,2 @@
+smt-reachability srcIps=["10.0.0.31"], dstIps=["10.0.0.48"], ingressNodeRegex=Athina, finalNodeRegex=NodeID11
+smt-reachability srcIps=["10.0.0.31"], dstIps=["10.0.0.90"], ingressNodeRegex=Athina, finalNodeRegex=SanktTTPeterburg

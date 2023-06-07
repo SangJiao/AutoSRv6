@@ -1,0 +1,2 @@
+smt-path-preference srcIps=["10.0.0.150"], dstIps=["10.0.0.120"], ingressNodeRegex=KanazawaTTDC, finalNodeRegex=TokyoTTDC2, prefs=[['KanazawaTTDC','TokyoTTDC2'],['KanazawaTTDC','KyotoTTDC','OsakaTTDC','NagoyaTTDC','TokyoTTDC1','TokyoTTDC2']]
+smt-path-preference srcIps=["10.0.0.40"], dstIps=["10.0.0.43"], ingressNodeRegex=FukuokaTTDC, finalNodeRegex=MatsuyamaTTDC, prefs=[['FukuokaTTDC','MatsuyamaTTDC'],['FukuokaTTDC','HiroshimaTTDC','KyotoTTDC','OsakaTTDC','MatsuyamaTTDC']]

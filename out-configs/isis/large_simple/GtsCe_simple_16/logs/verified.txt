@@ -1,0 +1,16 @@
+smt-reachability srcIps=["10.0.0.232"], dstIps=["10.0.0.221"], ingressNodeRegex=Berlin, finalNodeRegex=BanskaTTBystrica
+smt-reachability srcIps=["10.0.0.232"], dstIps=["10.0.1.22"], ingressNodeRegex=Berlin, finalNodeRegex=Dumbravita
+smt-reachability srcIps=["10.0.0.232"], dstIps=["10.0.0.65"], ingressNodeRegex=Berlin, finalNodeRegex=Caransebes
+smt-reachability srcIps=["10.0.0.232"], dstIps=["10.0.1.34"], ingressNodeRegex=Berlin, finalNodeRegex=NodeID14
+smt-reachability srcIps=["10.0.0.232"], dstIps=["10.0.0.109"], ingressNodeRegex=Berlin, finalNodeRegex=Thessaloniki
+smt-reachability srcIps=["10.0.0.232"], dstIps=["10.0.1.15"], ingressNodeRegex=Berlin, finalNodeRegex=NodeID17
+smt-reachability srcIps=["10.0.0.232"], dstIps=["10.0.0.57"], ingressNodeRegex=Berlin, finalNodeRegex=Tczew
+smt-reachability srcIps=["10.0.0.232"], dstIps=["10.0.0.68"], ingressNodeRegex=Berlin, finalNodeRegex=Lodz
+smt-reachability srcIps=["10.0.0.232"], dstIps=["10.0.1.64"], ingressNodeRegex=Berlin, finalNodeRegex=Helsinki
+smt-reachability srcIps=["10.0.0.232"], dstIps=["10.0.1.66"], ingressNodeRegex=Berlin, finalNodeRegex=Podgorica
+smt-reachability srcIps=["10.0.0.232"], dstIps=["10.0.1.45"], ingressNodeRegex=Berlin, finalNodeRegex=Wien
+smt-reachability srcIps=["10.0.0.232"], dstIps=["10.0.0.79"], ingressNodeRegex=Berlin, finalNodeRegex=Olomouc
+smt-reachability srcIps=["10.0.0.232"], dstIps=["10.0.0.193"], ingressNodeRegex=Berlin, finalNodeRegex=Szolnok
+smt-reachability srcIps=["10.0.0.232"], dstIps=["10.0.1.92"], ingressNodeRegex=Berlin, finalNodeRegex=Sofia
+smt-reachability srcIps=["10.0.0.232"], dstIps=["10.0.1.70"], ingressNodeRegex=Berlin, finalNodeRegex=Stockholm
+smt-reachability srcIps=["10.0.0.232"], dstIps=["10.0.0.239"], ingressNodeRegex=Berlin, finalNodeRegex=Opole

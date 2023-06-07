@@ -1,0 +1,2 @@
+smt-path-preference srcIps=["10.0.0.81"], dstIps=["10.0.0.150"], ingressNodeRegex=TrinidadTTandTTTobago, finalNodeRegex=Grenada, prefs=[['TrinidadTTandTTTobago','Grenada'],['TrinidadTTandTTTobago','StTTVincent','Curacao','PuertoTTRico','NodeID50','StTTCroix','NodeID22','NodeID24','Grenada']]
+smt-path-preference srcIps=["10.0.0.138"], dstIps=["10.0.0.65"], ingressNodeRegex=NodeID45, finalNodeRegex=NodeID49, prefs=[['NodeID45','NodeID49'],['NodeID45','NodeID33','NodeID49']]

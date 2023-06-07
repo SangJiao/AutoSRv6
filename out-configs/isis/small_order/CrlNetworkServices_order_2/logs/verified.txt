@@ -1,0 +1,2 @@
+smt-path-preference srcIps=["10.0.0.59"], dstIps=["10.0.0.72"], ingressNodeRegex=Cleveland, finalNodeRegex=Boston, prefs=[['Cleveland','Boston'],['Cleveland','Pittsburgh','Washington,TTDC','Baltimore','Philadelphia','NewTTYork','Boston']]
+smt-path-preference srcIps=["10.0.0.12"], dstIps=["10.0.0.9"], ingressNodeRegex=Dallas, finalNodeRegex=Austin, prefs=[['Dallas','Austin'],['Dallas','Houston','SanTTAntonio','Austin']]

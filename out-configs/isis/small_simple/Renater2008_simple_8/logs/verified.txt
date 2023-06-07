@@ -1,0 +1,8 @@
+smt-reachability srcIps=["10.0.0.53"], dstIps=["10.0.0.33"], ingressNodeRegex=Nantes, finalNodeRegex=Compiegne
+smt-reachability srcIps=["10.0.0.53"], dstIps=["10.0.0.63"], ingressNodeRegex=Nantes, finalNodeRegex=Martinique,TTGuadeloupe,TTCayenne
+smt-reachability srcIps=["10.0.0.53"], dstIps=["10.0.0.28"], ingressNodeRegex=Nantes, finalNodeRegex=Strasbourg
+smt-reachability srcIps=["10.0.0.53"], dstIps=["10.0.0.32"], ingressNodeRegex=Nantes, finalNodeRegex=Lille
+smt-reachability srcIps=["10.0.0.53"], dstIps=["10.0.0.80"], ingressNodeRegex=Nantes, finalNodeRegex=Marseille
+smt-reachability srcIps=["10.0.0.53"], dstIps=["10.0.0.69"], ingressNodeRegex=Nantes, finalNodeRegex=Rennes
+smt-reachability srcIps=["10.0.0.53"], dstIps=["10.0.0.56"], ingressNodeRegex=Nantes, finalNodeRegex=Limoges
+smt-reachability srcIps=["10.0.0.53"], dstIps=["10.0.0.2"], ingressNodeRegex=Nantes, finalNodeRegex=Orleans

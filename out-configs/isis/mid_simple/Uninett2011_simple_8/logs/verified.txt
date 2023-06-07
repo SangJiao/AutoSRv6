@@ -1,0 +1,8 @@
+smt-reachability srcIps=["10.0.0.43"], dstIps=["10.0.0.90"], ingressNodeRegex=SA_SHTTKautokeino, finalNodeRegex=HHTTKongsvinger
+smt-reachability srcIps=["10.0.0.43"], dstIps=["10.0.0.146"], ingressNodeRegex=SA_SHTTKautokeino, finalNodeRegex=HiOTTFredrikstad
+smt-reachability srcIps=["10.0.0.43"], dstIps=["10.0.0.159"], ingressNodeRegex=SA_SHTTKautokeino, finalNodeRegex=NORDUnetTTStockholmID58
+smt-reachability srcIps=["10.0.0.43"], dstIps=["10.0.0.115"], ingressNodeRegex=SA_SHTTKautokeino, finalNodeRegex=UiO
+smt-reachability srcIps=["10.0.0.43"], dstIps=["10.0.0.92"], ingressNodeRegex=SA_SHTTKautokeino, finalNodeRegex=HBOTTMoTTiTTRana
+smt-reachability srcIps=["10.0.0.43"], dstIps=["10.0.0.96"], ingressNodeRegex=SA_SHTTKautokeino, finalNodeRegex=HHTTTynset
+smt-reachability srcIps=["10.0.0.43"], dstIps=["10.0.0.77"], ingressNodeRegex=SA_SHTTKautokeino, finalNodeRegex=HiTTTPorsgrunn
+smt-reachability srcIps=["10.0.0.43"], dstIps=["10.0.0.163"], ingressNodeRegex=SA_SHTTKautokeino, finalNodeRegex=HitTTRauland

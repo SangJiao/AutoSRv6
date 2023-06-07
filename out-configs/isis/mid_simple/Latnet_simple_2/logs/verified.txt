@@ -1,0 +1,2 @@
+smt-reachability srcIps=["10.0.0.123"], dstIps=["10.0.0.137"], ingressNodeRegex=Vilani, finalNodeRegex=Livani
+smt-reachability srcIps=["10.0.0.123"], dstIps=["10.0.0.42"], ingressNodeRegex=Vilani, finalNodeRegex=Kraslava

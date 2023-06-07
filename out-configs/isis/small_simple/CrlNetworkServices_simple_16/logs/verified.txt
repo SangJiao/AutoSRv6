@@ -1,0 +1,16 @@
+smt-reachability srcIps=["10.0.0.53"], dstIps=["10.0.0.41"], ingressNodeRegex=Tampa, finalNodeRegex=Seattle
+smt-reachability srcIps=["10.0.0.53"], dstIps=["10.0.0.28"], ingressNodeRegex=Tampa, finalNodeRegex=SantaTTRosa
+smt-reachability srcIps=["10.0.0.53"], dstIps=["10.0.0.7"], ingressNodeRegex=Tampa, finalNodeRegex=Atlanta
+smt-reachability srcIps=["10.0.0.53"], dstIps=["10.0.0.45"], ingressNodeRegex=Tampa, finalNodeRegex=Detroit
+smt-reachability srcIps=["10.0.0.53"], dstIps=["10.0.0.22"], ingressNodeRegex=Tampa, finalNodeRegex=SanTTJose
+smt-reachability srcIps=["10.0.0.53"], dstIps=["10.0.0.59"], ingressNodeRegex=Tampa, finalNodeRegex=Cleveland
+smt-reachability srcIps=["10.0.0.53"], dstIps=["10.0.0.36"], ingressNodeRegex=Tampa, finalNodeRegex=Pittsburgh
+smt-reachability srcIps=["10.0.0.53"], dstIps=["10.0.0.48"], ingressNodeRegex=Tampa, finalNodeRegex=SanTTAntonio
+smt-reachability srcIps=["10.0.0.53"], dstIps=["10.0.0.56"], ingressNodeRegex=Tampa, finalNodeRegex=SanTTRafael
+smt-reachability srcIps=["10.0.0.53"], dstIps=["10.0.0.18"], ingressNodeRegex=Tampa, finalNodeRegex=Denver
+smt-reachability srcIps=["10.0.0.53"], dstIps=["10.0.0.68"], ingressNodeRegex=Tampa, finalNodeRegex=Stockton
+smt-reachability srcIps=["10.0.0.53"], dstIps=["10.0.0.70"], ingressNodeRegex=Tampa, finalNodeRegex=SanTTFrancisco
+smt-reachability srcIps=["10.0.0.53"], dstIps=["10.0.0.17"], ingressNodeRegex=Tampa, finalNodeRegex=KansasTTCity
+smt-reachability srcIps=["10.0.0.53"], dstIps=["10.0.0.62"], ingressNodeRegex=Tampa, finalNodeRegex=Anaheim
+smt-reachability srcIps=["10.0.0.53"], dstIps=["10.0.0.3"], ingressNodeRegex=Tampa, finalNodeRegex=Philadelphia
+smt-reachability srcIps=["10.0.0.53"], dstIps=["10.0.0.2"], ingressNodeRegex=Tampa, finalNodeRegex=NewTTYork

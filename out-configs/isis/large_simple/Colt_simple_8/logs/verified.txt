@@ -1,0 +1,8 @@
+smt-reachability srcIps=["10.0.0.45"], dstIps=["10.0.0.226"], ingressNodeRegex=Brescia, finalNodeRegex=Reading
+smt-reachability srcIps=["10.0.0.45"], dstIps=["10.0.1.62"], ingressNodeRegex=Brescia, finalNodeRegex=Bucharest
+smt-reachability srcIps=["10.0.0.45"], dstIps=["10.0.1.26"], ingressNodeRegex=Brescia, finalNodeRegex=Boston
+smt-reachability srcIps=["10.0.0.45"], dstIps=["10.0.0.235"], ingressNodeRegex=Brescia, finalNodeRegex=Budapest
+smt-reachability srcIps=["10.0.0.45"], dstIps=["10.0.0.131"], ingressNodeRegex=Brescia, finalNodeRegex=Cagliari
+smt-reachability srcIps=["10.0.0.45"], dstIps=["10.0.0.52"], ingressNodeRegex=Brescia, finalNodeRegex=Innsbruck
+smt-reachability srcIps=["10.0.0.45"], dstIps=["10.0.0.231"], ingressNodeRegex=Brescia, finalNodeRegex=Linz
+smt-reachability srcIps=["10.0.0.45"], dstIps=["10.0.0.155"], ingressNodeRegex=Brescia, finalNodeRegex=Milan

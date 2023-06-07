@@ -1,0 +1,2 @@
+smt-path-preference srcIps=["10.0.0.49"], dstIps=["10.0.0.27"], ingressNodeRegex=Budapest, finalNodeRegex=Sofia, prefs=[['Budapest','Sofia'],['Budapest','Bucharest','Istanbul','Athens','Sofia']]
+smt-path-preference srcIps=["10.0.0.12"], dstIps=["10.0.0.11"], ingressNodeRegex=Istanbul, finalNodeRegex=Bucharest, prefs=[['Istanbul','Bucharest'],['Istanbul','Athens','Sofia','Budapest','Bucharest']]

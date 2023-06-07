@@ -1,0 +1,2 @@
+smt-path-preference srcIps=["10.0.0.47"], dstIps=["10.0.0.25"], ingressNodeRegex=Edmonton, finalNodeRegex=Calgary, prefs=[['Edmonton','Calgary'],['Edmonton','Saskatoon','Winnipeg','Calgary']]
+smt-path-preference srcIps=["10.0.0.45"], dstIps=["10.0.0.29"], ingressNodeRegex=Victoria, finalNodeRegex=Seattle, prefs=[['Victoria','Seattle'],['Victoria','Vancouver','Seattle']]

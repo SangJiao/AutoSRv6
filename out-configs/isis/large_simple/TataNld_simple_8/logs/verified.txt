@@ -1,0 +1,8 @@
+smt-reachability srcIps=["10.0.1.104"], dstIps=["10.0.0.109"], ingressNodeRegex=Raipur, finalNodeRegex=Udaipur
+smt-reachability srcIps=["10.0.1.104"], dstIps=["10.0.0.92"], ingressNodeRegex=Raipur, finalNodeRegex=Trivandrum
+smt-reachability srcIps=["10.0.1.104"], dstIps=["10.0.1.106"], ingressNodeRegex=Raipur, finalNodeRegex=Damoh
+smt-reachability srcIps=["10.0.1.104"], dstIps=["10.0.0.103"], ingressNodeRegex=Raipur, finalNodeRegex=Chitradurg
+smt-reachability srcIps=["10.0.1.104"], dstIps=["10.0.0.97"], ingressNodeRegex=Raipur, finalNodeRegex=NodeID118
+smt-reachability srcIps=["10.0.1.104"], dstIps=["10.0.0.236"], ingressNodeRegex=Raipur, finalNodeRegex=Salem
+smt-reachability srcIps=["10.0.1.104"], dstIps=["10.0.0.21"], ingressNodeRegex=Raipur, finalNodeRegex=Dhulia
+smt-reachability srcIps=["10.0.1.104"], dstIps=["10.0.1.65"], ingressNodeRegex=Raipur, finalNodeRegex=Rewa

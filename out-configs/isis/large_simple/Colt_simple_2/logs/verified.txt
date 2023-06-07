@@ -1,0 +1,2 @@
+smt-reachability srcIps=["10.0.0.98"], dstIps=["10.0.1.29"], ingressNodeRegex=Winterthur, finalNodeRegex=NodeID73
+smt-reachability srcIps=["10.0.0.98"], dstIps=["10.0.0.58"], ingressNodeRegex=Winterthur, finalNodeRegex=TheTTHague
