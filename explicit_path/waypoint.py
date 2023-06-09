@@ -199,20 +199,13 @@ class WayPoint:
     # @time_limit(600)
     def explicit_path(self):
         # 找到显示路径的下一跳 ip address
-        flag = True
-        for i in self.nodeslist:
-            if (i in self.node_in_edges) and(i in self.node_out_edges):
-                   # len(self.node_in_edges[i]) == 0 or len(self.node_out_edges[i]) == 0:
-                flag = False
-                print('there is no in_edge or out_edge to connect node ' + str(i))
-        if flag:
-            start_time = time.process_time()
-            self.shorstest_path_solver()
-            end_time = time.process_time()
-            print("Finding the path takes time  " + str(format((end_time - start_time), '.4f')))
-            path = self.path
-            if len(path) > 0:
-                print(path)
+        start_time = time.process_time()
+        self.shorstest_path_solver()
+        end_time = time.process_time()
+        print("Finding the path takes time  " + str(format((end_time - start_time), '.4f')))
+        path = self.path
+        if len(path) > 0:
+            print(path)
 
 
 # topo = Topo('../topo/topology.json').getFromJson()
@@ -236,6 +229,12 @@ def set_policy(graph, num):
         waypoint_nodes.append(node)
     wap_pol = [node1, node2, waypoint_nodes]
     return wap_pol
+
+
+
+
+
+
 
 
 def creat_random_graph(scale):
@@ -282,7 +281,7 @@ while test_num <= 1:
             # print(tem_bandwidth.solver.check())
             time_cost = end_time - start_time
             use_time += time_cost
-        print("small and " + str(req_num) + "requirements 时间开销：" + str(use_time) + '!!!!!!!!!!!!!!!!')
+        print("small and " + str(req_num) + "requirements 时间开销：" + str(use_time) + '')
         if is_first:
             result_dir[(0, req_num)] = use_time
         else:

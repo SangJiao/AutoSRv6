@@ -159,7 +159,7 @@ class WP():
             self.find_path()
 
         else:
-            print('from '+self.source+' to '+ self.target + ' pass '+ 'nodeslist' +' no_path---un-solved')
+            print('from '+self.source+' to '+ self.target + ' pass '+ self.nodeslist[0] +' no_path')
 
 
 G = nx.Graph()        # 无多重边有向图
@@ -185,3 +185,87 @@ wp = WP(G,['A','H',['C','E']])
 # print('src = '+ 'A' +' ,dst = '+'H' +' waypoint = '+'C')
 # print('solving the path......')
 wp.shorstest_path_solver()
+
+g = nx.read_graphml('../real_topo/Aarnet.graphml')
+
+# 随机选择三个不同的节点
+nodes = list(g.nodes())  # 获取所有节点列表
+selected_nodes = random.sample(nodes, k=3)
+src1 = selected_nodes[0]
+dst1 = selected_nodes[1]
+waypoint1 = selected_nodes[2]
+
+# 输出节点的名称
+src_label = g.nodes[src1]['label']
+dst_label = g.nodes[dst1]['label']
+waypoint_label = g.nodes[waypoint1]['label']
+g = g.to_undirected()
+print('src = ' + src_label + ', dst = ' + dst_label + ', waypoint = ' + waypoint_label)
+print('solving the path......')
+
+# 使用 WP 类来解决路径
+nx.draw(g, with_labels=True)
+
+# 显示图形
+plt.show()
+wp1 = WP(g, [src1, dst1, waypoint1])
+wp1.shorstest_path_solver()
+#node_names = [g.nodes[node]['label'] for node in selected_nodes]
+#print("选择的节点：", node_names)
+
+
+# 读取图形数据
+g = nx.read_graphml('../real_topo/Aarnet.graphml')
+
+# 随机选择三个不同的节点
+nodes = list(g.nodes())  # 获取所有节点列表
+selected_nodes = random.sample(nodes, k=3)
+src1 = selected_nodes[0]
+dst1 = selected_nodes[1]
+waypoint1 = selected_nodes[2]
+src_label = g.nodes[src1]['label']
+dst_label = g.nodes[dst1]['label']
+waypoint_label = g.nodes[waypoint1]['label']
+
+print('src = ' + src_label + ', dst = ' + dst_label + ', waypoint = ' + waypoint_label)
+print('Solving the path......')
+
+
+# 绘制图形
+nx.draw(g, with_labels=True)
+
+# 显示图形
+plt.show()
+
+
+def find_path_with_waypoint(graph, src1, dst1, waypoint):
+    # 找到源节点到 waypoint 节点的最短路径
+    src_to_waypoint_path = nx.shortest_path(graph, source=src1, target=waypoint)
+
+    # 找到 waypoint 节点到目标节点的最短路径
+    waypoint_to_dst_path = nx.shortest_path(graph, source=waypoint, target=dst1)
+
+    # 组合两条路径
+    path = src_to_waypoint_path + waypoint_to_dst_path[1:]  # [1:] 去除重复的 waypoint 节点
+
+    return path
+
+# 读取图形文件
+graph = nx.read_graphml('../real_topo/Aarnet.graphml')
+
+# 调用函数查找路径
+nodes = list(g.nodes())  # 获取所有节点列表
+selected_nodes = random.sample(nodes, k=3)
+src1 = selected_nodes[0]
+dst1 = selected_nodes[1]
+waypoint1 = selected_nodes[2]
+src_label = g.nodes[src1]['label']
+dst_label = g.nodes[dst1]['label']
+waypoint_label = g.nodes[waypoint1]['label']
+
+
+path = find_path_with_waypoint(graph, src1, dst1, waypoint1)
+print('src1 = ' + src_label + ', dst = ' + dst_label + ', waypoint = ' + waypoint_label)
+print('Solving the path......')
+path_labels = [g.nodes[node]['label'] for node in path]
+print(' -> '.join(path_labels))  # 将路径节点标签用箭头连接并打印
