@@ -1,20 +1,15 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 '''
-求解带宽预留显示路径
-Input:  topo,link默认bandwidth为1000,  policy:[[src,dst,100],[src1,dst1,500],.....]
-Output: 求解src到dst满足带宽约束的显示路径
-@Project ：AutoSRv6
-@File ：bandwidth.py
-@Date ：2022/7/19 15:02 
+@Project ：AutoSRv6 
+@File ：bd.py
+@Author ：Lucky
+@Date ：2023/3/10 0:43
 '''
 import random
 import time
-
 import networkx as nx
 import z3
-
-
 
 class BandWidth:
     def __init__(self, topo, policy):
@@ -62,23 +57,11 @@ class BandWidth:
                         con.append(self.edge_key_var[edge[0], edge[1], key[0], key[1]])
                 cons.append(z3.Or(con))
             self.solver.append(z3.And(cons) == False)
-            constraint = z3.And(cons) == False
-           # print(constraint)
-            print("Solving...")
-            result = self.solver.check()
-            #print("Result:", result)
-            if result == z3.sat:
-                model = self.solver.model()
-                #print("Model:", model)
-            elif result == z3.unsat:
-                print("Unsatisfiable")
-            elif result == z3.unknown:
-                print("Unknown")
 
     def edge_bandwidth_con(self):
         for edge in self.topo.edges:
             # max_edge_bandwidth = self.topo.edges[edge]['bandwidth']  # 拓扑的边是否有该属性，待确认
-            max_edge_bandwidth = 500
+            max_edge_bandwidth = 1000
             vars_sum = 0
             for key in self.policy.keys():
                 tem_z3_var = self.edge_key_var[edge[0], edge[1], key[0], key[1]]
@@ -86,8 +69,6 @@ class BandWidth:
                 assert isinstance(pol_need, int)
                 vars_sum += z3.If(tem_z3_var == True, pol_need, 0)
             self.solver.add(vars_sum <= max_edge_bandwidth)
-            constraint = vars_sum <= max_edge_bandwidth
-            print(constraint)
 
     def set_paths(self):
         assert self.solver.check()
@@ -109,7 +90,7 @@ class BandWidth:
                         tem_list.append(cur_node)
                         break
             new_paths.append(tem_list)
-        print(new_paths)
+        #print(new_paths)
         self.init_policy.paths = new_paths
 
 def set_policy(graph, num):
@@ -132,6 +113,7 @@ def set_policy(graph, num):
             continue
         else:
             policy.append(tem_pol)
+    #print(policy)
     return policy
 
 
@@ -157,6 +139,7 @@ while test_num <= 1:
         graph_list = [small_graph, medium_graph, lager_graph]
         for index in [0, 1, 2]:
             policy = set_policy(graph_list[index], req_num)
+
             start_time = time.time()
             tem_bandwidth = BandWidth(graph_list[index], policy)
             tem_bandwidth.creat_z3_var()
@@ -164,21 +147,19 @@ while test_num <= 1:
             tem_bandwidth.edge_bandwidth_con()
             tem_bandwidth.solver.check()
             end_time = time.time()
-            # print(tem_bandwidth.solver.check())
-            time_cost = end_time - start_time
-            if is_first:
-                result_dir[(index, req_num)] = time_cost
+            tem_time_cost = end_time - start_time
+            if (index, req_num) in result_dir:
+                result_dir[(index, req_num)] += tem_time_cost
             else:
-                result_dir[(index, req_num)] += time_cost
+                result_dir[(index, req_num)] = tem_time_cost
         req_num *= 2
     is_first = False
     test_num += 1
 
 for key in result_dir.keys():
     if key[0] == 0:
-        t1 = result_dir[key]
-        print("small and " + str(key[1]) + "requirements 时间开销："+ str(result_dir[key]/(test_num-1)))
+        print("small and " + str(key[1]) + " requirements 时间开销：" + str(result_dir[key] / (test_num-1)))
     if key[0] == 1:
-        print("medium and " + str(key[1]) + "requirements 时间开销：" + str(result_dir[key] / (test_num - 1)))
+        print("medium and " + str(key[1]) + " requirements 时间开销：" + str(result_dir[key] / (test_num-1)))
     if key[0] == 2:
-        print("lager and " + str(key[1]) + "requirements 时间开销：" + str(result_dir[key] / (test_num - 1)))
+        print("lager and " + str(key[1]) + " requirements 时间开销：" + str(result_dir[key] / (test_num-1)))

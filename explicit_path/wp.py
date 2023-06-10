@@ -17,6 +17,8 @@ import copy
 from z3 import *
 import matplotlib.pyplot as plt
 from read_topo import Topo
+from utils_key import *
+from utils_key.topos import output
 
 
 class WP():
@@ -169,18 +171,10 @@ a = 10
 b = 1
 for e in G.edges():
    # print(e)
-
     #print('(2001:DB8:'+str(a)+'::'+str(b) +', 0, False)')
     a += 10
     b += 1
     G[e[0]][e[1]]['weight'] = random.randint(1,4)
-  #  G.edges[i]['weight']=weights[edge]
-
-# print(G.nodes)
-# print(G.edges)
-# nx.draw(G)
-# plt.show()
-
 wp = WP(G,['A','H',['C','E']])
 # print('src = '+ 'A' +' ,dst = '+'H' +' waypoint = '+'C')
 # print('solving the path......')
@@ -239,16 +233,77 @@ plt.show()
 
 
 def find_path_with_waypoint(graph, src1, dst1, waypoint):
-    # 找到源节点到 waypoint 节点的最短路径
-    src_to_waypoint_path = nx.shortest_path(graph, source=src1, target=waypoint)
-
-    # 找到 waypoint 节点到目标节点的最短路径
-    waypoint_to_dst_path = nx.shortest_path(graph, source=waypoint, target=dst1)
+    src_to_waypoint_path = []
+    waypoint_to_dst_path = []
+    if nx.has_path(graph, source=src1, target=waypoint) and nx.has_path(graph, source=waypoint, target=dst1):
+        src_to_waypoint_path = nx.shortest_path(graph, source=src1, target=waypoint)
+        waypoint_to_dst_path = nx.shortest_path(graph, source=waypoint, target=dst1)
+    # 检查路径中是否存在重复节点
+        if src_to_waypoint_path[-1] in waypoint_to_dst_path:
+        # 删除源节点到航点节点路径上的重复节点
+            src_to_waypoint_path = src_to_waypoint_path[:-1]
+        elif waypoint_to_dst_path[0] in src_to_waypoint_path:
+        # 删除航点节点到目标节点路径上的重复节点
+            waypoint_to_dst_path = waypoint_to_dst_path[1:]
 
     # 组合两条路径
-    path = src_to_waypoint_path + waypoint_to_dst_path[1:]  # [1:] 去除重复的 waypoint 节点
+    path = src_to_waypoint_path + waypoint_to_dst_path
 
     return path
+    # # 找到源节点到 waypoint 节点的最短路径
+    # src_to_waypoint_path = nx.shortest_path(graph, source=src1, target=waypoint)
+    #
+    # # 找到 waypoint 节点到目标节点的最短路径
+    # waypoint_to_dst_path = nx.shortest_path(graph, source=waypoint, target=dst1)
+    #
+    # # 组合两条路径
+    # path = src_to_waypoint_path + waypoint_to_dst_path[1:]  # [1:] 去除重复的 waypoint 节点
+    #
+    # return path
+def find_path_with_waypoints(graph, src1, dst1, waypoint):
+    src_to_waypoint_path = []
+    waypoint_to_dst_path = []
+    p = []
+
+    for i in range(len(waypoint) + 1):
+        if i == 0:
+            source = src1
+            target = waypoint[i]
+        elif i == len(waypoint):
+            source = waypoint[i-1]
+            target = dst1
+        else:
+            source = waypoint[i-1]
+            target = waypoint[i]
+
+        if nx.has_path(graph, source=source, target=target):
+            path = nx.shortest_path(graph, source=source, target=target)
+
+            if i == 0:
+                src_to_waypoint_path = path
+            else:
+                waypoint_to_dst_path = path
+
+            if src_to_waypoint_path and waypoint_to_dst_path:
+                if src_to_waypoint_path[-1] in waypoint_to_dst_path:
+                    # 删除源节点到航点节点路径上的重复节点
+                    src_to_waypoint_path = src_to_waypoint_path[:-1]
+
+                elif waypoint_to_dst_path[0] in src_to_waypoint_path:
+                    # 删除航点节点到目标节点路径上的重复节点
+                    waypoint_to_dst_path = waypoint_to_dst_path[1:]
+
+        p.append(path)
+
+    merged_list = []
+    visited_nodes = set()
+    for path in p:
+        unique_path = [node for node in path if node not in visited_nodes]
+        merged_list.extend(unique_path)
+        visited_nodes.update(unique_path)
+
+
+    return merged_list
 
 # 读取图形文件
 graph = nx.read_graphml('../real_topo/Aarnet.graphml')
@@ -269,3 +324,100 @@ print('src1 = ' + src_label + ', dst = ' + dst_label + ', waypoint = ' + waypoin
 print('Solving the path......')
 path_labels = [g.nodes[node]['label'] for node in path]
 print(' -> '.join(path_labels))  # 将路径节点标签用箭头连接并打印
+
+
+
+def read_and_find_paths():
+    from utils_key.topos import files
+    for i, file in enumerate(files, start=1):
+        # 读取图形文件
+        graph = nx.read_graphml(f'../real_topo/{file}')
+
+        # 获取所有节点列表
+        nodes = list(graph.nodes())
+
+        # 从节点列表中随机选择3个节点作为源节点、目标节点和航点节点
+        selected_nodes = random.sample(nodes, k=3)
+        src1 = selected_nodes[0]
+        dst1 = selected_nodes[1]
+        waypoint1 = selected_nodes[2]
+
+        # 获取节点的名称（假设名称存储在'label'属性中）
+        src_label = graph.nodes[src1]['label']
+        dst_label = graph.nodes[dst1]['label']
+        waypoint_label = graph.nodes[waypoint1]['label']
+
+        # 调用find_path_with_waypoint方法求解路径
+        path = find_path_with_waypoint(graph, src1, dst1, waypoint1)
+
+        # 将节点名称转换为标签
+        path_labels = [graph.nodes[node]['label'] for node in path]
+
+        # 打印结果
+        print(f"Graph {file}:")
+        print("Source:", src_label)
+        print("Destination:", dst_label)
+        print("Waypoint:", waypoint_label)
+        print('src = ' + src_label + ', dst = ' + dst_label + ', waypoint = ' + waypoint_label)
+        print('Solving the path......')
+        print("Path:", path_labels)
+        print(' -> '.join(path_labels))
+        print("-------------------")
+
+
+
+
+import random
+
+def find_paths():
+    from utils_key.topos import files
+    for i, file in enumerate(files, start=1):
+        # 读取图形文件
+        graph = nx.read_graphml(f'../real_topo/{file}')
+
+        # 获取所有节点列表
+        nodes = list(graph.nodes())
+        way = 5
+        # 确保节点数量足够大
+        if len(nodes) < way:
+            print("节点数量不足")
+            continue
+
+        # 从节点列表中随机选择5个节点作为源节点、目标节点和航点节点
+        selected_nodes = random.sample(nodes, k=way)
+        src1 = selected_nodes[0]
+        dst1 = selected_nodes[1]
+        wp = []
+        waypoint_label = []
+        for j in range(2, way-1):
+            n = selected_nodes[j]
+            wp.append(n)
+            waypoint_label.append(graph.nodes[n]['label'])
+
+        # 获取节点的名称（假设名称存储在'label'属性中）
+        src_label = graph.nodes[src1]['label']
+        dst_label = graph.nodes[dst1]['label']
+
+        # 调用find_path_with_waypoints方法求解路径
+        try:
+            path = find_path_with_waypoints(graph, src1, dst1, wp)
+            output()
+            # 将节点名称转换为标签
+            path_labels = [graph.nodes[node]['label'] for node in path]
+
+            # 打印结果
+            print(f"Graph {file}:")
+            print("Source:", src_label)
+            print("Destination:", dst_label)
+            print("Waypoint:", waypoint_label)
+            print('src = ' + src_label + ', dst = ' + dst_label + ', waypoint = ' + str(waypoint_label))
+            print('Solving the path......')
+            print("Path:", path_labels)
+            print(' -> '.join(path_labels))
+            print("-------------------")
+        except IndexError:
+            print("无法找到路径")
+
+
+#read_and_find_paths()
+find_paths()
